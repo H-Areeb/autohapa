@@ -1,0 +1,38 @@
+[07-Oct-2019 10:34:15 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[07-Oct-2019 11:18:01 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[07-Oct-2019 11:37:34 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[07-Oct-2019 12:50:16 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[08-Oct-2019 10:44:07 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[08-Oct-2019 12:41:28 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[08-Oct-2019 12:55:51 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[08-Oct-2019 13:04:57 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[08-Oct-2019 14:18:07 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[09-Oct-2019 09:15:59 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[09-Oct-2019 11:29:40 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[09-Oct-2019 16:59:51 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[15-Oct-2019 11:25:13 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[15-Oct-2019 12:34:47 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/autohapa/public_html/autohapa/includes/header.php:135) in /home/autohapa/public_html/autohapa/payment-details/index.php on line 16
+[15-Oct-2019 12:34:47 America/New_York] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/autohapa/public_html/autohapa/payment-details/index.php on line 143
+[15-Oct-2019 12:34:47 America/New_York] PHP Notice:  Undefined variable: carad_id in /home/autohapa/public_html/autohapa/payment-details/index.php on line 155
+[15-Oct-2019 12:34:47 America/New_York] PHP Notice:  Undefined variable: customer_name in /home/autohapa/public_html/autohapa/payment-details/index.php on line 181
+[15-Oct-2019 12:34:47 America/New_York] PHP Notice:  Undefined variable: contact_num in /home/autohapa/public_html/autohapa/payment-details/index.php on line 181
+[15-Oct-2019 12:34:47 America/New_York] PHP Notice:  Undefined variable: postcode in /home/autohapa/public_html/autohapa/payment-details/index.php on line 181
+[15-Oct-2019 12:34:55 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/autohapa/public_html/autohapa/includes/header.php:135) in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 16
+[15-Oct-2019 12:34:55 America/New_York] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 151
+[15-Oct-2019 12:34:55 America/New_York] PHP Notice:  Undefined variable: carad_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 163
+[15-Oct-2019 12:34:55 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[17-Oct-2019 07:26:15 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 195
+[17-Oct-2019 07:26:26 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 195
+[17-Oct-2019 07:26:26 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[17-Oct-2019 08:49:09 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 195
+[17-Oct-2019 08:49:20 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 195
+[17-Oct-2019 08:49:20 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[17-Oct-2019 09:03:22 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
+[17-Oct-2019 09:03:37 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
+[17-Oct-2019 09:03:37 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[17-Oct-2019 09:14:23 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
+[17-Oct-2019 09:14:29 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
+[17-Oct-2019 09:14:40 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
+[17-Oct-2019 09:14:40 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[19-Oct-2019 10:32:14 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164
+[19-Oct-2019 10:32:32 America/New_York] PHP Notice:  Undefined variable: pkgSelected_id in /home/autohapa/public_html/autohapa/payment-details/thankyou-msg.php on line 164

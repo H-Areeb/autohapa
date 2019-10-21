@@ -1,0 +1,364 @@
+@font-face {
+    font-family: 'Fabriga-Bold';
+    src:  url('fonts/Fabriga-Bold.woff2') format('woff2'),
+}
+@font-face {
+    font-family: 'Fabriga-Light';
+    src:  url('fonts/Fabriga-Light.woff2') format('woff2'),
+}
+@font-face {
+    font-family: 'Fabriga-Medium';
+    src:  url('fonts/Fabriga-Medium.woff2') format('woff2'),
+}
+@font-face {
+    font-family: 'Fabriga-Regular';
+    src:  url('fonts/Fabriga-Regular.woff2') format('woff2'),
+}
+a{
+    background-color: transparent;
+    text-decoration: none;
+    color: #2a65ba;
+}
+a:active, a:hover{
+    color: #06a09d;
+}
+
+
+
+
+
+/* Title header styling.... */
+
+.fpa__heading {
+    flex: 0 0 100%;
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.fpa__heading .fpa__title {
+    flex-grow: 1;
+    padding-right: 24px;
+    margin: 8px 0;
+}
+
+
+
+
+.advert-heading__condition {
+    text-transform: uppercase;
+	font-size:14px;
+    margin: 0 0 4px;
+    color: #666;
+    display: block;
+}
+
+.advert-heading__title {
+    color: #313c53;
+    padding: 0;
+    margin: 0 0 4px;
+	font-size:1.6rem;
+	font-weight:600;
+}
+.advert-heading__attention-grabber {
+    margin: 0 0 4px;
+    color: #666;
+}
+
+
+
+.fpa__heading .fpa__price {
+    text-align: right;
+    flex-shrink: 0;
+    justify-content: flex-end;
+}
+
+
+
+
+
+
+@media print, screen and (min-width: 768px){
+.advert-price__cash {
+    display: inline-flex;
+    border-bottom: none;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+}
+
+.advert-price__cash {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e8e8e3;
+    padding-bottom: 8px;
+}
+
+
+@media print, screen and (min-width: 768px){
+
+.advert-price__cash-price {
+    margin-bottom: 2px;
+}}
+
+.advert-price__cash-price {
+    color: #313c53;
+}
+
+.advert-price__cash-price, .finance-lowest-monthly-price {
+    font-size: 2.16667em;
+    line-height: 1.23077;
+	font-weight:700;
+    font-family: 'Fabriga Medium', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+
+
+
+@media screen and (min-width: 768px){
+
+.advert-heading {
+    margin: 0;
+}
+
+}
+.advert-heading {
+    margin: 8px 0 24px;
+}
+
+.advert-price__cash-price, .finance-lowest-monthly-price {
+    font-size: 2.16667em;
+    line-height: 1.23077;
+    font-family: 'Fabriga Medium', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+
+/* section styles start */
+
+
+.section-gap{
+    padding: 0px 40px;
+}
+.main-img{
+    height: 550px;;
+}
+aside.side_content{}
+aside.side_content .content_1> p{
+    color: #06a09d;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 5px!important;
+    /* line-height: 1.42857;
+    font-family: 'Fabriga-Bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+}
+aside.side_content .content_1> h1{
+    font-size: 2.1em;
+}
+aside.side_content .content_1> span{
+    color: #666;
+    font-size: 1em;
+    font-weight: 500;
+}
+aside.side_content .content_2> p> span> span.cut_price{
+    text-decoration: line-through;
+    margin-left: 4px;
+    font-size: 1.6em;
+    font-weight: 500;
+}
+aside.side_content .content_2> p> span.discounted_price{
+    color: #da1919;
+    font-size: 2.1em;
+    font-weight: 700;
+}
+aside.side_content .content_2> p> span.badge{
+    background-color: #06a09d;
+    border-radius: 2px;
+    color: #ffffff;
+    display: inline-block;
+    padding: 5px 6px;
+    margin-left: 4px;
+}
+aside.side_content .content_2> p.price_badge{
+    color: #06a09d;
+    font-size: 1.1em;
+}
+
+/* buttons */
+.btn-row{
+    display: flex;
+}
+.btn-row>a.cs-button{
+    min-width: 0;
+    width: calc(50% - 8px);
+}
+.btn-row>a.cs-button:first-child{margin-right: 8px;}
+.btn-row>a.cs-button:last-child{margin-left: 8px;}
+.btn-row>a.cs-button{
+    font-size: 16px;
+    font-weight: 700;
+    /* line-height: 1.8; */
+    padding: 10px 30px;
+    border-radius: 6.25em;
+    cursor: pointer;
+    display: inline-block;
+    margin: .5em 0;
+    text-align: center;
+    transition: background .2s linear;
+}
+.btn-row>a.cs-btn-primary{
+    color: #fff;
+    background-color: #59b747;
+    border: 0;
+}
+.btn-row>a.cs-btn-primary:hover{
+    text-decoration: none;
+    color:#fff;
+}
+.btn-row>a.cs-btn-tertiary{
+    background-color: transparent;
+    border: 1px solid #313c53;
+    color: #313c53;
+}
+.btn-row>a.cs-btn-tertiary:hover{
+    text-decoration: none;
+    color:#313c53;
+}
+
+/* chatwith seller */
+.chat-with-seller.offline {
+    border-radius: 6.25em;
+    max-width: 216px;
+    position: relative;
+    border: 0;
+    box-shadow: none;
+    cursor: default;
+    width: 216px;
+    border: none;
+    font-size: 12px;
+    padding: 0;
+    text-align: left;
+    background-color: transparent;
+    color: #666;
+    margin: 16px 0;
+}
+.chat-with-seller.offline .chat-with-seller__icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    display: inline-block;
+    display: inline-block;
+}
+
+.chat-with-seller__icon {
+    margin: 4px 4px 0 0;
+}
+.chat-with-seller__label-container {
+    vertical-align: middle;
+    text-align: left;
+    display: inline-block;
+}
+.chat-with-seller--status {
+    font-size: 1.3em;
+    display: inline-block;
+    color: #666;
+    position: relative;
+}
+.chat-with-seller.offline .chat-with-seller--status:after {
+    background-color: #666;
+}
+
+.chat-with-seller--status:after {
+    border-radius: 50%;
+    content: ' ';
+    height: 7px;
+    position: absolute;
+    top: 5px;
+    width: 7px;
+    margin-left: 4px;
+}
+.chat-with-seller__label {
+    display: block;
+    line-height: 1 !important;
+    font-size: 1.3em;
+}
+/* sd */
+.dealer_detail_tel>p{
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.dealer_details{
+    background-color: #f7f7f5;
+    border: 0px;
+}
+.dealer_details_img{
+    width: 100%;
+    max-width: 300px;
+    max-height: 50px;
+}
+a h3.dealer_details_link{
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px){
+    .section-gap{
+        padding: 0px 0px!important;
+    }
+}
+
+
+
+#image_preview img{
+	
+	width:100px;
+	display:inline-block;
+	padding:5px;
+	vertical-align:middle;
+	
+}
+
+
+.key-specifications {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style: none;
+    margin: 0 0 8px;
+    grid-column-gap: 16px;
+}
+
+
+
+.key-specifications>li {
+    font-size: 16px;
+    line-height: 14px;
+    color: #666;
+    min-width: 25%;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-bottom: 16px;
+	 list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.key-specifications__icon {
+    display: block;
+    max-width: 40px;
+    max-height: 20px;
+    vertical-align: top;
+    fill: #5d7199;
+    margin-bottom: 8px;
+}
+.atc-type-picanto {
+    font-size: 14px;
+    line-height: 1.4;
+	margin: 0 0 8px;
+	color: #313c53;
+	display:block;
+	font-family: 'Fabriga Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+		
+
+}

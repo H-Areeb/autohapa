@@ -1,0 +1,6 @@
+[15-Oct-2019 12:34:44 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/autohapa/public_html/autohapa/includes/header.php:135) in /home/autohapa/public_html/autohapa/package/index.php on line 10
+[17-Oct-2019 07:26:12 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 195
+[17-Oct-2019 08:49:00 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 195
+[17-Oct-2019 09:03:18 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
+[17-Oct-2019 09:14:20 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
+[17-Oct-2019 09:14:27 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199

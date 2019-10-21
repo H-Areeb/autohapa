@@ -1,0 +1,4 @@
+<div class="fav_button">
+<button class="loginBtn loginBtn--google"  type="button" onclick="window.location.href='googleOauth/oauth.php'">Login with Google</button>
+<button class="loginBtn loginBtn--facebook" type="button" onclick="window.location.href='facebook-auth/oauth.php'">Login with Facebook</button>
+</div>

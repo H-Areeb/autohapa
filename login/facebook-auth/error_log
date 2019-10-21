@@ -1,0 +1,39 @@
+[11-Dec-2018 10:37:24 America/New_York] PHP Warning:  require_once(google-api-php-client/src/Google/autoload.php): failed to open stream: No such file or directory in /home/judaic/public_html/jc/facebook-auth/oauth.php on line 3
+[11-Dec-2018 10:37:24 America/New_York] PHP Fatal error:  require_once(): Failed opening required 'google-api-php-client/src/Google/autoload.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/judaic/public_html/jc/facebook-auth/oauth.php on line 3
+[17-Dec-2018 09:17:20 America/New_York] PHP Notice:  Undefined variable: config in /home/judaic/public_html/jc/facebook-auth/index.php on line 69
+[17-Dec-2018 09:17:20 America/New_York] PHP Fatal error:  Uncaught exception 'Facebook\Exceptions\FacebookSDKException' with message 'Access token metadata contains unexpected app ID.' in /home/judaic/public_html/jc/facebook-auth/php-graph-sdk/src/Facebook/Authentication/AccessTokenMetadata.php:329
+Stack trace:
+#0 /home/judaic/public_html/jc/facebook-auth/index.php(69): Facebook\Authentication\AccessTokenMetadata->validateAppId(NULL)
+#1 {main}
+  thrown in /home/judaic/public_html/jc/facebook-auth/php-graph-sdk/src/Facebook/Authentication/AccessTokenMetadata.php on line 329
+[17-Dec-2018 09:26:50 America/New_York] PHP Notice:  Undefined variable: config in /home/judaic/public_html/jc/facebook-auth/index.php on line 69
+[17-Dec-2018 09:26:50 America/New_York] PHP Fatal error:  Uncaught exception 'Facebook\Exceptions\FacebookSDKException' with message 'Access token metadata contains unexpected app ID.' in /home/judaic/public_html/jc/facebook-auth/php-graph-sdk/src/Facebook/Authentication/AccessTokenMetadata.php:329
+Stack trace:
+#0 /home/judaic/public_html/jc/facebook-auth/index.php(69): Facebook\Authentication\AccessTokenMetadata->validateAppId(NULL)
+#1 {main}
+  thrown in /home/judaic/public_html/jc/facebook-auth/php-graph-sdk/src/Facebook/Authentication/AccessTokenMetadata.php on line 329
+[07-Oct-2019 11:46:52 America/New_York] PHP Fatal error:  Uncaught Error: Class 'Facebook\HttpClients\HttpClientsFactory' not found in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php:147
+Stack trace:
+#0 /home/autohapa/public_html/autohapa/login/facebook-auth/oauth.php(6): Facebook\Facebook->__construct(Array)
+#1 {main}
+  thrown in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php on line 147
+[08-Oct-2019 08:56:27 America/New_York] PHP Fatal error:  Uncaught Error: Class 'Facebook\HttpClients\HttpClientsFactory' not found in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php:147
+Stack trace:
+#0 /home/autohapa/public_html/autohapa/login/facebook-auth/oauth.php(6): Facebook\Facebook->__construct(Array)
+#1 {main}
+  thrown in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php on line 147
+[08-Oct-2019 08:59:40 America/New_York] PHP Fatal error:  Uncaught Error: Class 'Facebook\HttpClients\HttpClientsFactory' not found in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php:147
+Stack trace:
+#0 /home/autohapa/public_html/autohapa/login/facebook-auth/oauth.php(6): Facebook\Facebook->__construct(Array)
+#1 {main}
+  thrown in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php on line 147
+[08-Oct-2019 09:01:25 America/New_York] PHP Fatal error:  Uncaught Error: Class 'Facebook\HttpClients\HttpClientsFactory' not found in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php:147
+Stack trace:
+#0 /home/autohapa/public_html/autohapa/login/facebook-auth/oauth.php(6): Facebook\Facebook->__construct(Array)
+#1 {main}
+  thrown in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php on line 147
+[08-Oct-2019 09:01:45 America/New_York] PHP Fatal error:  Uncaught Error: Class 'Facebook\HttpClients\HttpClientsFactory' not found in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php:147
+Stack trace:
+#0 /home/autohapa/public_html/autohapa/login/facebook-auth/oauth.php(6): Facebook\Facebook->__construct(Array)
+#1 {main}
+  thrown in /home/autohapa/public_html/autohapa/login/facebook-auth/php-graph-sdk/src/Facebook/Facebook.php on line 147
