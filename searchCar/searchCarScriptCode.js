@@ -103,7 +103,7 @@
            // for showing cars card bring with search ......
 		
 	
- if(searchPost === '' && searchMake === '' && searchModel === '' ){
+ if(searchPost === '' || searchMake === '' || searchModel === '' ){
 		
 		filter_data();	
 		
