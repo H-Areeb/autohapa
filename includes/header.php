@@ -87,18 +87,18 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
                             <div class="menu-container">
                                 <ul id="top-menu" class="menu">                            
                                     <li><a href="http://127.0.0.1/autohapa/">Cars</a></li>
-									<li><a href="#">Prestige cars</a></li>
-									<li><a href="#">Vans</a></li>
-									<li><a href="/bikes">Bikes</a></li>
-									<li><a href="#">Motorhomes</a></li>
-									<li><a href="#">Caravans</a></li>
-									<li><a href="#">Trucks</a></li>
-									<li><a href="#">Farm</a></li>
-									<li><a href="#">Plant</a></li>
-									<li class="link-separator">|</li>
-									<li><a href="#">Safety Advice</a></li>
-									<li><a href="http://127.0.0.1/autohapa/sellmycar" class="btn btn-blue">SELL MY CAR</a></li>
-							    </ul>
+                                    <li><a href="#">Prestige cars</a></li>
+                                    <li><a href="#">Vans</a></li>
+                                    <li><a href="/bikes">Bikes</a></li>
+                                    <li><a href="#">Motorhomes</a></li>
+                                    <li><a href="#">Caravans</a></li>
+                                    <li><a href="#">Trucks</a></li>
+                                    <li><a href="#">Farm</a></li>
+                                    <li><a href="#">Plant</a></li>
+                                    <li class="link-separator">|</li>
+                                    <li><a href="#">Safety Advice</a></li>
+                                    <li><a href="http://127.0.0.1/autohapa/sellmycar" class="btn btn-blue">SELL MY CAR</a></li>
+                              </ul>
                             </div>
                         </nav>
                     </div>
@@ -107,9 +107,9 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
                     <div class="col-lg-3">
                         <div class="header-logo">
                            <a href="http://127.0.0.1/autohapa/">
-								<img src="http://127.0.0.1/autohapa/assets/images/logo.png" alt="AutoHapa" class="custom-logo img-fluid" />
-							</a>
-						</div>
+                              <img src="http://127.0.0.1/autohapa/assets/images/logo.png" alt="AutoHapa" class="custom-logo img-fluid" />
+                           </a>
+                        </div>
                     </div>
                     <div class="col-lg-9">
                         <nav id="site-navigation" class="navigation">
@@ -119,115 +119,110 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
                                     <li><a href="#">Sell your car</a></li>
                                     <li><a href="#">Car reviews & more</a></li>
                                     <li><a href="#">Finance, insurance & more</a></li>
-                                  <?php
-	 								if(isset($_SESSION['customer_id'])|| isset($_SESSION['customer_id2']))
-									 {            
+<?php
+if(isset($_SESSION['customer_id'])|| isset($_SESSION['customer_id2']))
+      {            
 
-										$query = "select name AS customer_name , type_id  from car_user where id = ".$customer_id;
-										
-											$result = mysqli_query($conni,$query);
-											while($row = mysqli_fetch_assoc($result))
-											{   
-												// $carad_id = $row['id'];
-												// $contact_num = $row['number'];
-												 $acc_type = $row['type_id'];
-												$customer_name = $row['customer_name'];
-													
-											}
-										 
+            $query = "select name AS customer_name , type_id  from car_user where id = ".$customer_id;
+            
+                  $result = mysqli_query($conni,$query);
+                  while($row = mysqli_fetch_assoc($result))
+                  {   
+                        // $carad_id = $row['id'];
+                        // $contact_num = $row['number'];
+                              $acc_type = $row['type_id'];
+                        $customer_name = $row['customer_name'];
+                              
+                  }
+                  
 
-											if($acc_type == '1')
-											{
-											   	echo'<li class="dropdown">
-														<button class="my-2 btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-															'.$customer_name.' <span class="user-icon"><i class="fa fa-user"></i></span>
-														</button>
-														<div class="bg-default dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 13rem!important ;">
-															<h6 class="dropdown-header"> <span class="badge badge-primary">Dealer Account</span></h6>
-															<a class="dropdown-item" href="http://127.0.0.1/autohapa/Dealer/my_profile.php">My Profile</a>
-															<a class="dropdown-item" href="#">My Ads</a>
-															<a class="dropdown-item" href="#">My packages</a>
-															<a class="dropdown-item" href="#">Favourites</a>
-															<a class="dropdown-item" href="#">Recently viewed</a>
-															<a class="dropdown-item" href="http://127.0.0.1/autohapa/login/logout/">Sign Out</a>
-														</div>
-													   </li>';
-											}
-											else
-											{
-												echo'<li class="dropdown">
-													 <button class="my-2 btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														 '.$customer_name.' <span class="user-icon"><i class="fa fa-user"></i></span>
-													 </button>
-													 <div class="bg-default dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 13rem!important ;">
-														 <h6 class="dropdown-header"> <span class="badge badge-secondary">Buyer Account</span></h6>
-														 <a class="dropdown-item" href="http://127.0.0.1/autohapa/Dealer/my_profile.php">My Profile</a>
-														 <a class="dropdown-item" href="#">Favourites</a>
-														 <a class="dropdown-item" href="#">Recently viewed</a>
-														 <a class="dropdown-item" href="http://127.0.0.1/autohapa/login/logout/">Sign Out</a>
-													 </div>
-													</li>';
-										 	}
-
-
-
-
+                  if($acc_type == '1')
+                  {
+                                    echo'<li class="dropdown">
+                                                <button class="my-2 btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      '.$customer_name.' <span class="user-icon"><i class="fa fa-user"></i></span>
+                                                </button>
+                                                <div class="bg-default dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 13rem!important ;">
+                                                      <h6 class="dropdown-header"> <span class="badge badge-primary">Dealer Account</span></h6>
+                                                      <a class="dropdown-item" href="http://127.0.0.1/autohapa/customers/my_profile.php">My Profile</a>
+                                                      <a class="dropdown-item" href="#">My Ads</a>
+                                                      <a class="dropdown-item" href="#">My packages</a>
+                                                      <a class="dropdown-item" href="#">Favourites</a>
+                                                      <a class="dropdown-item" href="#">Recently viewed</a>
+                                                      <a class="dropdown-item" href="http://127.0.0.1/autohapa/login/logout/">Sign Out</a>
+                                                </div>
+                                          </li>';
+                  }
+                  else
+                  {
+                                    echo'<li class="dropdown">
+                                                <button class="my-2 btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      '.$customer_name.' <span class="user-icon"><i class="fa fa-user"></i></span>
+                                                </button>
+                                                <div class="bg-default dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 13rem!important ;">
+                                                      <h6 class="dropdown-header"> <span class="badge badge-secondary">Buyer Account</span></h6>
+                                                      <a class="dropdown-item" href="http://127.0.0.1/autohapa/customers/my_profile.php">My Profile</a>
+                                                      <a class="dropdown-item" href="#">Favourites</a>
+                                                      <a class="dropdown-item" href="#">Recently viewed</a>
+                                                      <a class="dropdown-item" href="http://127.0.0.1/autohapa/login/logout/">Sign Out</a>
+                                                </div>
+                                          </li>';
+                  }
 									
-					}
-					else
-					{
-										  
-									
-									?> 
-									<li class="dropdown">
-										<a href="#" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Sign In <span class="user-icon"><i class="fa fa-user"></i></span>
-										</a>
-										<div class="dropdown-menu dropdown-menu-right" style="min-width: 18rem!important ;" >
-											<!-- Errors div -->
-											<div style="max-width:400px;margin: 0 auto;">
-												<div class="alert alert-danger alert-dismissible fade show" role="alert" id="invalid" style="display:none;"></div>
-												<div class="alert alert-success alert-dismissible fade show" role="alert" id="success" style="display:none;"></div>
-											</div>
-											<!-- sign in form starts -->
-											<form class="px-4 py-3 "  method="POST">
-												<div class="form-group">
-													<label for="emailLogin">Email address</label>
-													<input  class="form-control mb-2" id="emailLogin" maxlength="250" minlength="6" name="emailLogin" placeholder="e.g. name@email.com"  type="email" >
-														<div id="emailLoginError" class="text-center mb-2"></div>
-														<label for="pwdLogin">Password</label>
-													<input  class="form-control mb-2"  id="pwdLogin"  name="pwdLogin" placeholder="*******"  type="password" >
-													<div id="pwdLoginError" class="text-center mb-2"></div>
-												</div>
-												<div class="form-group">
-													<a href="javascript:void(0)" id="submitbtn" class="btn btn-blue " type="submit" onclick="validateLogin()">
-													Sign in 
-													</a>
-												</div>
-												<p class=" text-center">---------------- OR ----------------</p>
-												<div class="form-group">
-													<a href="javascript:void(0)" class="btn mb-2 login-social login-facebook disabled"  type="button" onclick="window.location.href='../login/facebook-auth/oauth.php'">
-														<i class="fa fa-facebook "></i> Continue with Facebook
-													</a>
-													<a href="javascript:void(0)" class="btn login-social login-google disabled"  type="button" onclick="window.location.href='../login/googleOauth/oauth.php'">
-														<i class="fa fa-google "></i> Continue with Google
-													</a>
-												</div>
-													<a class="dropdown-item"  href="http://127.0.0.1/autohapa/login/register.php"> Sign up</a>
-													<a class="dropdown-item" href="#">Forgot password?</a>
-													<style>
-															.dropdown-item{
-																color:#2573c2 !important;
-																padding:0px !important;
-																font-size:.9rem !important;
-															}
-													</style>
-											</form> 
-											<!-- sign in form end -->
-										</div>
-									</li>
-								<?php } ?>
-								</ul>
+}
+else
+{
+
+?> 
+                                          <li class="dropdown">
+                                                <a href="#" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      Sign In <span class="user-icon"><i class="fa fa-user"></i></span>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right" style="min-width: 18rem!important ;" >
+                                                      <!-- Errors div -->
+                                                      <div style="max-width:400px;margin: 0 auto;">
+                                                            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="invalid" style="display:none;"></div>
+                                                            <div class="alert alert-success alert-dismissible fade show" role="alert" id="success" style="display:none;"></div>
+                                                      </div>
+                                                      <!-- sign in form starts -->
+                                                      <form class="px-4 py-3 "  method="POST">
+                                                            <div class="form-group">
+                                                                  <label for="emailLogin">Email address</label>
+                                                                  <input  class="form-control mb-2" id="emailLogin" maxlength="250" minlength="6" name="emailLogin" placeholder="e.g. name@email.com"  type="email" >
+                                                                        <div id="emailLoginError" class="text-center mb-2"></div>
+                                                                        <label for="pwdLogin">Password</label>
+                                                                  <input  class="form-control mb-2"  id="pwdLogin"  name="pwdLogin" placeholder="*******"  type="password" >
+                                                                  <div id="pwdLoginError" class="text-center mb-2"></div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                  <a href="javascript:void(0)" id="submitbtn" class="btn btn-blue " type="submit" onclick="validateLogin()">
+                                                                  Sign in 
+                                                                  </a>
+                                                            </div>
+                                                            <p class=" text-center">---------------- OR ----------------</p>
+                                                            <div class="form-group">
+                                                                  <a href="javascript:void(0)" class="btn mb-2 login-social login-facebook disabled"  type="button" onclick="window.location.href='../login/facebook-auth/oauth.php'">
+                                                                        <i class="fa fa-facebook "></i> Continue with Facebook
+                                                                  </a>
+                                                                  <a href="javascript:void(0)" class="btn login-social login-google disabled"  type="button" onclick="window.location.href='../login/googleOauth/oauth.php'">
+                                                                        <i class="fa fa-google "></i> Continue with Google
+                                                                  </a>
+                                                            </div>
+                                                                  <a class="dropdown-item"  href="http://127.0.0.1/autohapa/login/register.php"> Sign up</a>
+                                                                  <a class="dropdown-item" href="#">Forgot password?</a>
+                                                                  <style>
+                                                                              .dropdown-item{
+                                                                                    color:#2573c2 !important;
+                                                                                    padding:0px !important;
+                                                                                    font-size:.9rem !important;
+                                                                              }
+                                                                  </style>
+                                                      </form> 
+                                                      <!-- sign in form end -->
+                                                </div>
+                                          </li>
+                                    <?php } ?>
+                                    </ul>
                             </div>
                         </nav>
                     </div>

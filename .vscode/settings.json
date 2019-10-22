@@ -1,0 +1,6 @@
+{
+      "editor.wrappingIndent": "none",
+      "editor.trimAutoWhitespace": false,
+      "editor.wordWrap": "wordWrapColumn",
+      "editor.wordWrapColumn": 300
+}
