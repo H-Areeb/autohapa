@@ -28,17 +28,18 @@
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>View Ads</span>
+                
+                <i class="fa fa-lg fa-audio-description"></i>
+                <span> &nbsp; Management</span>
                 <span class="pull-right-container">
                   <!-- <span class="label label-primary pull-right">4</span> -->
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{ route('ads')}}"><i class="fa fa-circle-o"></i> All Ads</a></li>
+                <li><a href="{{ route('ads')}}"><i class="fa fa-circle-o"></i> Pending Ads</a></li>
                 <li><a href="{{route('approvedAds')}}"><i class="fa fa-circle-o"></i> Approved Ads</a></li>
                 <li><a href="{{ route('deletedAds')}}"><i class="fa fa-circle-o"></i> Deleted Ads</a></li>
-                <li><a href="{{ route('deletedAds')}}"><i class="fa fa-circle-o"></i> listing types</a></li>
+                <!--<li><a href="#"><i class="fa fa-circle-o"></i> All types</a></li>-->
               
               </ul>
             </li>
@@ -47,14 +48,14 @@
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>View Sellers</span>
+                <i class="fa fa-users"></i>
+                <span>Users Management</span>
                 <span class="pull-right-container">
                   <!-- <span class="label label-primary pull-right">4</span> -->
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{ route('Sellers')}}"><i class="fa fa-circle-o"></i> All Sellers</a></li>
+                <li><a href="{{ route('Sellers')}}"><i class="fa fa-circle-o"></i> All Users</a></li>
                 <!-- <li><a href="{{route('approvedAds')}}"><i class="fa fa-circle-o"></i> Approved Ads</a></li>
                 <li><a href="{{ route('deletedAds')}}"><i class="fa fa-circle-o"></i> Deleted Ads</a></li> -->
               

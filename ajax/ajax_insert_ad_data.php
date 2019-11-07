@@ -34,7 +34,6 @@ $contactNumber2 = $_REQUEST['contactNumber2'];
 $contactEmail = $_REQUEST['contactEmail'];
 $postcode = $_REQUEST['postcode'];
 $customer_id = $_REQUEST['customer_id'];
-//$chekboxes = $_REQUEST['checkboxes'];
 
 //echo $txtdesc;
 //die();
@@ -85,10 +84,15 @@ $cmbTransmission = $_REQUEST['cmbTransmission'];
 $cmbFuelType = $_REQUEST['cmbFuelType'];
 $cmbColour = $_REQUEST['cmbColour'];
 $txtCarRegistrationDate = $_REQUEST['txtCarRegistrationDate'];
+$type_id = $_REQUEST['type_id'];
+$enginecc = $_REQUEST['enginecc'];
+$newOrUsed = $_REQUEST['newOrUsed'];
 
 
 $result = mysqli_query($conni,"INSERT INTO car_ad (
 														carregistrationnumber,
+														type_id,
+														newOrUsed,
 														car_makeid,
 														car_modelid,
 														car_variantid,
@@ -98,10 +102,13 @@ $result = mysqli_query($conni,"INSERT INTO car_ad (
 														car_transmissionid,
 														car_fueltypeid,
 														car_colourid,
+														enginecc,
 														dateoffirstregistration,
 														car_milage) 
 														values(
 														'$txtCarNumber',
+														'$type_id',
+														'$newOrUsed',
 														'$cmbMake',
 														'$cmbModel',
 														'$cmbVariant',
@@ -111,6 +118,7 @@ $result = mysqli_query($conni,"INSERT INTO car_ad (
 														'$cmbTransmission',
 														'$cmbFuelType',
 														'$cmbColour',
+														'$enginecc',
 														'$txtCarRegistrationDate',
 														'$txtMilage')");
 

@@ -3,6 +3,7 @@ session_start();
 include_once("config.php");
 $http_referer = @$_SERVER['HTTP_REFERER'];
 
+ 
 
 if(isset($_REQUEST['customer_id2'])){
 		
@@ -29,12 +30,12 @@ $_SESSION['customer_id'] = $_POST['customer_id'];
 	if (isset($_SESSION['customer_id']))
 		{
 			@$customer_id = $_SESSION['customer_id'];
-			 //echo '<br>customer throgh price page id'.@$customer_id;
+			// echo '<br>customer throgh price page id'.@$customer_id;
 		}
 		else
 		{
 			@$customer_id = $_SESSION['customer_id2'];
-// 			echo '<br>customer direct login page id'.@$customer_id;
+			//echo '<br>customer direct login page id'.@$customer_id;
 		}
 		
 
@@ -49,23 +50,23 @@ $_SESSION['customer_id'] = $_POST['customer_id'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://127.0.0.1/autohapa/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://127.0.0.1/autohapa/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="http://127.0.0.1/autohapa/assets/css/owl.theme.default.css">
+    <link rel="stylesheet" href="http://autohapa.oneviewcrm.com/autohapa/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://autohapa.oneviewcrm.com/autohapa/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="http://autohapa.oneviewcrm.com/autohapa/assets/css/owl.theme.default.css">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="http://127.0.0.1/autohapa/assets/css/style.css"> 
+    <link rel="stylesheet" href="http://autohapa.oneviewcrm.com/autohapa/assets/css/style.css"> 
 	
 	
-	<link rel="stylesheet" href="http://127.0.0.1/autohapa/assets/libs/bootstrap-datepicker/css/datepicker.css">
+	<link rel="stylesheet" href="http://autohapa.oneviewcrm.com/autohapa/assets/libs/bootstrap-datepicker/css/datepicker.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
   
   
-<script src="http://127.0.0.1/autohapa/assets/js/jquery-2.2.4.min.js"></script>
-<script src="http://127.0.0.1/autohapa/assets/libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="http://autohapa.oneviewcrm.com/autohapa/assets/js/jquery-2.2.4.min.js"></script>
+<script src="http://autohapa.oneviewcrm.com/autohapa/assets/libs/jquery-ui/jquery-ui.min.js"></script>
 <!--
-<script src="http://127.0.0.1/autohapa/assets/js/bootstrap.min.js"></script>
+<script src="http://autohapa.oneviewcrm.com/autohapa/assets/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 -->
@@ -79,25 +80,38 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
 <body>
     <div id="wrapper">
 
-        <header id="site-header"  >
+           <header id="site-header">
             <div class="container">
                 <div class="row justify-content-end">
                     <div class="col-lg-auto">
                         <nav id="top-navigation" class="navigation">
                             <div class="menu-container">
-                                <ul id="top-menu" class="menu">                            
-                                    <li><a href="http://127.0.0.1/autohapa/">Cars</a></li>
-                                    <li><a href="#">Prestige cars</a></li>
-                                    <li><a href="#">Vans</a></li>
-                                    <li><a href="/bikes">Bikes</a></li>
-                                    <li><a href="#">Motorhomes</a></li>
-                                    <li><a href="#">Caravans</a></li>
-                                    <li><a href="#">Trucks</a></li>
-                                    <li><a href="#">Farm</a></li>
-                                    <li><a href="#">Plant</a></li>
+                                <ul id="top-menu" class="menu">  
+                                
+                                    <?php
+                                                // $query = "select id , name  from type";
+            
+                                                // @$result = mysqli_query($conni,$query);
+                                                //     while($row = mysqli_fetch_assoc($result));
+                                                //           {   
+                                                //               $type_id = $row['id'];
+                                                //               $type_name = $row['name'];
+                                                           
+                                                //           }
+                                                $vtype_id = 1;
+                                    ?>    
+                                    <li><a href="http://autohapa.oneviewcrm.com/autohapa/">Cars</a></li>
+                                    <li><a href="http://autohapa.oneviewcrm.com/prestige-cars">Prestige cars</a></li>
+                                    <li><a href="http://autohapa.oneviewcrm.com/vans">Vans</a></li>
+                                    <li><a href="http://autohapa.oneviewcrm.com/bikes">Bikes</a></li>
+                                    <li><a href="http://autohapa.oneviewcrm.com/motorhomes">Motorhomes</a></li>
+                                    <li><a href="http://autohapa.oneviewcrm.com/caravans">Caravans</a></li>
+                                    <li><a href="http://autohapa.oneviewcrm.com/trucks">Trucks</a></li>
+                                    <li><a href="http://autohapa.oneviewcrm.com/farm">Farm</a></li>
+                                    <li><a href="http://autohapa.oneviewcrm.com/plant">Plant</a></li>
                                     <li class="link-separator">|</li>
                                     <li><a href="#">Safety Advice</a></li>
-                                    <li><a href="http://127.0.0.1/autohapa/sellmycar" class="btn btn-blue">SELL MY CAR</a></li>
+                                    <li><a href="http://autohapa.oneviewcrm.com/autohapa/selling/?vtype=<?= $vtype_id;?>"  class="btn btn-blue">SELL MY CAR</a></li>
                               </ul>
                             </div>
                         </nav>
@@ -106,8 +120,8 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
                 <div class="row align-items-end justify-content-between">
                     <div class="col-lg-3">
                         <div class="header-logo">
-                           <a href="http://127.0.0.1/autohapa/">
-                              <img src="http://127.0.0.1/autohapa/assets/images/logo.png" alt="AutoHapa" class="custom-logo img-fluid" />
+                           <a href="http://autohapa.oneviewcrm.com/autohapa/">
+                              <img src="http://autohapa.oneviewcrm.com/autohapa/assets/images/logo.png" alt="AutoHapa" class="custom-logo img-fluid" />
                            </a>
                         </div>
                     </div>
@@ -120,12 +134,14 @@ integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b
                                     <li><a href="#">Car reviews & more</a></li>
                                     <li><a href="#">Finance, insurance & more</a></li>
 <?php
-if(isset($_SESSION['customer_id'])|| isset($_SESSION['customer_id2']))
+if(isset($_SESSION['customer_id']) || isset($_SESSION['customer_id2']))
       {            
 
             $query = "select name AS customer_name , type_id  from car_user where id = ".$customer_id;
             
-                  $result = mysqli_query($conni,$query);
+                  @$result = mysqli_query($conni,$query);
+               
+               
                   while($row = mysqli_fetch_assoc($result))
                   {   
                         // $carad_id = $row['id'];
@@ -136,20 +152,20 @@ if(isset($_SESSION['customer_id'])|| isset($_SESSION['customer_id2']))
                   }
                   
 
-                  if($acc_type == '1')
+                  if(@$acc_type == '1')
                   {
                                     echo'<li class="dropdown">
                                                 <button class="my-2 btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                      '.$customer_name.' <span class="user-icon"><i class="fa fa-user"></i></span>
+                                                      '.@$customer_name.' <span class="user-icon"><i class="fa fa-user"></i></span>
                                                 </button>
                                                 <div class="bg-default dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 13rem!important ;">
                                                       <h6 class="dropdown-header"> <span class="badge badge-primary">Dealer Account</span></h6>
-                                                      <a class="dropdown-item" href="http://127.0.0.1/autohapa/customers/my_profile.php">My Profile</a>
-                                                      <a class="dropdown-item" href="#">My Ads</a>
+                                                      <a class="dropdown-item" href="http://autohapa.oneviewcrm.com/autohapa/customers/my_profile.php">My Profile</a>
+                                                      <a class="dropdown-item" href="http://autohapa.oneviewcrm.com/autohapa/customers/my_ads.php">My Ads</a>
                                                       <a class="dropdown-item" href="#">My packages</a>
                                                       <a class="dropdown-item" href="#">Favourites</a>
                                                       <a class="dropdown-item" href="#">Recently viewed</a>
-                                                      <a class="dropdown-item" href="http://127.0.0.1/autohapa/login/logout/">Sign Out</a>
+                                                      <a class="dropdown-item" href="http://autohapa.oneviewcrm.com/autohapa/login/logout/">Sign Out</a>
                                                 </div>
                                           </li>';
                   }
@@ -161,10 +177,10 @@ if(isset($_SESSION['customer_id'])|| isset($_SESSION['customer_id2']))
                                                 </button>
                                                 <div class="bg-default dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 13rem!important ;">
                                                       <h6 class="dropdown-header"> <span class="badge badge-secondary">Buyer Account</span></h6>
-                                                      <a class="dropdown-item" href="http://127.0.0.1/autohapa/customers/my_profile.php">My Profile</a>
+                                                      <a class="dropdown-item" href="http://autohapa.oneviewcrm.com/autohapa/customers/my_profile.php">My Profile</a>
                                                       <a class="dropdown-item" href="#">Favourites</a>
                                                       <a class="dropdown-item" href="#">Recently viewed</a>
-                                                      <a class="dropdown-item" href="http://127.0.0.1/autohapa/login/logout/">Sign Out</a>
+                                                      <a class="dropdown-item" href="http://autohapa.oneviewcrm.com/autohapa/login/logout/">Sign Out</a>
                                                 </div>
                                           </li>';
                   }
@@ -178,28 +194,28 @@ else
                                                 <a href="#" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                       Sign In <span class="user-icon"><i class="fa fa-user"></i></span>
                                                 </a>
-                                                <div class="dropdown-menu dropdown-menu-right" style="min-width: 18rem!important ;" >
+                                                <div class="dropdown-menu dropdown-menu-right" style="min-width: 18rem!important;" >
                                                       <!-- Errors div -->
                                                       <div style="max-width:400px;margin: 0 auto;">
                                                             <div class="alert alert-danger alert-dismissible fade show" role="alert" id="invalid" style="display:none;"></div>
                                                             <div class="alert alert-success alert-dismissible fade show" role="alert" id="success" style="display:none;"></div>
                                                       </div>
                                                       <!-- sign in form starts -->
-                                                      <form class="px-4 py-3 "  method="POST">
+                                                      <form class="px-3 py-2"  method="POST">
                                                             <div class="form-group">
-                                                                  <label for="emailLogin">Email address</label>
-                                                                  <input  class="form-control mb-2" id="emailLogin" maxlength="250" minlength="6" name="emailLogin" placeholder="e.g. name@email.com"  type="email" >
-                                                                        <div id="emailLoginError" class="text-center mb-2"></div>
-                                                                        <label for="pwdLogin">Password</label>
-                                                                  <input  class="form-control mb-2"  id="pwdLogin"  name="pwdLogin" placeholder="*******"  type="password" >
-                                                                  <div id="pwdLoginError" class="text-center mb-2"></div>
+                                                                <input  class="form-control mb-2" id="emailLogin" maxlength="250" minlength="6" name="emailLogin" placeholder="Email Address"  type="email" >
+                                                                <div id="emailLoginError" class="text-center mb-2"></div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input  class="form-control mb-2"  id="Hpassword"  name="Hpassword" placeholder="Password"  type="password" >
+                                                                 <a class="link" id="forgotpassword-link" href="http://autohapa.oneviewcrm.com/autohapa/login/forget-password.php">Forgot password?</a>
+                                                                 <div id="HpasswordError" class="text-center mb-2"></div>
                                                             </div>
                                                             <div class="form-group">
                                                                   <a href="javascript:void(0)" id="submitbtn" class="btn btn-blue " type="submit" onclick="validateLogin()">
-                                                                  Sign in 
-                                                                  </a>
+                                                                  Sign in </a>
                                                             </div>
-                                                            <p class=" text-center">---------------- OR ----------------</p>
+                                                            <hr />
                                                             <div class="form-group">
                                                                   <a href="javascript:void(0)" class="btn mb-2 login-social login-facebook disabled"  type="button" onclick="window.location.href='../login/facebook-auth/oauth.php'">
                                                                         <i class="fa fa-facebook "></i> Continue with Facebook
@@ -208,15 +224,18 @@ else
                                                                         <i class="fa fa-google "></i> Continue with Google
                                                                   </a>
                                                             </div>
-                                                                  <a class="dropdown-item"  href="http://127.0.0.1/autohapa/login/register.php"> Sign up</a>
-                                                                  <a class="dropdown-item" href="#">Forgot password?</a>
-                                                                  <style>
-                                                                              .dropdown-item{
-                                                                                    color:#2573c2 !important;
-                                                                                    padding:0px !important;
-                                                                                    font-size:.9rem !important;
-                                                                              }
-                                                                  </style>
+                                                            <style>
+                                                                  .menu .dropdown a.link {
+                                                                    display: inline-block;
+                                                                    color: #2573c2;
+                                                                    font-size: 1rem;
+                                                                  }
+                                                                  #forgotpassword-link {font-size: 0.75rem;}
+                                                            </style>
+                                                            <div class="text-center">
+                                                              <a class="link" id="signup-link" href="http://autohapa.oneviewcrm.com/autohapa/login/register/">Sign Up</a>
+                                                            </div>
+                                                                  
                                                       </form> 
                                                       <!-- sign in form end -->
                                                 </div>
@@ -238,6 +257,7 @@ else
 	if (isset($_POST['regnum']))
 		{
 			$regnum = $_POST['regnum'];
+			$type_id = $_POST['type_id'];
 			//echo $regnum;
 		}
 	
@@ -247,8 +267,9 @@ else
 	
 	
 	
-	<form id="formlogin" method="post" action="http://127.0.0.1/autohapa/description/">
+	<form id="formlogin" method="post" action="http://autohapa.oneviewcrm.com/autohapa/description/">
 	<input type="hidden" id="hdregnum1" name="regnum" value="<?php echo $regnum;?>">
+	<input type="hidden" id="Htype_id" name="Htype_id" value="<?php echo $type_id;?>">
 	<input type="hidden" id="customer_id" name="customer_id" value="">
 	</form>
 	<!---->
@@ -262,10 +283,7 @@ else
 		    
 	<script>
 	
-
-	
-		
-		$('#emailLogin').change(function() {
+	$('#emailLogin').change(function() {
 			
 		
 			var email = $('#emailLogin').val();
@@ -298,6 +316,8 @@ function validateLogin()
 		var errorCount = 0;
 		
 		var email = $('#emailLogin').val();
+		var pass = $('#Hpassword').val();
+		
 		 var regEx = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 			  var validEmail = regEx.test(email);
 		
@@ -312,6 +332,11 @@ function validateLogin()
              document.getElementById('emailLoginError').style.color = 'red';	
 			  
 		}
+		else if (pass < 1)
+		{
+			$('#HpasswordError').html("Please Enter Password.");	
+             document.getElementById('HpasswordError').style.color = 'red';			
+		}
 		else
 		{
 			check_login_credientials();
@@ -322,105 +347,70 @@ function validateLogin()
 			
 	
 function check_login_credientials(){
+    
+    
 	
-	var emailString = "user_email="+document.getElementById('emailLogin').value
-	                   +"&user_pwd="+document.getElementById('pwdLogin').value;
+	var emailString = "user_email="+$('#emailLogin').val()
+	                   +"&user_pwd="+$('#Hpassword').val();
+	                   
+	                   $('#submitbtn').text('Loading....');  
 	
 	$.ajax({
 		
 		type:"POST",
-		url:"http://127.0.0.1/autohapa/login/ajax_login.php",
+		url:"http://autohapa.oneviewcrm.com/autohapa/login/ajax_login.php",
 		data:emailString,
 		cache:false,
 		dataType:"json",
 		success: function(result){
-			//result = JSON.parse(result);
-		console.log(result);
-		 //alert(result.status);
+		
 			if(result.status == 'success'){
 			    
             				 document.getElementById('customer_id').value =result.id;
             				 document.getElementById('customer_id2').value =result.id;
 			  
 			  
-            			  if(document.getElementById('hdregnum1').value == '')
+            			    if($('#hdregnum1').val() == '')
             			    {
-                            					 
-                    	              $('#submitbtn').text('Loading....');   
-                    				
-                    				 //alert(' description');
-                    				 
-                    				  $('#success').css('display','block');  
-						                $('#success').html('you are Login <strong>Successfully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                            	 $('#success').css('display','block');  
+						         $('#success').html('you are Login <strong>Successfully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
 					
 					                $('#success').on('closed.bs.alert', function () {
                                         $('#formlogin2').submit(); 
                                     })
                     					 
-            		         setTimeout(function(){ 	
-                    		         
-                    		         $('#formlogin2').submit(); 
-                    		             
-                    		             $('#submitbtn').text('sign in'); 
-                    		             
-                    		             
-                    		         }, 3000);
-                    		         
-                    		      
-                    		         
-                            				  
-                            }
+                    		         setTimeout(function(){ 	
+                            		         
+                            		         $('#formlogin2').submit(); 
+                            		         $('#submitbtn').text('sign in'); 
+                            		  }, 3000);
+                    		  }
                             else
                             {
-                                
-                            		 $('#submitbtn').text('Loading....');  
-                            		 
-                            		 
-                            		 $('#success').css('display','block');  
-						$('#success').html('you are Login <strong>Successfully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                                $('#success').css('display','block');  
+						        $('#success').html('you are Login <strong>Successfully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
 					                    
-					                    $('#success').on('closed.bs.alert', function () {
+					               $('#success').on('closed.bs.alert', function () {
                                         $('#formlogin').submit(); 
                                     })
 					                    
-                            		 //alert('not description');
-                            	
-                            		 setTimeout(function(){    
-                            		 
-                            
-                            		     $('#formlogin').submit(); 
+                            		setTimeout(function(){    
+                            		      
+                            		      $('#formlogin').submit(); 
                             		      $('#submitbtn').text('sign in'); 
-                            		     
                             		 }, 3000);
-                            		 
-                            	
-                    		         
-                            		 
-                            }
+                             }
 			  
-			 }else{
-				
-				
-				        $('#submitbtn').text('Loading....');
-				        
-				    setTimeout(function(){ 
-						
-						//window.location.href="http://127.0.0.1/autohapa/login/"; 
-						
-						$('#invalid').css('display','block');  
-						$('#invalid').html('Your password is worng please <strong>try Again</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-					
-					    $('#submitbtn').text('Sign in');	
-					        	
-				    }, 1000);
-			
-				
-        				// $('#emailError').html("Email OR password Incorrect! ");	
-            //             document.getElementById('emailError').style.color = 'red';	
-				
-			}
-			
-			
+			    }
+    			 else
+    			 {
+    				setTimeout(function(){ 
+    						
+    					$('#invalid').css('display','block');  
+        				$('#invalid').html('Your password is worng please <strong>try Again</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+        			    $('#submitbtn').text('Sign in');	
+    				}, 1000);
+    			 }
 		},
 		
 	});

@@ -16,8 +16,8 @@ class AdsController extends Controller
     }
 
     public function all_ads()
-    {     
-        $ads = DB::table('car_ad')->where('isadminapproved_id','2')->where('isdeleteyn_id','2')->orderBy('updated_at', 'DESC')->get();
+    {                                     
+        $ads = DB::table('car_ad')->where('iscompleted','1')->where('isadminapproved_id','2')->where('isdeleteyn_id','2')->orderBy('updated_at', 'DESC')->get();
        
         // echo "<pre>"; print_r($adsall); die;
         return view('ads/all')->with('ads',$ads);
@@ -44,25 +44,49 @@ class AdsController extends Controller
 
 
     public function show($Ads)
-    {     
+    {    
+        $type_id = DB::select(DB::raw('select type_id from car_ad where id = "'.$Ads.'"'));
         
-        $ads =  DB::select(DB::raw('SELECT car_ad.`id` AS id , car_ad.`adtitle` AS title , car_ad.`adverttext` AS Detail ,   car_lkptColour.`name` AS color , car_variant.`name`  AS variant ,
-            car_images.`name` AS image ,car_images.`ordinal`,
-            car_derivative.`name` AS derivative , car_lkptfuel_type.`name` AS FuelType , 
-            car_lkpttransmission.`name` AS Transmission , car_ad.`price` AS price , car_ad.`car_milage` AS milage ,
-            car_ad.`contactnumber` AS contact ,car_ad.`adsubtitle` AS subtitle , car_user.`name`AS sellerName ,
-            car_ad.`isadminapproved_id` AS Approved_id , car_ad.`isdeleteyn_id` AS Delete_id , car_ad.`customer_id`
-            FROM car_ad
-        INNER JOIN car_lkptColour ON car_lkptColour.`id` = car_ad.`car_colourid`
-        INNER JOIN car_variant ON car_ad.`car_variantid` = car_variant.`id`
-        INNER JOIN car_derivative ON car_ad.`car_derivativeid` = car_derivative.`id`
-        INNER JOIN car_lkptfuel_type ON car_ad.`car_fueltypeid` = car_lkptfuel_type.`id`
-        INNER JOIN car_lkpttransmission ON car_ad.`car_transmissionid` = car_lkpttransmission.`id`
-        INNER JOIN car_user ON car_ad.`customer_id` = car_user.`id`
-        INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
+        
+        if($type_id == 1)
+        {
+            $ads =  DB::select(DB::raw('SELECT car_ad.`id` AS id , car_ad.`adtitle` AS title , car_ad.`adverttext` AS Detail ,   car_lkptColour.`name` AS color , car_variant.`name`  AS variant ,
+                car_images.`name` AS image ,car_images.`ordinal`,
+                car_derivative.`name` AS derivative , car_lkptfuel_type.`name` AS FuelType , 
+                car_lkpttransmission.`name` AS Transmission , car_ad.`price` AS price , car_ad.`car_milage` AS milage ,
+                car_ad.`contactnumber` AS contact ,car_ad.`adsubtitle` AS subtitle , car_user.`name`AS sellerName ,
+                car_ad.`isadminapproved_id` AS Approved_id , car_ad.`isdeleteyn_id` AS Delete_id , car_ad.`customer_id`
+                FROM car_ad
+            INNER JOIN car_lkptColour ON car_lkptColour.`id` = car_ad.`car_colourid`
+            INNER JOIN car_variant ON car_ad.`car_variantid` = car_variant.`id`
+            INNER JOIN car_derivative ON car_ad.`car_derivativeid` = car_derivative.`id`
+            INNER JOIN car_lkptfuel_type ON car_ad.`car_fueltypeid` = car_lkptfuel_type.`id`
+            INNER JOIN car_lkpttransmission ON car_ad.`car_transmissionid` = car_lkpttransmission.`id`
+            INNER JOIN car_user ON car_ad.`customer_id` = car_user.`id`
+            INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
+                WHERE car_ad.`id` = "'.$Ads.'" limit 1 '));
+        
+        $adimg = DB::select(DB::raw('select * from car_images where carad_id = "'.$Ads.'"'));
+        }
+        else
+        {
+            $ads =  DB::select(DB::raw('SELECT car_ad.`id` AS id , car_ad.`adtitle` AS title , 
+    		car_ad.`adverttext` AS Detail ,   car_lkptColour.`name` AS color ,
+             car_images.`name` AS image ,car_images.`ordinal`,
+             car_ad.`price` AS price , car_ad.`car_milage` AS milage ,
+             car_lkptbody_type.`name` AS bodyType,
+             car_ad.`contactnumber` AS contact ,car_ad.`adsubtitle` AS subtitle , car_user.`name`AS sellerName ,
+                car_ad.`isadminapproved_id` AS Approved_id , car_ad.`isdeleteyn_id` AS Delete_id , car_ad.`customer_id`
+             FROM car_ad
+            INNER JOIN car_lkptColour ON car_lkptColour.`id` = car_ad.`car_colourid`
+            INNER JOIN car_lkptbody_type ON car_lkptbody_type.`id` = car_ad.`car_bodytypeid`
+            INNER JOIN car_user ON car_ad.`customer_id` = car_user.`id`
+            INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
             WHERE car_ad.`id` = "'.$Ads.'" limit 1 '));
+        
+             $adimg = DB::select(DB::raw('select * from car_images where carad_id = "'.$Ads.'"'));
+        }
     
-    $adimg = DB::select(DB::raw('select * from car_images where carad_id = "'.$Ads.'"'));
     
     //    return $ads;
         //  echo "<pre>"; print_r($ads);

@@ -9,7 +9,7 @@
 	<?php include_once('../includes/header.php'); ?>
 	
 	<style>
-		html, body {font-size: 14px;}
+
 		a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {color: #104896;}
 		.steps_wrapper {
 			position: relative;
@@ -105,7 +105,7 @@
 		}
 		.price__container {
 			background: #f7f7f5;
-			padding: 30px 20px 20px;
+			padding: 20px 20px 20px;
 		}
 		.price__input-container {
 			position: relative;
@@ -150,7 +150,7 @@
 			text-align: center;
 		}
 		
-		.price__btn {margin-top: 30px;}
+		.price__btn {margin-top: 50px;}
 		
 		.sidebar__container {
 			background: #f7f7f5;
@@ -358,6 +358,7 @@
 	if(isset($_GET['regnum'])){
 		
 		 $regnum = $_GET['regnum'];
+		  $type_id = $_GET['type_id'];
 	}
 	
     if(isset($_SESSION['customer_id2']))
@@ -368,10 +369,15 @@
 	?>
 	<input type="hidden" name="check_session" id="check_session" value="<?php echo $check_session;?>">
 	<hr />
-	<form id="formDescription" action="../description/">
+	
+	<form id="formDescription" method="POST"  action="../description/">
 	<input type="hidden" id="hdregnum" name="regnum" value="<?php echo $regnum;?>">
 	<input type="hidden" id="hdcaradid" value="">
+	<input type="hidden" id="type_id" name="type_id" value="<?php echo $type_id;?>">
 	</form>
+	
+	
+	
 	<section class="steps mb-4">
 		<div class="container">
 			<div class="steps_wrapper" data-current="2"> 
@@ -388,23 +394,25 @@
 		</div>
 	</section>
 
-	<section class="main">
+	<section class="main mt-5 mb-5">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-8">
 					
 					<div class="price__container mb-5">
 						<div class="form-group row">
-							<label id="priceLabel" for="askingPrice" class="col-md-4 text-right">
+							<label id="priceLabel" for="askingPrice" class="col-md-4 ">
 								<strong>* </strong>Price:
 							</label>
 							<span class="col-md-8">
 								<h2 class="section-title">What's your asking price?</h2>
 								<div class="price__input-container">
 								<form id="formLogin" method="post" action="../login/">
+								    
 									<input type="hidden" id="hdregnum" name="regnum" value="<?php echo $regnum;?>">
 									<input type="hidden" id="hdcaradid" value="">
-									</form>
+									<input type="hidden" id="vtype_id" name="type_id" value="<?php echo $type_id;?>">
+								</form>
 									<input id="askingPrice" name="askingPrice.price" maxlength="8" class="price__input" type="tel" value="">
 									<span class="js-price-adjust"><i class="fa fa-minus"></i></span>
 									<span class="js-price-adjust" data-increment="true"><i class="fa fa-plus"></i></span>
@@ -418,27 +426,17 @@
 						</div>
 					</div>
 					
-				
-					
-					
-					
-					
+			
 					<style>
 						.buttons {position: relative;}
 						.back-link {
 							position: absolute;
-							left: 0;
+							left: -500px;
 							line-height: 41px;
 						}
 					</style>
 					
 					
-					<div class="form-footer mt-5 mb-4">
-						<div class="buttons text-center">
-							<a href="../sellmycar/" id="BtnNext" name="BtnNext" class="back-link"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
-							<a href="#" id="BtnNext"  name="BtnNext" class="btn btn-blue">Next Step</a>
-						</div>
-					</div>
 					
 				</div>
 				
@@ -465,55 +463,28 @@
 										<span id="summaryDerivative"></span>
 									</div>
 								</li>
-							</ul>
-						</div>
-						<div class="sidebar__section structure--top-border" id="sbAdvertDetails">
-							<a href="/sidebar-advertdetails/2c9299cf6c664f55016c70e926be464d" id="advertEdit" class="button__edit sidebar__advert-edit">Edit</a>
-							<h4 class="sidebar__toggle js-sidebar__toggle open" id="advertHeader">
-								<span class="sidebar__toggle--open"><i class="fa fa-minus"></i></span>
-								<span class="sidebar__toggle--close"><i class="fa fa-plus"></i></span>
-								Your advert
-							</h4>
-							<ul class="sidebar__overview sidebar__overview--advert">
 								<li>
 									<div class="sidebar__overview--title">Asking price</div> <div class="sidebar__overview--value sidebar__overview--prefix">&pound;</div>
 									<span id="adq-asking-price" class="sidebar__overview--value"></span>
 								</li>
-								<li style="display: none;">
-									<div class="sidebar__overview--title">Subtitle</div>
-									<span id="adq-attention-grabber" class="sidebar__overview--value"></span>
-								</li>
-								<li id="featuresAndDescription" style="display: none;">
-									<div class="sidebar__overview--title">Features &amp; Description</div>
-									<span id="adq-description" class="sidebar__overview--value"></span>
-									<span id="adq-sellingPoints" class="sidebar__overview--value"></span>
-									<span id="adq-floorplanDetails" class="sidebar__overview--value"></span>
-									<span id="adq-technicalDetails" class="sidebar__overview--value"></span>
-									<span id="adq-features" class="sidebar__overview--value"></span>
-								</li>
-								<li style="display: none;">
-									<div class="sidebar__overview--title">Photos</div> <span id="adq-photos" data-limit="20" class="sidebar__overview--value"></span>
-								</li>
-								<li class="keepHidden" style="display: none;">
-									<div class="sidebar__overview--title">Contact number</div> <span id="adq-contact-number" class="sidebar__overview--value"></span>
-									<span id="adq-primary-telesafe" class="sidebar__overview--value">(Protected)</span>
-								</li>
-								<li class="keepHidden" style="display: none;">
-									<div class="sidebar__overview--title">Secondary number</div> <span id="adq-secondary-number" class="sidebar__overview--value"></span><span id="adq-secondary-telesafe" class="sidebar__overview--value"> (Protected)</span>
-								</li>
-								<li class="keepHidden" style="display: none;">
-									<div class="sidebar__overview--title">Email address</div> <span id="adq-contact-email" class="element__no-wrap sidebar__overview--value"></span>
-								</li>
-								<li class="keepHidden" style="display: none;">
-									<div class="sidebar__overview--title">Postcode</div> <span id="adq-contact-postcode" class="sidebar__overview--value"></span><span class="sidebar__overview--value"> (not shown in ad)</span>
-								</li>
 							</ul>
 						</div>
-
-
+						
 					</aside>
 					
 				</div>
+				
+				
+				
+				
+					<div class="form-footer mt-5 mb-4">
+						<div class="buttons text-center">
+							<a href="../selling/" id="BtnNext" name="BtnNext" class="back-link"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+							<a href="#" id="BtnNext"  name="BtnNext" class="disabled btn btn-blue">Next Step</a>
+						</div>
+					</div>
+				
+				
 			</div>
 			
 			
@@ -563,11 +534,15 @@
 		
 		function get_data()
 		{
-					
+				
+					                  
 					var carregnum = $('#hdregnum').val();
+					var type_id = $('#vtype_id').val();
 					
-					
-					                  var dataString = "carregnum="+carregnum;
+					var dataString = 'carregnum='+carregnum
+					                  +'&type_id='+type_id;
+					                  
+					                  
 							$.ajax({
 							type: "GET",
 							url: "../ajax/ajax_get_carbyregistrationnumber.php",
@@ -627,8 +602,7 @@
 			var dataStrings = "askingPrice="+document.getElementById('askingPrice').value
 										  +"&hdcaradid="+document.getElementById('hdcaradid').value;
 										  
-				// 	 var image = "../assets/images/loader.gif";
-    //                     $('#formLogin').html("<img src='"+image+"' style='height:300px;  width:400px; margin-left:0px;' class='text-center  mb-5' />");					 
+				   $('#setPriceButton').html('Loading....');				 
 			
                 $.ajax({
 				   type: "POST",
@@ -641,20 +615,22 @@
 					   
 					  if($('#check_session').val() == 1){
 						 //alert("description");
-				// 			setTimeout(function(){ 
+			        		setTimeout(function(){ 
                 					 	  
                 				$('#formDescription').submit();
+                				
+                				//  $('#setPriceButton').html('Sell for this much');
                 					
-                				// 	 	}, 1000);
+                				}, 1000);
 						 
 					  }
 					  else
 					  {
-						  //	setTimeout(function(){ 
+						  	setTimeout(function(){ 
                 					 	  
                 				$('#formLogin').submit();
-                					
-                				// 	 	}, 1000);
+                				
+                				}, 1000);
 					      
 					  }
 						 

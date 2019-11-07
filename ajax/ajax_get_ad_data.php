@@ -22,22 +22,23 @@
 		
 	// }
 	
-	
+	$type_id= $_REQUEST['type_id'];
 	
 	
 $CarAdQuery = mysqli_query($conni,
 'SELECT car_ad.`id` AS id , car_ad.`adtitle` AS title , car_lkptColour.`name` AS color , car_variant.`name`  AS variant ,
- car_images.`name` AS image ,car_images.`ordinal`,
+ car_images.`name` AS image ,car_images.`ordinal`,car_lkptbody_type.`name` AS bodyType,
  car_derivative.`name` AS derivative , car_lkptfuel_type.`name` AS FuelType , 
  car_lkpttransmission.`name` AS Transmission , car_ad.`price` AS price , car_ad.`car_milage` AS milage 
  FROM car_ad
 LEFT OUTER JOIN car_lkptColour ON car_lkptColour.`id` = car_ad.`car_colourid`
+LEFT OUTER JOIN car_lkptbody_type ON car_lkptbody_type.`id` = car_ad.`car_bodytypeid`
 LEFT OUTER JOIN car_variant ON car_ad.`car_variantid` = car_variant.`id`
 LEFT OUTER JOIN car_derivative ON car_ad.`car_derivativeid` = car_derivative.`id`
 LEFT OUTER JOIN car_lkptfuel_type ON car_ad.`car_fueltypeid` = car_lkptfuel_type.`id`
 LEFT OUTER JOIN car_lkpttransmission ON car_ad.`car_transmissionid` = car_lkpttransmission.`id`
 LEFT OUTER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
-where car_ad.`isadminapproved_id` = 1
+where car_ad.`isadminapproved_id` = 1 AND car_ad.`type_id` = "'.$type_id.'"
  ORDER BY car_ad.`id` DESC LIMIT 4');
 		//$data = mysqli_fetch_assoc($CarAdQuery);
 		

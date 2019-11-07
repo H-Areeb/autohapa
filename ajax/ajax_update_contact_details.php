@@ -13,18 +13,12 @@
 	
 
 $id=$_REQUEST['hdcaradid'];
-// $askingPrice = $_REQUEST['askingPrice'];
-// $adTitle = $_REQUEST['adTitle'];
-// $txtSubtitle = $_REQUEST['txtSubtitle'];
-// $OwnersQuantity = $_REQUEST['OwnersQuantity'];
-// $ServiceHistory = $_REQUEST['ServiceHistory'];
-// $MotDate = $_REQUEST['MotDate'];
-// $txtdesc = $_REQUEST['txtdesc'];
+
 $contactNumber1 = $_REQUEST['contactNumber1'];
 $contactNumber2 = $_REQUEST['contactNumber2'];
 $contactEmail = $_REQUEST['contactEmail'];
 $postcode = $_REQUEST['postcode'];
-//$chekboxes = $_REQUEST['checkboxes'];
+$adcompleted = $_REQUEST['adcompleted'];
 
 if(isset($_REQUEST['hdcaradid']))
 {
@@ -32,14 +26,15 @@ if(isset($_REQUEST['hdcaradid']))
 	$update = mysqli_query($conni,"update car_ad set contactnumber='$contactNumber1',
 													contactsecondarynumber='$contactNumber2',
 													buyercontactbyemailynid='$contactEmail',
-													locationofcarpostalcode='$postcode'
+													locationofcarpostalcode='$postcode',
+													iscompleted='$adcompleted'
 													where id ='$id'");	
 					
 			if($update === FALSE){
 					die(mysqli_error($conni));
 				}
 				else{
-					echo '<script>console.log('.die('updates contact deatils  success').');</script>';
+					echo 'success';
 				}	
 				
 		

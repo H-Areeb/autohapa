@@ -4,9 +4,9 @@
 
 	include "../includes/config.php";
 	
-	//@$make_id = $_REQUEST['makeid'];
+	@$type_id = $_REQUEST['type_id'];
 	
-	$CarFeatureQuery = mysqli_query($conni,'Select id,name,controltypeid From car_feature where isactiveynid=1 and isdeletedynid=2 ;');
+	$CarFeatureQuery = mysqli_query($conni,'Select id,name,controltypeid From car_feature where isactiveynid=1 and isdeletedynid=2 and type_id = "'.$type_id.'";');
 		
 	$CarFeatureRowDataAll = array("Features"=>array());
 	

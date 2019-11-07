@@ -6,31 +6,72 @@ include "../includes/config.php";
 if(isset($_REQUEST['ad-id'])){
 	
 		$carad_id= $_REQUEST['ad-id'];
+			$type_id= $_REQUEST['type_id'];
 		$title= $_REQUEST['title'];
-		//$main_img = $_REQUEST['main_img'];
+		$main_img = $_REQUEST['main_img'];
 		//$images= json_decode($_POST['images']);
 		$price= $_REQUEST['price'];
 		
 	}
 
 
+    if($type_id == 1)
+    {
+                $Query = 
+        "SELECT car_ad.`id` AS id , car_ad.`adtitle` AS title , car_ad.`adverttext` AS Detail ,   car_lkptColour.`name` AS color , car_variant.`name`  AS variant ,
+         car_images.`name` AS image ,car_images.`ordinal`,
+         car_derivative.`name` AS derivative , car_lkptfuel_type.`name` AS FuelType , 
+         car_lkpttransmission.`name` AS Transmission , car_ad.`price` AS price , car_ad.`car_milage` AS milage ,
+         car_ad.`contactnumber` AS contact ,car_ad.`adsubtitle` AS subtitle , car_user.`name`AS sellerName
+         FROM car_ad
+        INNER JOIN car_lkptColour ON car_lkptColour.`id` = car_ad.`car_colourid`
+        INNER JOIN car_variant ON car_ad.`car_variantid` = car_variant.`id`
+        INNER JOIN car_derivative ON car_ad.`car_derivativeid` = car_derivative.`id`
+        INNER JOIN car_lkptfuel_type ON car_ad.`car_fueltypeid` = car_lkptfuel_type.`id`
+        INNER JOIN car_lkpttransmission ON car_ad.`car_transmissionid` = car_lkpttransmission.`id`
+        INNER JOIN car_user ON car_ad.`customer_id` = car_user.`id`
+        INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
+         WHERE car_ad.`id` = $carad_id ";
+        		
+        		
+        	$CarSearchQuery = mysqli_query($conni,$Query);
+        		
+        		//$data_arr = array();
+        		
+        	while($data = mysqli_fetch_assoc($CarSearchQuery))
+        	{	
+        			@$details =	$data['Detail'];
+        			@$color =	$data['color'];
+        			@$variant =	$data['variant'];
+        			@$main_img =	$data['image'];
+        			@$derivative =	$data['derivative'];
+        			@$FuelType =	$data['FuelType'];
+        			@$Transmission =	$data['Transmission'];
+        			@$milage =	$data['milage'];
+        			@$contact =	$data['contact'];
+        			@$subtitle =	$data['subtitle'];	
+        			@$sellerName =	$data['sellerName'];		
 
+			}
+			
+    }
+	else{	
+		
+		
 		
 $Query = 
-"SELECT car_ad.`id` AS id , car_ad.`adtitle` AS title , car_ad.`adverttext` AS Detail ,   car_lkptColour.`name` AS color , car_variant.`name`  AS variant ,
- car_images.`name` AS image ,car_images.`ordinal`,
- car_derivative.`name` AS derivative , car_lkptfuel_type.`name` AS FuelType , 
- car_lkpttransmission.`name` AS Transmission , car_ad.`price` AS price , car_ad.`car_milage` AS milage ,
- car_ad.`contactnumber` AS contact ,car_ad.`adsubtitle` AS subtitle , car_user.`name`AS sellerName
- FROM car_ad
-INNER JOIN car_lkptColour ON car_lkptColour.`id` = car_ad.`car_colourid`
-INNER JOIN car_variant ON car_ad.`car_variantid` = car_variant.`id`
-INNER JOIN car_derivative ON car_ad.`car_derivativeid` = car_derivative.`id`
-INNER JOIN car_lkptfuel_type ON car_ad.`car_fueltypeid` = car_lkptfuel_type.`id`
-INNER JOIN car_lkpttransmission ON car_ad.`car_transmissionid` = car_lkpttransmission.`id`
-INNER JOIN car_user ON car_ad.`customer_id` = car_user.`id`
-INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
- WHERE car_ad.`id` = $carad_id ";
+    "SELECT car_ad.`id` AS id , car_ad.`adtitle` AS title , 
+		car_ad.`adverttext` AS Detail ,   car_lkptColour.`name` AS color ,
+         car_images.`name` AS image ,car_images.`ordinal`,
+         car_ad.`price` AS price , car_ad.`car_milage` AS milage ,
+         car_lkptbody_type.`name` AS bodyType,
+         car_ad.`contactnumber` AS contact ,car_ad.`adsubtitle` AS subtitle , car_user.`name`AS sellerName
+         FROM car_ad
+        INNER JOIN car_lkptColour ON car_lkptColour.`id` = car_ad.`car_colourid`
+        INNER JOIN car_lkptbody_type ON car_lkptbody_type.`id` = car_ad.`car_bodytypeid`
+        INNER JOIN car_user ON car_ad.`customer_id` = car_user.`id`
+        INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
+         WHERE car_ad.`id` = $carad_id ";
 		
 		
 	$CarSearchQuery = mysqli_query($conni,$Query);
@@ -39,23 +80,21 @@ INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ord
 		
 	while($data = mysqli_fetch_assoc($CarSearchQuery))
 	{	
-			@$details =	$data['Detail'];
-			@$color =	$data['color'];
-			@$variant =	$data['variant'];
-			@$main_img =	$data['image'];
-			@$derivative =	$data['derivative'];
-			@$FuelType =	$data['FuelType'];
-			@$Transmission =	$data['Transmission'];
-			@$milage =	$data['milage'];
-			@$contact =	$data['contact'];
-			@$subtitle =	$data['subtitle'];	
-			@$sellerName =	$data['sellerName'];		
+			$details =	$data['Detail'];
+			$color =	$data['color'];
+			$bodyType =	$data['bodyType'];
+			$main_img = $data['image'];
+		
+			$milage =	$data['milage'];
+			$contact =	$data['contact'];
+			$subtitle =	$data['subtitle'];	
+			$sellerName =	$data['sellerName'];		
 
 				
 	}
 	
 	
-	
+	}
 	 
 
 	
@@ -167,7 +206,7 @@ INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ord
 						<li>
 							<svg class="key-specifications__icon">
 							<use xlink:href="/images/svg/key-specifications/cars.svg#ks-fuel-type"></use>
-							</svg><?= @$FuelType;?>
+							</svg><?= @$bodyType;?>
 						</li>
 						<li>
 							<svg class="key-specifications__icon">
@@ -261,8 +300,7 @@ INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ord
 				<input type="hidden" name="getcolour" id="getcolour" value="">
 				<input type="hidden" name="getbodyType" id="getbodyType" value="">
 				<input type="hidden" name="getfuelType" id="getfuelType" value="">
-				<input type="hidden" name="getfuelType" id="getfuelType" value="">
-				<input type="hidden" name="getfuelType" id="getfuelType" value="">
+
 				</form>
 
 

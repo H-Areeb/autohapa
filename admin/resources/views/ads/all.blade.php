@@ -4,7 +4,7 @@
  <!-- Content Header (Page header) -->
  <section class="content-header">
       <h1>
-        All Ads
+        Pending Ads
         <small>advanced tables</small>
       </h1>
       <ol class="breadcrumb">

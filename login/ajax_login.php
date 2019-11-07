@@ -13,7 +13,7 @@ if(isset($_REQUEST['user_email'] )){
   $password =  mysqli_real_escape_string($conni,$_REQUEST['user_pwd']);
   
   
-     $check_query = 'select * from car_user where email = "'.$email.'"';
+     $check_query = 'select * from car_user where email = "'.$email.'" AND isActive_ynid="1"';
      $res =  mysqli_query($conni, $check_query);
 	 
      if (mysqli_num_rows($res) == 0) {

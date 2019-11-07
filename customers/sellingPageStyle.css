@@ -1,0 +1,126 @@
+	.steps_wrapper {
+			position: relative;
+			height: 30px;
+		}
+		.steps_wrapper:before, .steps_wrapper:after {
+			position: absolute;
+			top: 14px;
+			content: "";
+			border-top: 1px solid #e8e8e3;
+			width: 50%;
+		}
+		.steps_wrapper:before {left: 0;}
+		.steps_wrapper:after {right: 0;}
+
+		.steps_wrapper div {
+			position: absolute;
+			display: inline-block;
+			background: #fff;
+			line-height: 29px;
+			padding-right: 16px;
+			z-index: 1;
+		}
+		.steps_wrapper div:nth-child(2) {
+			left: 50%;
+			padding-left: 16px;
+			margin-left: -90px;
+		}
+		.steps_wrapper div:nth-child(3) {
+			right: 0;
+			padding-left: 16px;
+			padding-right: 0;
+		}
+		.steps_wrapper div:before {
+			content: attr(data-step);
+			float: left;
+			background: #fff;
+			border-radius: 50%;
+			border: 2px solid #154a96;
+			color: #154a96;
+			text-align: center;
+			margin-right: 10px;
+			width: 30px;
+			height: 30px;
+			line-height: 26px;
+			font-weight: bold;
+		}
+		.steps_wrapper[data-current='1'] div:nth-child(1):before {
+			color: #56b847;
+			border-color: #56b847;
+		}
+		.page-header__number {
+			background: #fff;
+			border: 2px solid #56b847;
+			color: #56b847;
+			margin-right: 5px;
+			display: inline-block;
+			border-radius: 50%;
+			text-align: center;
+			width: 30px;
+			height: 30px;
+			line-height: 26px;
+			font-weight: bold;
+		}
+		.page-header__title {
+			display: inline;
+			color: #154a96;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		
+		
+		
+.col-form-label {
+    color: #161717cc!important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    padding-top: calc(.475rem + 1px)!important;
+}
+
+
+.submitbtn {
+    font-size: 1rem !important;
+    padding: .5rem 5rem !important;
+}
+.form-group {
+    position: relative;
+}
+.form-control {
+    padding: .75rem .75rem!important;
+    font-size: 0.9rem!important;
+    
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.70rem + 2px)!important;
+}
+		
+		
+		
+		
+		.error {
+		    color: red;
+            position: absolute;
+            border: 1px solid red;
+            padding: 7px;
+            border-radius: 5px;
+            background-color: #fff;
+            left: 100.6%;
+            font-size: 12px;
+            width: 300px;
+            top: 0;
+            z-index: 5;
+            display: none;
+        }
+        .error::before {
+            width: 10px;
+            height: 10px;
+            top: 9px;
+            border-top: 1px solid #ff4436;
+            border-left: 1px solid #ff4436;
+            background-color: #fff;
+            content: '';
+            position: absolute;
+            left: -6px;
+            transform: rotate(-45deg);
+        }

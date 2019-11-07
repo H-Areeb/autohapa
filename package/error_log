@@ -4,3 +4,11 @@
 [17-Oct-2019 09:03:18 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
 [17-Oct-2019 09:14:20 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
 [17-Oct-2019 09:14:27 America/New_York] PHP Notice:  Undefined variable: http_referer in /home/autohapa/public_html/autohapa/includes/header.php on line 199
+[02-Nov-2019 10:57:09 America/New_York] PHP Notice:  Undefined variable: type_id in /home/autohapa/public_html/autohapa/includes/header.php on line 271
+[02-Nov-2019 11:02:56 America/New_York] PHP Notice:  Undefined variable: type_id in /home/autohapa/public_html/autohapa/includes/header.php on line 271
+[02-Nov-2019 11:08:17 America/New_York] PHP Notice:  Undefined variable: type_id in /home/autohapa/public_html/autohapa/includes/header.php on line 271
+[02-Nov-2019 11:11:41 America/New_York] PHP Notice:  Undefined variable: type_id in /home/autohapa/public_html/autohapa/includes/header.php on line 271
+[02-Nov-2019 11:13:11 America/New_York] PHP Notice:  Undefined variable: type_id in /home/autohapa/public_html/autohapa/includes/header.php on line 271
+[02-Nov-2019 11:30:27 America/New_York] PHP Notice:  Undefined variable: type_id in /home/autohapa/public_html/autohapa/includes/header.php on line 271
+[04-Nov-2019 11:46:05 America/New_York] PHP Notice:  Undefined variable: type_id in /home/autohapa/public_html/autohapa/includes/header.php on line 271
+[04-Nov-2019 13:42:29 America/New_York] PHP Notice:  Undefined variable: type_id in /home/autohapa/public_html/autohapa/includes/header.php on line 271

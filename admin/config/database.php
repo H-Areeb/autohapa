@@ -42,11 +42,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', '199.188.200.126'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'autohapa_db'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
+            'username' => env('DB_USERNAME', 'autohapa_user'),
+            'password' => env('DB_PASSWORD', 'Terminal9090A'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

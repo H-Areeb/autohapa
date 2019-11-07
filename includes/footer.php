@@ -9,22 +9,22 @@
                         <div>
                             <h4>AutoHapa Group</h4>
                             <ul class="footer_nav">
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/about-us">About Us</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/investor-information">Investor Information</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/careers">Careers</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/contact-us">Contact Us</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/policies-terms">Policies and Terms</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/dealer-review-moderation">Dealer Reviews Moderation</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/rules">Rules</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/display-advertising">Display Advertising</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/about-us">About Us</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/investor-information">Investor Information</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/careers">Careers</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/contact-us">Contact Us</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/policies-terms">Policies and Terms</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/dealer-review-moderation">Dealer Reviews Moderation</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/rules">Rules</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/display-advertising">Display Advertising</a></li>
                             </ul>
                             <h4>Services</h4>
                             <ul class="footer_nav">
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/car-insurance">Car Insurance</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/car-loans">Car Loans</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/vehicle-check">Vehicle Check</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/gap-insurance">GAP Insurance</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/private-number-plates">Private Plates</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/car-insurance">Car Insurance</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/car-loans">Car Loans</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/vehicle-check">Vehicle Check</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/gap-insurance">GAP Insurance</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/private-number-plates">Private Plates</a></li>
                             </ul>
                         </div>
                     </div>
@@ -32,11 +32,11 @@
                         <div>
                             <h4>Private Customers</h4>
                             <ul class="footer_nav">
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/sellmycar/">Sell my car</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/advertising/">Advertising Costs</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/car-valuations/">Car Valuations</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/buying-selling-safely/">Buying & Selling Safely Online</a></li>
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/autohapa/terms-conditions/">Terms & Conditions</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/sellmycar/">Sell my car</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/advertising/">Advertising Costs</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/car-valuations/">Car Valuations</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/buying-selling-safely/">Buying & Selling Safely Online</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/autohapa/terms-conditions/">Terms & Conditions</a></li>
                             </ul>
                             
                             <h4>Quick Search</h4>
@@ -61,7 +61,7 @@
                             </ul>
                             <h4>Sites</h4>
                             <ul class="footer_nav">
-                                <li class="footer_nav-link"><a href="http://127.0.0.1/bikes">Bikes</a></li>
+                                <li class="footer_nav-link"><a href="http://autohapa.oneviewcrm.com/bikes">Bikes</a></li>
                                 <li class="footer_nav-link"><a href="#">Vans</a></li>
                                 <li class="footer_nav-link"><a href="#">Caravans</a></li>
                                 <li class="footer_nav-link"><a href="#">Motorhomes</a></li>
@@ -85,8 +85,8 @@
                                 <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
                             </div>
                             <div class="footer_app-download-links">
-                                <a href="#" target="_blank"><img src="http://127.0.0.1/autohapa/assets/images/download-appstore.png" alt="" /></a><br>
-                                <a href="#" target="_blank"><img src="http://127.0.0.1/autohapa/assets/images/download-playstore.png" alt="" /></a>
+                                <a href="#" target="_blank"><img src="http://autohapa.oneviewcrm.com/autohapa/assets/images/download-appstore.png" alt="" /></a><br>
+                                <a href="#" target="_blank"><img src="http://autohapa.oneviewcrm.com/autohapa/assets/images/download-playstore.png" alt="" /></a>
                             </div>
                             <div class="footer_copyright-text">
                                 AutoHapa. <span style="color: #FDC731;">&copy; 2019</span><br>
@@ -102,9 +102,9 @@
 
     </div> <!-- /#wrapper -->
 
-    <script src="http://127.0.0.1/autohapa/assets/js/scripts.js"></script>
-	<script src="http://127.0.0.1/autohapa/assets/js/scripts.js"></script>
-	 <script src="http://127.0.0.1/autohapa/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="http://autohapa.oneviewcrm.com/autohapa/assets/js/scripts.js"></script>
+	<script src="http://autohapa.oneviewcrm.com/autohapa/assets/js/scripts.js"></script>
+	 <script src="http://autohapa.oneviewcrm.com/autohapa/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
     <script>
         $(document).ready(function() {

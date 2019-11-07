@@ -11,7 +11,7 @@ include_once('./includes/header.php');
 
 
 ?>
-
+	<input type="hidden" id="type_ids" name="type_id" value="1">
 
 	<div class="home-slider-wrapper">
 		<div class="home-slider-outer">
@@ -37,6 +37,7 @@ include_once('./includes/header.php');
 											<form  id="search-form" method="POST" action="searchCar/">
 											      
 												  <input type="hidden" id="carad_id" value="">
+												  <input type="hidden" id="type_id" name="type_id" value="1">
 												<h3>New & Used Cars</h3>
 												<div class="form-row">
 		
@@ -96,79 +97,7 @@ include_once('./includes/header.php');
 								</div> <!-- /.slider-content-outer -->
 							</div> <!-- /.item -->
 
-							<div class="item">
-								<img src="assets/images/slider-image.jpg" alt="Showroom of cars" class="slide-image" />
-								<div class="slider-content">
-									<div class="row align-items-center slider-content-inner m-0">
-		
-										<div class="col-lg-7 pr-2">
-											<div class="text-block">
-												<h1>Go All In AutoHapa</h1>
-												<p>Auto dealers, vehicle owners, for sale by owner, all kind of auto including trucks, cars, moto pikes, trailers, boats, vans and so on.</p>
-												<a href="" class="btn btn-blue">Find Out More <i class="fa fa-long-arrow-right"></i></a>
-											</div>
-										</div>
-		
-										<div class="col-lg-5 pl-2">
-											<form action="" id="search-form">
-												<h3>New & Used Cars</h3>
-												<div class="form-row">
-		
-													<div class="form-group col-sm-6">
-														<input type="text" class="form-control" id="Postcode" placeholder="Enter Postcode*">
-													</div>
-													<div class="form-group col-sm-6">
-														<select name="Distance" id="Distance" class="form-control">
-															<option value="">Distance(National)*</option>
-														</select>
-													</div>
-		
-													<div class="form-group col-sm-6">
-														<select id="searchMake" name="searchMake"  class="form-control ">
-															<option value="">Make(Any)*</option>
-														</select>
-													</div>
-													<div class="form-group col-sm-6">
-														<select name="searchModel" id="searchModel" class="form-control">
-															<option value="">Model(Any)*</option>
-														</select>
-													</div>
-		
-													<div class="form-group col-sm-6">
-														<input type="text" class="form-control" id="" placeholder="Total Price*">
-													</div>
-													<div class="form-group col-sm-6">
-														<input type="text" class="form-control" id="" placeholder="Monthly Price*">
-													</div>
-		
-													<div class="form-group col-sm-6">
-														<select name="" id="" class="form-control">
-															<option value="">Min Price*</option>
-														</select>
-													</div>
-													<div class="form-group col-sm-6">
-														<select name="" id="" class="form-control">
-															<option value="">Max Price*</option>
-														</select>
-													</div>
-												</div>
-												<div class="form-group">
-													<input type="submit" class="btn btn-green" value="Search 500,000 Cars"> 
-												</div>
-												<div class="form-row bottom-buttons">
-													<div class="col-sm-6">
-														<button type="reset" class="btn btn-default">Reset Search</button>
-													</div>
-													<div class="col-sm-6">
-														<button type="button" class="btn btn-default">More Options</button>
-													</div>
-												</div>
-											</form> <!-- /.search-form -->
-										</div>
-		
-									</div> <!-- /.slider-content-inner -->
-								</div> <!-- /.slider-content-outer -->
-							</div> <!-- /.item -->
+							
 
 						</div> <!-- /.home-slider -->
 					</div>
@@ -584,10 +513,11 @@ include_once('./includes/header.php');
 	
 	$(document).ready(function(){
 		
+		//alert($('#type_ids').val());
 		
 		$.ajax({
             type: "GET",
-            url:"ajax/ajax_get_carregistrationstep1data.php",
+            url:"ajax/ajax_get_carregistrationstep1data.php?type_id="+$('#type_ids').val(),
             dataType: "json",
             success: function (data) {
 				
@@ -622,7 +552,7 @@ include_once('./includes/header.php');
 	 $.ajax({
 			
 		type:"GET",
-		url: "ajax/ajax_get_ad_data.php",
+		url: "ajax/ajax_get_ad_data.php?type_id="+$('#type_ids').val(),
 		dataType:"json",
         success: function(result){
 			//console.log(result);
@@ -660,7 +590,7 @@ include_once('./includes/header.php');
 		{						
 			$.ajax({
             type: "GET",
-            url:"ajax/ajax_get_carmodel.php?makeid="+$("#searchMake").val(),
+            url:"ajax/ajax_get_carmodel.php?makeid="+$("#searchMake").val()+"&type_id="+$('#type_ids').val(),
             dataType: "json",
             success: function (data) {
 					var dropdown=$('#searchModel');

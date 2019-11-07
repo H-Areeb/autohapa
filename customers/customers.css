@@ -1,0 +1,58 @@
+.col-form-label {
+    color: #161717cc!important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    padding-top: calc(.475rem + 1px)!important;
+}
+form .btn {
+    width: auto !important;
+}
+.bg-card{
+    background-color: #6c757d2e!important;
+}
+.btn {
+    font-size: 0.9rem !important;
+}
+.form-group {
+    position: relative;
+}
+.form-control {
+    padding: .75rem .75rem!important;
+    font-size: 0.9rem!important;
+    width:auto!important;
+}
+#aboutMe{
+      height: 150px!important;
+      width: 450px!important;
+      
+}
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.70rem + 2px)!important;
+}
+.error {
+		    color: red;
+            position: absolute;
+            border: 1px solid red;
+            padding: 7px;
+            border-radius: 5px;
+            background-color: #fff;
+            left: 100.6%;
+            font-size: 12px;
+            width: 300px;
+            top: 0;
+            z-index: 5;
+            display: none;
+        }
+        .error::before {
+            width: 10px;
+            height: 10px;
+            top: 9px;
+            border-top: 1px solid #ff4436;
+            border-left: 1px solid #ff4436;
+            background-color: #fff;
+            content: '';
+            position: absolute;
+            left: -6px;
+            transform: rotate(-45deg);
+        }
+

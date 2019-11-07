@@ -1,8 +1,8 @@
 <?php include_once('../includes/header.php');
 
-if(isset($_REQUEST['Postcode'])){
+if(isset($_REQUEST['Postcode']) || isset($_REQUEST['searchMake']) || isset($_REQUEST['searchModel']) ){
 	
-		//$carad_id= $_REQUEST['carad_id'];
+		@$type_id = $_REQUEST['type_id'];
 		@$postcode= $_REQUEST['Postcode'];
 		@$make= $_REQUEST['searchMake'];
 		@$model= $_REQUEST['searchModel'];
@@ -26,6 +26,7 @@ if(isset($_REQUEST['Postcode'])){
 
 
     <input type="hidden" id="carad_id" value="">
+     <input type="hidden" id="type_ids" value="<?= @$type_id;?>">
 	<input type="hidden" id="Postcode" value="<?= @$postcode;?>">
 	<input type="hidden" id="searchMake" value="<?= @$make;?>">
 	<input type="hidden" id="searchModel" value="<?= @$model;?>">
@@ -333,8 +334,7 @@ if(isset($_REQUEST['Postcode'])){
 				<input type="hidden" name="getcolour" id="getcolour" value="">
 				<input type="hidden" name="getbodyType" id="getbodyType" value="">
 				<input type="hidden" name="getfuelType" id="getfuelType" value="">
-				<input type="hidden" name="getfuelType" id="getfuelType" value="">
-				<input type="hidden" name="getfuelType" id="getfuelType" value="">
+			
 				</form>
 
 

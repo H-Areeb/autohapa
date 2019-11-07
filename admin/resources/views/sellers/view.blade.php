@@ -4,8 +4,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
       <h1>
-        All sellers List
-        <small>View All Sellers Details</small>
+        All Users List
+        <small>View All Details</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -46,6 +46,7 @@
                   <th>Sr no</th>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Type</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -60,10 +61,12 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         
-                  @if($user->isActive_ynid == '1')
+                  @if($user->isActive_ynid == '1' && $user->type_id == '1')
+                        <td><span class="label label-primary">Dealer</span></td>
                         <td><span class="label label-success">Active</span></td>
                      @else 
-                        <td><span class="label label-danger">In Active</span>'
+                        <td><span class="label label-default">Buyer</span></td>
+                        <td><span class="label label-danger">In Active</span></td>
                   @endif  
                         
                         <td>

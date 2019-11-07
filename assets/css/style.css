@@ -13,6 +13,8 @@ form .btn {width: 100%;}
 .bg-color-blue {background: #104896;color: #FFFFFF;}
 
 .btn {font-size: 1.125rem;}
+.dropdown-menu, .dropdown .btn, .dropdown .form-control {font-size: 0.85rem;}
+
 
 .btn-blue {
     background-color: #104896;
@@ -58,7 +60,7 @@ form .btn {width: 100%;}
 
 #site-navigation {font-size: 1.0625rem;}
 #primary-menu > .dropdown > .btn  {font-size: 0.9rem !important;}
-.dropdown > .dropdown-menu  {font-size: 0.9rem !important;}
+.dropdown > .dropdown-menu  {font-size: 0.75rem;}
 
 
 .user-icon {
@@ -325,7 +327,7 @@ form#sell-form .btn {font-size: 1.375rem;margin-bottom: 1rem;}
 
 .input-date i {
 	position: absolute;
-	top: 10px;
+	top: 15px;
 	left: 25px;
 }
 .input-date input {padding-left: 30px;} 

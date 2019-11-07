@@ -3,141 +3,121 @@ header("Cache-Control: no-cache, must-revalidate");
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");	
 
+
+  
 include_once('../includes/header.php');
+
+   if(!isset($_SESSION['customer_id2']))
+      {     
+          header("location:../login/");
+}          
+
+            $query = "select *  from account_info
+                     INNER JOIN `car_user` ON  car_user.`id` = account_info.`user_id` 
+                     where  car_user.`id` = ".$customer_id;
+            
+                  @$result = mysqli_query($conni,$query);
+               
+               
+                  while($row = mysqli_fetch_assoc($result))
+                  {   
+                        
+                        @$company              = $row['companyName'];
+                        @$firstname         = $row['firstName'];
+                        @$lastName        = $row['lastName'];
+                        @$phone        = $row['phone'];
+                        @$website    = $row['website'];
+                        @$country  = $row['country'];
+                        @$city       = $row['city'];
+                        @$address      = $row['address'];
+                        @$zipCode        = $row['zipCode'];
+                        @$about            = $row['about'];
+                        @$pic                 = $row['pic'];
+                        @$email               = $row['email'];
+                        @$userName               = $row['name'];
+                              
+                              
+                  }
+
+
+
+
 ?>
 <link rel="stylesheet" href="http://autohapa.oneviewcrm.com/autohapa/assets/css/passtrength.css" >
 	
 	<script src="http://autohapa.oneviewcrm.com/autohapa/assets/js/jquery.passtrength.js"></script>
-<style>
-    .col-form-label {
-    color: #161717a3 !important;
-    font-weight: 700 !important;
-    font-size: 0.9rem !important;
-    padding-top: calc(.475rem + 1px)!important;
-}
-form .btn {
-    width: auto !important;
-}
-.bg-card{
-    background-color: #6c757d2e!important;
-}
-.btn {
-    font-size: 0.9rem !important;
-}
-.form-group {
-    position: relative;
-}
-.form-control {
-    padding: .75rem .75rem!important;
-    font-size: 0.9rem!important;
-    width:auto!important;
-}
-#aboutMe{
-      height: 150px!important;
-      width: 450px!important;
-      
-}
-select.form-control:not([size]):not([multiple]) {
-    height: calc(2.70rem + 2px)!important;
-}
-.error {
-		    color: red;
-            position: absolute;
-            border: 1px solid red;
-            padding: 7px;
-            border-radius: 5px;
-            background-color: #fff;
-            left: 100.6%;
-            font-size: 12px;
-            width: 300px;
-            top: 0;
-            z-index: 5;
-            display: none;
-        }
-        .error::before {
-            width: 10px;
-            height: 10px;
-            top: 9px;
-            border-top: 1px solid #ff4436;
-            border-left: 1px solid #ff4436;
-            background-color: #fff;
-            content: '';
-            position: absolute;
-            left: -6px;
-            transform: rotate(-45deg);
-        }
-</style>
 
-
+<link rel="stylesheet" href="customers.css">
 <section class="main mt-5 mb-5">
 		<div class="container">
-                  <!-- Errors div -->
-                  <div style="max-width:400px;margin: 0 auto;">
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="Errors" style="display:none;"></div>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="successMsg" style="display:none;"></div>
-                  </div>
+                  
     	    <div class="row justify-content-center">
                 <div class="col-md-3">
                     <div class="card bg-card mt-2" style="width: 18rem;">
-                        <img class="card-img-top" data-src="holder.js/100px180/" alt="100%x180" style="height: 180px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16def44aded%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16def44aded%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.1953125%22%20y%3D%2296.3%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                        <img class="card-img-top"  alt="100%x180" style="height: 180px; width: 100%; display: block;" src="../assets/<?= $pic;?>" data-holder-rendered="true">
                         <div class="card-body">
-                            <a class="btn btn-link">manage</a>
+                            <form name="formImage" id="formImage" method="post" enctype="multipart/form-data">
+                                <input type="hidden" id="img_user_id" name="img_user_id" value=""/>
+                                <input  type='file' name="c_image" id="c_image" hidden/>
+                                <button  class="btn btn-link" id="imgbutton">Manage Image</button>
+                                <div  id="uploadImageError" class="error"></div>
+                            </form>
                                <div class="form-group row">
                                     <label class="col-sm-5  col-form-label" >UserName:</label>
-                                    <label  class="col-sm-7 col-form-label"style="color:black!important;"><?= $customer_name;?></label>
+                                    <label  class="col-sm-7 col-form-label"style="color:black!important;"><?= $userName;?></label>
                                     <label class="col-sm-6  col-form-label" >Account Type:</label>
                                     <label  class="col-sm-6 col-form-label"style="color:black!important;">Dealer</label>
                                </div>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text"><?=@$about?></p>
                             <a href="#" class="btn btn-danger">Remove Account</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-7">
                     <div class="col-md-10">
                         <div><h2 class="mb-3">My Profile</h2></div>
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Account settings</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile Settings</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">View Profile</a>
+                                <!--<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">View Profile</a>-->
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <div class="col-md-10">
+                                <div class="col-md-12">
                                     <form>
                                         <div class="form-group row mt-3">
-                                            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                                            <div class="col-sm-10">
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                                            <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+                                            <div class="col-sm-8">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?= $email;?>">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                                            <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                                            <label for="Name" class="col-sm-4 col-form-label">User Name</label>
+                                            <div class="col-sm-8">
+                                            <input type="text" readonly class="form-control-plaintext" id="Name"  value="<?= @$userName;?>">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-2"></div>
-                                            <div class="col-sm-10">
-                                                <div class="custom-control custom-checkbox mr-sm-2">
-                                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                                    <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox mr-sm-2">
-                                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                                    <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-2"></div>
-                                            <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-success">&nbsp; SAVE &nbsp;</button>
-                                            </div>
-                                        </div>
+                                        <!--<div class="form-group row">-->
+                                        <!--    <div class="col-sm-2"></div>-->
+                                        <!--    <div class="col-sm-10">-->
+                                        <!--        <div class="custom-control custom-checkbox mr-sm-2">-->
+                                        <!--            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">-->
+                                        <!--            <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>-->
+                                        <!--        </div>-->
+                                        <!--        <div class="custom-control custom-checkbox mr-sm-2">-->
+                                        <!--            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">-->
+                                        <!--            <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>-->
+                                        <!--        </div>-->
+                                        <!--    </div>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group row">-->
+                                        <!--    <div class="col-sm-2"></div>-->
+                                        <!--    <div class="col-sm-10">-->
+                                        <!--    <button type="submit" class="btn btn-success">&nbsp; SAVE &nbsp;</button>-->
+                                        <!--    </div>-->
+                                        <!--</div>-->
                                     </form>
                                     <div id="accordion">
                                         <div class="card">
@@ -154,28 +134,28 @@ select.form-control:not([size]):not([multiple]) {
                                                     <div class="form-group row">
                                                         <label for="currentPassword" class="col-sm-4 col-form-label">Current Password</label>
                                                         <div class="col-sm-8">
-                                                        <input type="password" class="form-control passwordCheck" size="30" id="currentPassword" placeholder="Password" >
+                                                        <input type="password" class="form-control passwordCheck" size="30" id="currentPassword"  value="">
                                                         </div>
                                                         <div id="currentPasswordError" class="error"></div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="newPassword" class="col-sm-4 col-form-label">New Password</label>
                                                         <div class="col-sm-8">
-                                                        <input type="password" class="form-control passwordCheck" size="30" id="newPassword" placeholder="New Password" >
+                                                        <input type="password" class="form-control " size="30" id="newPassword" placeholder="New Password" >
                                                         </div>
-                                                        <div  id="newPasswordError" class="error"></div>
+                                                        <div  id="newPasswordError" class="error"></div> 
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="confirmPassword" class="col-sm-4 col-form-label">Confirm Password</label>
                                                         <div class="col-sm-8">
-                                                        <input type="password" class="form-control passwordCheck" size="30" id="confirmPassword" placeholder="Confirm Password" >
+                                                        <input type="password" class="form-control " size="30" id="confirmPassword" placeholder="Confirm Password" >
                                                         </div>
                                                         <div id="confirmPasswordError" class="error"></div>
                                                     </div>
                                                     <div class="form-group row">
                                                             <div class="col-sm-4"></div>
                                                             <div class="col-sm-8">
-                                                                  <button type="submit" onclick="passwordChange()" class="btn btn-success">&nbsp; CHANGE &nbsp;</button>
+                                                                  <button type="submit" id="changebtn" onclick="passwordChange()" class="btn btn-success">&nbsp; CHANGE &nbsp;</button>
                                                             </div>
                                                       </div>
                                                 </div>
@@ -187,6 +167,7 @@ select.form-control:not([size]):not([multiple]) {
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <div class="col-md-10">
                                     <form>
+                                        <input type="hidden" id="idcustomer" value="<?= $customer_id;?>">
                                         <div class="form-group row mt-3">
                                             <label for="companyName" class="col-sm-3 col-form-label">Company Name</label>
                                             <div class="col-sm-9">
@@ -198,19 +179,19 @@ select.form-control:not([size]):not([multiple]) {
                                             <div class="col-sm-9">
                                                 <input type="text" size="50" maxlength="50" class="form-control" id="firstName" value="">
                                             </div>
-                                            <div  class="error"></div>
+                                            <div id="firstNameError" class="error"></div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="lastName" class="col-sm-3 col-form-label">Last Name*</label>
                                             <div class="col-sm-9">
                                                 <input type="text" size="50" maxlength="50" class="form-control" id="lastName" value="">
                                             </div>
-                                            <div  class="error"></div>
+                                            <div id="lastNameError" class="error"></div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="phone" class="col-sm-3 col-form-label">Phone</label>
                                             <div class="col-sm-9">
-                                                <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required size="12" maxlength="12" class="form-control" id="phone" value="">
+                                                <input type="tel" name="phone"  maxlength="11" size="11" class="form-control" id="phone" value="">
                                             </div>
                                             
                                         </div>
@@ -223,7 +204,8 @@ select.form-control:not([size]):not([multiple]) {
                                         <div class="form-group row">
                                             <label for="Country" class="col-sm-3 col-form-label">Country*</label>
                                             <div class="col-sm-9">
-                                                <select id="country" name="country" class="form-control">
+                                                <select id="Country" name="country" class="form-control">
+                                                      <option value=""><?= @$country; ?></option>
                                                       <option value="Afghanistan">Afghanistan</option>
                                                       <option value="Åland Islands">Åland Islands</option>
                                                       <option value="Albania">Albania</option>
@@ -470,7 +452,7 @@ select.form-control:not([size]):not([multiple]) {
                                                       <option value="Zimbabwe">Zimbabwe</option>
                                                 </select>
                                             </div>
-                                            <div  class="error"></div>
+                                            <div id="countryError" class="error"></div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="City" class="col-sm-3 col-form-label">City</label>
@@ -484,13 +466,14 @@ select.form-control:not([size]):not([multiple]) {
                                             <div class="col-sm-9">
                                                 <input type="text" size="50" maxlength="50" class="form-control" id="Address" value="">
                                             </div>
+                                            <div id="addressError" class="error"></div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="zipCode" class="col-sm-3 col-form-label">Zip code</label>
                                             <div class="col-sm-9">
                                                 <input type="text" size="8" maxlength="8" class="form-control" id="zipCode" value="">
                                             </div>
-                                            <div  class="error"></div>
+                                            <div id="zipCodeError" class="error"></div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="aboutMe" class="col-sm-3 col-form-label">About me</label>
@@ -502,7 +485,7 @@ select.form-control:not([size]):not([multiple]) {
                                         <div class="form-group row">
                                             <div class="col-sm-3"></div>
                                             <div class="col-sm-9">
-                                            <button type="submit" class="btn btn-success">&nbsp; EDIT &nbsp;</button>
+                                            <a href="javascript:void(0)" type="submit" id="saveBtn" onclick="profileUpdate()" class="btn btn-success">&nbsp; Save &nbsp;</a>
                                             </div>
                                         </div>
                                     </form>
@@ -514,10 +497,42 @@ select.form-control:not([size]):not([multiple]) {
                 </div>
             </div>
         </div>
+                <div class="col-md-2">
+                    <!-- Errors div -->
+                  <div style="max-width:400px; ">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="Errors" style="display:none;"></div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="successMsg" style="display:none;"></div>
+                  </div>
+                  <div style="max-width:400px;position:absolute; margin-top:50rem; ">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="update_form_error" style="display:none;"></div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="update_form_success" style="display:none;"></div>
+                  </div>
+                </div>  
+        </div>
+    </div> 
 </section>
 
 
 <script>
+      
+      $(document).ready(function(){
+        
+          get_profileInfo(); 
+         
+         
+         
+         document.getElementById('imgbutton').addEventListener('click', openDialog);
+
+        function openDialog(e) {
+             e.preventDefault();
+          document.getElementById('c_image').click();
+              
+        }
+         
+            
+        
+      });
+      
       
 $('.passwordCheck').passtrength({
   minChars: 8,
@@ -529,6 +544,96 @@ $('.passwordCheck').passtrength({
   textStrong: "Strong",
   textVeryStrong: "Very Strong",
 });
+
+
+
+    //---------------------function for Insert_Image		   
+
+		$('#c_image').change(function() {
+                
+					       $('#imgbutton').text('Loading....'); 
+					       
+						  /*  formd = new FormData();
+						   formd.append("files",$('#uploadImage')) */
+						   //thisElem = $(this);
+						   
+						   var form1 = $('form')[2]; // You need to use standard javascript object here
+                            //var formData = new FormData(form);
+						   
+							$.ajax({
+								 url: "ajax_ads_getById.php",
+								 type:"POST",
+								 data: new FormData(form1),
+								 contentType:false,
+								 processData:false,
+								 success:function(data)
+								 {
+								     if(data == 'success'){
+								     	    
+								     	 setTimeout(function(){ 
+                                   
+                                                   //alert(result.status);
+                                                   
+                                        $('#successMsg').css('display','block');  
+                                        $('#successMsg').html('Image Update <strong>SuccessFully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                                                
+                                                $('#successMsg').on('closed.bs.alert', function () {
+                                                        location.reload();
+                
+                                                    });   
+                                                     
+                                        $('#imgbutton').text('Manage Image');
+                                                     
+                                                           
+                                        }, 1000);
+                    	                   
+        								       
+								     	}
+								     	else{
+								     	     setTimeout(function(){ 
+                                   
+                                                   //alert(result.status);
+                                                   
+                                        $('#Errors').css('display','block');  
+                                        $('#Errors').html('Image Not  Update <strong>SuccessFully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                                                
+                                                $('#Errors').on('closed.bs.alert', function () {
+                                                        location.reload();
+                
+                                                    });   
+                                                     
+                                        $('#imgbutton').text('Manage Image');
+                                                     
+                                                           
+                                        }, 1000);
+                    	                   
+								     	}
+								     	
+								     
+									},
+								});
+            });		   
+					       
+					   
+						
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 $('#confirmPassword').change(function(){
    
@@ -550,8 +655,6 @@ $('#confirmPassword').change(function(){
 function passwordChange(){
     
     var errorCount = 0;
-    
-    
     
     
     if($('#currentPassword').val() == '')
@@ -604,143 +707,257 @@ function passwordChange(){
         
      }
      
+             var datastring ="email="+$('#staticEmail').val()
+                            +"&current_password="+$('#currentPassword').val()
+                           +"&newPassword="+$('#newPassword').val();
+            
+            $('#changebtn').text('Loading...');
+     
+     $.ajax({
+       
+     type:"POST",
+     url:"ajax_ads_getById.php",
+     data: datastring,
+     dataType:"json",
+     cache: false,
+      success: function(result){
+                   
+                    if(result.status == 'success'){
+                                   
+                      setTimeout(function(){ 
+                                   
+                                   //alert(result.status);
+                                   
+                        $('#successMsg').css('display','block');  
+                        $('#successMsg').html('Your Password Update <strong>SuccessFully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                                
+                                $('#successMsg').on('closed.bs.alert', function () {
+                                        location.reload();
+
+                                    });   
+                                     
+                        $('#changebtn').text('Change');
+                                     
+                                           
+                        }, 1000);
+                        
+                       
+                    }
+                    else if(result.status == 'invalid'){
+                                 
+                                 
+                        setTimeout(function(){ 
+                                   
+                             $('#Errors').css('display','block');  
+                             $('#Errors').html('Current password <strong>wrong</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                       
+                            // alert(result.status);
+                                //  $('#invalid').on('closed.bs.alert', function () {
+                                //         location.reload();
+
+                                //     })
+                                             
+                                $('#changebtn').text('Change');
+                                   
+                             }, 1000);
+                                         
+                                   
+                        }
+                        else{
+                             setTimeout(function(){ 
+                                   
+                             $('#Errors').css('display','block');  
+                             $('#Errors').html('Current password <strong>wrong</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                       
+                             //alert("wrong");
+                                //  $('#invalid').on('closed.bs.alert', function () {
+                                //         location.reload();
+
+                                //     })
+                                             
+                                $('#changebtn').text('Change');
+                                   
+                             }, 1000);
+                        }
+                             
+                       },    
+              
+     });
+     
 }
 
 
 
+
+
+
+
+
+function get_profileInfo(){
+    
+    $.ajax({
+       
+     type:"GET",
+     url:"ajax_ads_getById.php?user_id="+$('#idcustomer').val(),
+     cache: false,
+     dataType:"json",
+     success: function(result){
+                       
+                     
+                 if(result.data != ''){
+    
+            // alert(result.data.user_id);
+                                    document.getElementById('companyName').value = result.data.companyName;
+                                    document.getElementById('firstName').value   = result.data.firstName;
+        							document.getElementById('lastName').value    = result.data.lastName;
+        							document.getElementById('phone').value       = result.data.phone;
+        							document.getElementById('Website').value     = result.data.website;
+        							document.getElementById('Country').value     = result.data.country;
+        							document.getElementById('City').value        = result.data.city;
+        							document.getElementById('Address').value     = result.data.address;
+        							document.getElementById('zipCode').value     = result.data.zipCode;
+        							document.getElementById('aboutMe').value     = result.data.about;
+        							document.getElementById('img_user_id').value = result.data.user_id;
+        							
+                                }
+                             
+                       },
+                 });
+    
+    
+}
+
+
 function profileUpdate(){
-   
-   var firstName = $('#firstName').val();
-     var lastName = $('#lastName').val();
-   var country = $('#country').val();
-     var city = $('#city').val();
-     var Address = $('#Address').val();
-     var zipCode = $('#zipCode').val();
+    
+         var company =  $('#companyName').val();
+         var firstName =$('#firstName').val();
+         var lastName = $('#lastName').val();
+         var phone =    $('#phone').val();
+         var website =  $('#Website').val();
+         var country =  $('#Country').val();
+         var City =     $('#City').val();
+         var Address =  $('#Address').val();
+         var zipCode =  $('#zipCode').val();
+         var about =    $('#aboutMe').val();
+    
      
-// var regEx = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-//                    var validEmail = regEx.test(email);
-                   
-                   
+     
    if (firstName.length < 1) {
-      $('#Errors').html("Please Enter Your Name.");	
+        
+      $('#firstNameError').html("Please Enter Your Name.");	
+      $('#firstNameError').css({ 'display': 'block' });	
          return;
    } 
-   else if (lastName.length < 1) {
-      $('#Errors').html("Please Enter Your Last Name.");	
-         return;
+   else
+   {
+       $('#firstNameError').css({ 'display': 'none' });	
    }
-   else if (country.length < 1) {
-      $('#Errors').html("Please Choose Your ccountry.");	
-         return;
-   }
-   else if (city.length < 1) {
-      $('#Errors').html("Please Enter Your City.");	
-         return;
-   }
-   else if (zipCode.length < 1) {
-      $('#Errors').html("Please Enter Zip code.");	
-         return;
-   }
-   else{
-           
-       $('#Errors').remove();
-     }
    
-
+   if (lastName.length < 1) {
+      $('#lastNameError').html("Please Enter Your Last Name.");	
+      $('#lastNameError').css({ 'display': 'block' });	
+         return;
+   }
+   else
+   {
+        $('#lastNameError').css({ 'display': 'none' });
+   }
    
-       var datastring = "RegEmail="+document.getElementById('Remail').value
-                               +"&RegName="+document.getElementById('name').value
-                               +"&RegPwd="+document.getElementById('Rpwd').value
-                               +"&token="+document.getElementById('token').value;
+   if (country.length < 1) {
+      $('#countryError').html("Please Choose Your country.");
+      $('#countryError').css({ 'display': 'block' });
+         return;
+   }
+   else
+   {
+        $('#countryError').css({ 'display': 'none' });
+   }
+   
+   if (City.length < 1) {
+      $('#cityError').html("Please Enter Your City.");	
+      $('#cityError').css({ 'display': 'block' });
+         return;
+   }
+   else
+   {
+        $('#cityError').css({ 'display': 'none' });
+   }
+   if (zipCode.length < 1) {
+      $('#zipCodeError').html("Please Enter Zip code.");
+       $('#zipCodeError').css({ 'display': 'block' });
+         return;
+   }
+   else
+   {
+        $('#zipCodeError').css({ 'display': 'none' });
+   }
+   
+          
+          
+           var datastring ="companyName="+company
+                           +"&firstName="+firstName
+                           +"&lastName="+lastName
+                           +"&phone="+phone
+                           +"&website="+website
+                           +"&country="+country
+                           +"&city="+City
+                           +"&address="+Address
+                           +"&zipCode="+zipCode
+                           +"&about="+about
+                           +"&customer_id="+$('#idcustomer').val();
+   
                                
-                               
-                               var image = "../assets/images/loader.gif";
-                       //$('.card-body').html("<img src='"+image+"' style='height:300px;  width:400px; margin-left:150px;' class='text-center ml-5 mb-5' />");
-                               
-                               
+                         $('#saveBtn').html('Loading....');      
+                          
  $.ajax({
        
      type:"POST",
-     url:"../login/ajax_register.php",
+     url:"ajax_ads_getById.php",
      data: datastring,
      cache: false,
+     dataType:"json",
      success: function(result){
                        
-                       result = JSON.parse(result);
-                        
-                             
+                     
                  if(result.status == 'success'){
                                    
-                       
+                      setTimeout(function(){ 
                                    
-                     if(document.getElementById('hdregnum').value == ''){
-                         
-                          $('.card-body').html("<img src='"+image+"' style='height:300px;  width:400px; margin-left:150px;' class='text-center ml-5 mb-5' />");
-                                             
-                                                    setTimeout(function(){ 
-                                                      
-                                             $('#formlogin2').submit();
-                                             
-                                                    }, 1000);
-                                         
-                           }else
-                               {
-                                 
-                                 document.getElementById('customer_id').value = result.id;
-                           $('.card-body').html("<img src='"+image+"' style='height:300px;  width:400px; margin-left:150px;' class='text-center ml-5 mb-5' />");	
-                                       
-                                             setTimeout(function(){ 
-                                                 
-                                             $('#formlogin').submit();
-                                             
-                                             
-                                                    }, 1000);
-                           }
-               
-               
-               
-               
-               
-                       }
-                       else if(result.status == 'recapchaError')
-                           {
-                               
-                               $('#submitbtn').text('Loading....');
-                                         setTimeout(function(){ 
-                                   
-                                         $('#recapchaError').css('display','block');  
-                                          $('#recapchaError').html('Something went wrong  please <strong>Try Again</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-                                   
-                                      $('#submitbtn').text('Register Now');
-                                     
-                                     
-                                     $('#recapchaError').on('closed.bs.alert', function () {
-                                       window.location.href="../login/register.php"; 
-                                   })
-                                     
-                                           //window.location.href="../login/"; 
-                                   
-                                         }, 1000);
-                                         
-                     }
-                       else{
-                                 
+                        $('#update_form_success').css('display','block');  
+                        $('#update_form_success').html('Your Profile Update <strong>SuccessFully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
                                 
-                                 $('#submitbtn').text('Loading....');
-                                         setTimeout(function(){ 
-                                   
-                                         $('#invalid').css('display','block');  
-                                          $('#invalid').html('Your Account already exists please <strong>sign in</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
-                                   
+                                $('#update_form_success').on('closed.bs.alert', function () {
+                                        location.reload();
+
+                                    });   
                                      
-                                     $('#submitbtn').text('Register Now');
+                        $('#saveBtn').text("Save");
                                      
-                                           //window.location.href="../login/"; 
+                                           
+                        }, 1000);
+                        
+                       
+                    }
+                    else{
+                                 
+                        setTimeout(function(){ 
                                    
-                                         }, 1000);
+                             $('#update_form_error').css('display','block');  
+                             $('#update_form_error').html('Something went <strong>wrong</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                       
+                            
+                                 $('#update_form_error').on('closed.bs.alert', function () {
+                                        location.reload();
+
+                                    })
+                                             
+                                $('#saveBtn').text('Save');
+                                   
+                             }, 1000);
                                          
                                    
-                             }
+                        }
                              
                        },
                  });

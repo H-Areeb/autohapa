@@ -1,11 +1,11 @@
 <?php 
 //@session_start();
 
-	$server_name = '127.0.0.1';
+	$server_name = '199.188.200.126';
 	//$server_name = '192.168.3.181';
 	//$server_name = 'localhost';
-	$user_name	 = 'root';
-	$password = '';
+	$user_name	 = 'autohapa_user';
+	$password = 'Terminal9090A';
 	//$password = 'Logoinn345@';
 	$db_name = 'autohapa_db';
 	

@@ -13,8 +13,9 @@ header("Cache-Control: no-cache, must-revalidate");
 	include "../includes/config.php";
 	
 	@$make_id = $_REQUEST['makeid'];
+	@$type_id = $_REQUEST['type_id'];
 	
-	$CarModelQuery = mysqli_query($conni,'Select id,name From car_model where isactiveynid=1 and isdeletedynid=2 and car_makeid="'.$make_id.'" order by ordinal;');
+	$CarModelQuery = mysqli_query($conni,'Select id,name From car_model where isactiveynid=1 and isdeletedynid=2 and car_makeid="'.$make_id.'" and type_id = "'.$type_id.'" order by ordinal;');
 		
 	$CarModelRowDataAll = array("model"=>array());
 	

@@ -33,6 +33,13 @@ class SellersController extends Controller
     public function Details($seller)
     {     
         
+        
+        
+        $seller_info = DB::select(DB::raw('Select * from car_user 
+                                           INNER JOIN account_info ON account_info.user_id = car_user.id
+                                           WHERE car_user.id = "'.$seller.'" limit 1'));
+        
+        
         $sellerads =  DB::select(DB::raw('SELECT car_ad.`id` AS id , car_ad.`adtitle` AS title , car_ad.`adverttext` AS Detail ,   car_lkptColour.`name` AS color , car_variant.`name`  AS variant ,
             car_images.`name` AS image ,car_images.`ordinal`,
             car_derivative.`name` AS derivative , car_lkptfuel_type.`name` AS FuelType , 
@@ -48,18 +55,29 @@ class SellersController extends Controller
         INNER JOIN car_user ON car_ad.`customer_id` = car_user.`id`
         INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
             WHERE car_ad.`customer_id` = "'.$seller.'"'));
-     
-              foreach($sellerads as $seller)
+            
+             foreach($sellerads as $seller)
                 {
                 $selleradsid = $seller->id;
                 }
 
-    $adimg = DB::select(DB::raw('select * from car_images where carad_id = "'.$selleradsid.'"'));
+          if(isset($selleradsid))
+          {  
+              $adimg = DB::select(DB::raw('select * from car_images where carad_id = "'.$selleradsid.'"'));
+              
+              return view('sellers/SellerDetails',compact('sellerads','adimg','seller_info'));
+          }
+        else
+        {
+                    return view('sellers/SellerDetails',compact('seller_info'));
+        }
+
+        // 
     
-    //    return $ads;
-        //  echo "<pre>"; print_r($ads);
+         //    return $ads;
+        //  echo "<pre>"; print_r($ads);               
         //  echo "</pre>";
-        return view('sellers/SellerDetails',compact('sellerads','adimg'));
+
     }
 
 

@@ -16,8 +16,8 @@
       </ol>
     </section>
 
-    <div class="row">
-          <div class="col-xs-4"></div>
+    <div class="row justify-content-center">
+        
         <div class="col-xs-4">
              @if(Session::has('success'))
              
@@ -34,7 +34,7 @@
               </div>
              @endif
           </div>
-              <div class="col-xs-4"></div>
+             
       </div>
 
                 @if(isset($ads[0]->title))
@@ -170,32 +170,32 @@ function showSlides(n) {
                                         <li>
                                             <svg class="key-specifications__icon">
                                             <use xlink:href="/images/svg/key-specifications/cars.svg#ks-manufactured-year"></use>
-                                            </svg>{{str_limit($ads[0]->variant,6)}} 
+                                            </svg>{{@str_limit($ads[0]->variant,6)}} 
                                         </li>
                                         <li>
                                             <svg class="key-specifications__icon">
                                             <use xlink:href="/images/svg/key-specifications/cars.svg#ks-body-type"></use>
-                                            </svg>{{$ads[0]->color}} 
+                                            </svg>{{@$ads[0]->color}} 
                                         </li>
                                         <li>
                                             <svg class="key-specifications__icon">
                                             <use xlink:href="/images/svg/key-specifications/cars.svg#ks-mileage"></use>
-                                            </svg>{{$ads[0]->milage}}  miles
+                                            </svg>{{@$ads[0]->milage}}  miles
                                         </li>
                                         <li>
                                             <svg class="key-specifications__icon">
                                             <use xlink:href="/images/svg/key-specifications/cars.svg#ks-engine-size"></use>
-                                            </svg>{{substr($ads[0]->derivative, 0, 3)}} L
+                                            </svg>{{@substr($ads[0]->derivative, 0, 3)}} L
                                         </li>
                                         <li>
                                             <svg class="key-specifications__icon">
                                             <use xlink:href="/images/svg/key-specifications/cars.svg#ks-transmission"></use>
-                                            </svg>{{$ads[0]->Transmission}}
+                                            </svg>{{@$ads[0]->Transmission}}
                                         </li>
                                         <li>
                                             <svg class="key-specifications__icon">
                                             <use xlink:href="/images/svg/key-specifications/cars.svg#ks-fuel-type"></use>
-                                            </svg>{{$ads[0]->FuelType}}
+                                            </svg>{{@$ads[0]->FuelType}}
                                         </li>
                                         <li>
                                             <svg class="key-specifications__icon">
@@ -206,7 +206,7 @@ function showSlides(n) {
                                 </div>
                                 <br>
                                 <p class=" mt-5  atc-type-picanto">
-                                   {{$ads[0]->Detail}}
+                                   {{@$ads[0]->Detail}}
                                 </p>
                             </div>
                         </div>
@@ -322,12 +322,12 @@ function showSlides(n) {
 
                                          @if($ads[0]->Approved_id == 2 && $ads[0]->Delete_id == 2)
 
-                                        <a  class="cs-button  cs-btn-primary approvedAd">Approved</a>
+                                        <a  class="cs-button  cs-btn-primary approvedAd">Approve</a>
                                         <a  class="cs-button cs-btn-tertiary deleteAd" data-adid="{{$ads[0]->id}}">Delete</a>
                                        
                                         @elseif($ads[0]->Approved_id == 2)
                                        
-                                        <a  class="cs-button  cs-btn-primary approvedAd">Approved</a>
+                                        <a  class="cs-button  cs-btn-primary approvedAd">Approve</a>
                                        
                                         @elseif($ads[0]->Delete_id == 2)
                                         <!-- <a class="btn btn-success" href=""></a> -->
