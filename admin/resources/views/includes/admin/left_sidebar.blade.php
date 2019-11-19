@@ -28,11 +28,10 @@
 
             <li class="treeview">
               <a href="#">
-                
                 <i class="fa fa-lg fa-audio-description"></i>
                 <span> &nbsp; Management</span>
                 <span class="pull-right-container">
-                  <!-- <span class="label label-primary pull-right">4</span> -->
+                 <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
@@ -51,7 +50,7 @@
                 <i class="fa fa-users"></i>
                 <span>Users Management</span>
                 <span class="pull-right-container">
-                  <!-- <span class="label label-primary pull-right">4</span> -->
+                <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
@@ -61,6 +60,58 @@
               
               </ul>
             </li>
-  
+
+                <!----------------------- Vehicals details --------------------->
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-car"></i> <span>Vehicle Details</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    
+                    <li><a href="{{ route('VehicleFeatures.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle features</a></li>
+                    <li><a href="{{ route('VehicleMakes.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle makes</a></li>
+                    <li><a href="{{ route('VehicleModel.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle model</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i>Vehicle variant</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i>Vehicle derivative</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i>Vehicle trim</a></li>
+                    <li><a href="{{ route('VehicleBodytype.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle bodyType</a></li>
+                    <li><a href="{{ route('VehicleFueltype.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle fuelType</a></li>
+                    <li><a href="{{ route('VehicleTransmission.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle transmission</a></li>
+                           
+                         <!-- Multilevel side menu -->
+
+                                    <!-- <li class="treeview">
+                                            <a href="#"><i class="fa  fa-circle-o text-red"></i> Bikes
+                                                <span class="pull-right-container">
+                                                <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                            </a>
+                                            <ul class="treeview-menu">
+                                                <li><a href="#"><i class="fa fa-circle-o"></i>bike features</a></li>
+                                                <li><a href="#"><i class="fa fa-circle-o"></i>bike makes</a></li>
+                                                <li><a href="#"><i class="fa fa-circle-o"></i>bike model</a></li>
+                                                <li><a href="#"><i class="fa fa-circle-o"></i>bike bodyType</a></li>
+                                            </ul>
+                                            <li class="treeview">
+                                                <a href="#"><i class="fa fa-circle-o"></i> Level Two
+                                                    <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                    </span>
+                                                </a>
+                                                <ul class="treeview-menu">
+                                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                                </ul>
+                                            </li>
+                                        </li> -->  
+                </ul>
+            </li> 
+
+
+
       </ul>
 </section>

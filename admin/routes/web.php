@@ -45,3 +45,55 @@ Route::get('/home/SellersDetails/{Sellers}', 'SellersController@Details')->name(
 
 Route::get('imgApprove/{carad_id}/{img_id}', 'imageController@approveImg')->name('imgApprove');
 Route::get('imgReject/{carad_id}/{img_id}','imageController@rejectImg')->name('imgReject');
+
+
+
+//-------------------------------- Vehicle-Details Routes --------------------------------------
+
+        //------ Vehicle Features---------------------------------//
+            Route::resource('VehicleFeatures','VehicleDetails\featureController');
+            Route::get('VehicleFeatures/show', 'VehicleDetails\featureController@show')->name('VehicleFeatures.show');
+            Route::post('VehicleFeatures/destroy', 'VehicleDetails\featureController@destroy')->name('VehicleFeatures.destroy');
+            Route::post('VehicleFeatures/edit', 'VehicleDetails\featureController@edit')->name('VehicleFeatures.edit');
+            Route::post('VehicleFeatures/update', 'VehicleDetails\featureController@update')->name('VehicleFeatures.update');
+            Route::post('VehicleFeatures/store', 'VehicleDetails\featureController@store')->name('VehicleFeatures.store');    
+
+        //------ Vehicle makes---------------------------------//
+            Route::resource('VehicleMakes','VehicleDetails\makeController');
+            Route::get('VehicleMakes/show', 'VehicleDetails\makeController@show')->name('VehicleMakes.show');
+            Route::post('VehicleMakes/destroy', 'VehicleDetails\makeController@destroy')->name('VehicleMakes.destroy');
+            Route::post('VehicleMakes/edit', 'VehicleDetails\makeController@edit')->name('VehicleMakes.edit');
+            Route::post('VehicleMakes/update', 'VehicleDetails\makeController@update')->name('VehicleMakes.update');
+            Route::post('VehicleMakes/store', 'VehicleDetails\makeController@store')->name('VehicleMakes.store');  
+        
+        //------ Vehicle model---------------------------------//
+            Route::resource('VehicleModel','VehicleDetails\modelController');
+            Route::get('VehicleModel/show', 'VehicleDetails\modelController@show')->name('VehicleModel.show');
+            Route::post('VehicleModel/destroy', 'VehicleDetails\modelController@destroy')->name('VehicleModel.destroy');
+            Route::post('VehicleModel/edit', 'VehicleDetails\modelController@edit')->name('VehicleModel.edit');
+            Route::post('VehicleModel/update', 'VehicleDetails\modelController@update')->name('VehicleModel.update');
+            Route::post('VehicleModel/store', 'VehicleDetails\modelController@store')->name('VehicleModel.store');       
+
+        //------ Vehicle BodyType---------------------------------//
+            Route::resource('VehicleBodytype','VehicleDetails\BodytypeController');
+            Route::get('VehicleBodytype/show', 'VehicleDetails\BodytypeController@show')->name('VehicleBodytype.show');
+            Route::post('VehicleBodytype/destroy', 'VehicleDetails\BodytypeController@destroy')->name('VehicleBodytype.destroy');
+            Route::post('VehicleBodytype/edit', 'VehicleDetails\BodytypeController@edit')->name('VehicleBodytype.edit');
+            Route::post('VehicleBodytype/update', 'VehicleDetails\BodytypeController@update')->name('VehicleBodytype.update');
+            Route::post('VehicleBodytype/store', 'VehicleDetails\BodytypeController@store')->name('VehicleBodytype.store');    
+         
+        //------ Vehicle BodyType---------------------------------//
+            Route::resource('VehicleFueltype','VehicleDetails\FueltypeController');
+            Route::get('VehicleFueltype/show', 'VehicleDetails\FueltypeController@show')->name('VehicleFueltype.show');
+            Route::post('VehicleFueltype/destroy', 'VehicleDetails\FueltypeController@destroy')->name('VehicleFueltype.destroy');
+            Route::post('VehicleFueltype/edit', 'VehicleDetails\FueltypeController@edit')->name('VehicleFueltype.edit');
+            Route::post('VehicleFueltype/update', 'VehicleDetails\FueltypeController@update')->name('VehicleFueltype.update');
+            Route::post('VehicleFueltype/store', 'VehicleDetails\FueltypeController@store')->name('VehicleFueltype.store');     
+
+        //------ Vehicle BodyType---------------------------------//
+            Route::resource('VehicleTransmission','VehicleDetails\TransmissionController');
+            Route::get('VehicleTransmission/show', 'VehicleDetails\TransmissionController@show')->name('VehicleTransmission.show');
+            Route::post('VehicleTransmission/destroy', 'VehicleDetails\TransmissionController@destroy')->name('VehicleTransmission.destroy');
+            Route::post('VehicleTransmission/edit', 'VehicleDetails\TransmissionController@edit')->name('VehicleTransmission.edit');
+            Route::post('VehicleTransmission/update', 'VehicleDetails\TransmissionController@update')->name('VehicleTransmission.update');
+            Route::post('VehicleTransmission/store', 'VehicleDetails\TransmissionController@store')->name('VehicleTransmission.store');    

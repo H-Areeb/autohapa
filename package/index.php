@@ -1,14 +1,8 @@
 <?php
-
- header("Cache-Control: no-cache, must-revalidate");
-	header('Access-Control-Allow-Origin: *');
-	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");	
-	 include_once('../includes/header.php');
-
-if(!isset($_SESSION['customer_id']) && !isset($_SESSION['customer_id2']) ){
-	
-	header("location: ../login/");
-}
+include_once("../includes/config.php");
+include_once("../includes/Auth.php");
+include_once("../includes/checkSession.php");
+include_once('../includes/header.php');
 	?>
 	
 	<style>
@@ -439,7 +433,7 @@ if(!isset($_SESSION['customer_id']) && !isset($_SESSION['customer_id2']) ){
             url:"../ajax/ajax_get_carpackages.php",
             dataType: "json",
             success: function (data) {
-				console.log(data);
+				// console.log(data);
 						// selecter = "<select id='selectOptions'>";
 						// options = "";
 						//data = JSON.parse(data);

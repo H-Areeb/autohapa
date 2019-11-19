@@ -1,27 +1,19 @@
 <?php 
+include_once("../includes/config.php");
+include_once("../includes/Auth.php");
+include_once("../includes/checkSession.php");
+include_once('../includes/header.php');
 
-// session_start();
-// include_once("config.php");
 
-    
-	 
-    include_once('../includes/header.php');
-
-    
-    
-if(!isset($_SESSION['customer_id']) && !isset($_SESSION['customer_id2']) ){
-    	header("Location: ../login/");
-    }
-
-	
-	
-	if(isset($_POST['regnum'])){
+   // die($_POST['hdregnum']);
+	if(isset($_POST['hdregnum'])){
 		
-		 $regnum = $_POST['regnum'];
-		 $type_id = $_POST['type_id'];
+		 $regnum = $_POST['hdregnum'];
+         $type_id = $_POST['typeid_L'];
+         //die($d_regnum);
 	}
 	
-//echo '<h1>'.$type_id.'</h1>';
+echo '<h1>'.$type_id.'</h1>';
 	
 
 	?>
@@ -45,7 +37,7 @@ if(!isset($_SESSION['customer_id']) && !isset($_SESSION['customer_id2']) ){
 	
 	
 	
-	<script src="http://autohapa.oneviewcrm.com/autohapa/assets/libs/jquery-ui/jquery-ui.min.js"></script>
+	<script src="<?= $site_url; ?>autohapa/assets/libs/jquery-ui/jquery-ui.min.js"></script>
 	
 	<script>
 	

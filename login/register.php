@@ -1,28 +1,27 @@
 <?php
 
- 
+
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["customer_id2"])){
-    header("location: ../sellmycar/");
-   exit();
+include_once("../includes/config.php");
+//include_once("../includes/Auth.php");
+
+// // Check if the user is already logged in, if yes then redirect him to welcome page
+if (isset($_SESSION["customer_id2"]) && isset($_SESSION["customer_id"])) {
+      header("location: ../index.php");
+      exit();
 }
-
-
- header("Cache-Control: no-cache, must-revalidate");
-	header('Access-Control-Allow-Origin: *');
-	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");	
-
 include_once('../includes/header.php');
+
 
 		$http_referer =$_SERVER['HTTP_REFERER'];
 		$description = '../description/';
 	?>
-		<link rel="stylesheet" href="http://autohapa.oneviewcrm.com/autohapa/assets/css/passtrength.css" >
+		<link rel="stylesheet" href="<?= $site_url; ?>autohapa/assets/css/passtrength.css" >
 	<script src="https://www.google.com/recaptcha/api.js?render=6Ldb5b0UAAAAAG3g_sNkQdsBXgzKMqfkmKNLCXzk"></script>
 	
 
 
-        <script src="http://autohapa.oneviewcrm.com/autohapa/assets/js/jquery.passtrength.js"></script>
+        <script src="<?= $site_url; ?>autohapa/assets/js/jquery.passtrength.js"></script>
 	
 	
 	<style>
@@ -255,7 +254,7 @@ include_once('../includes/header.php');
 $('#Rpwd').passtrength({
   minChars: 8,
    passwordToggle: true,
-  eyeImg : "http://autohapa.oneviewcrm.com/autohapa/assets/css/eye.svg", // toggle icon
+  eyeImg : "<?= $site_url; ?>autohapa/assets/css/eye.svg", // toggle icon
   tooltip: true,
   textWeak: "Weak",
   textMedium: "Medium",

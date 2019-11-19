@@ -1,4 +1,7 @@
-<?php include_once('../includes/header.php');
+<?php
+include_once("../includes/config.php");
+// include_once("../includes/Auth.php");
+include_once('../includes/header.php');
 
 if(isset($_REQUEST['Postcode']) || isset($_REQUEST['searchMake']) || isset($_REQUEST['searchModel']) ){
 	

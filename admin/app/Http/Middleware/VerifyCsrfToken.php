@@ -20,5 +20,12 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+        //'VehicleFeatures/destroy',
+        'VehicleFeatures/edit',
+        'VehicleMakes/edit',
+        'VehicleBodytype/edit',
+        'VehicleFueltype/edit',
+        'VehicleTransmission/edit',
+        'VehicleModel/edit',
     ];
 }

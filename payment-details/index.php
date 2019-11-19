@@ -1,26 +1,9 @@
-<?php 
-//session_start();
-header("Cache-Control: no-cache, must-revalidate");
-	header('Access-Control-Allow-Origin: *');
-	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");	
-	
-	
-	include_once('../includes/header.php'); 
-	
-	include_once("../includes/config.php");
-	
-	
-	
-	if(!isset($_SESSION['customer_id']) && !isset($_SESSION['customer_id2']) ){
-	
-	header("location: ../login/");
-}
-	
-	
-	
-	
-	
-	?>
+<?php
+include_once("../includes/config.php");
+include_once("../includes/Auth.php");
+include_once("../includes/checkSession.php");
+include_once('../includes/header.php');	
+?>
 
 	<style>
 		html, body {font-size: 14px;}

@@ -1,6 +1,6 @@
-<?php  header("Cache-Control: no-cache, must-revalidate");
-	header('Access-Control-Allow-Origin: *');
-	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");	
+<?php
+include_once("../../includes/config.php");
+//include_once("../includes/Auth.php");
 
 include_once('../../includes/header.php');
 
@@ -11,8 +11,8 @@ include_once('../../includes/header.php');
 		 <!--<link rel="stylesheet" href="http://autohapa.oneviewcrm.com/autohapa/assets/css/passtrength.css" />
 	    <script src="http://autohapa.oneviewcrm.com/autohapa/assets/js/jquery.passtrength.js"></script>-->
 	    
-	    <link rel="stylesheet" href="http://autohapa.oneviewcrm.com/autohapa/assets/css/passwordcheck.css" />
-	    <script src="http://autohapa.oneviewcrm.com/autohapa/assets/js/passwordcheck.js"></script>
+	    <link rel="stylesheet" href="<?= $site_url; ?>autohapa/assets/css/passwordcheck.css" />
+	    <script src="<?= $site_url; ?>autohapa/assets/js/passwordcheck.js"></script>
 	    
 	    <script src="https://www.google.com/recaptcha/api.js?render=6Ldb5b0UAAAAAG3g_sNkQdsBXgzKMqfkmKNLCXzk"></script>
 <hr />
@@ -229,7 +229,7 @@ ul.steps > li:not(:last-child):not(.past):before {
                                         <div class="col-sm-8">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" id="agreePolicy" class="custom-control-input" name="agreePolicy">
-                                                <label for="agreePolicy" class="custom-control-label">I agree with <a href="http://autohapa.oneviewcrm.com/autohapa/policies-terms/" target="_blank">Privacy Policy</a></label>
+                                                <label for="agreePolicy" class="custom-control-label">I agree with <a href="<?= $site_url; ?>autohapa/policies-terms/" target="_blank">Privacy Policy</a></label>
                                             </div>
                                             <div id="agreePolicyError" class="error"></div>
 					                    </div>

@@ -47,32 +47,32 @@ class SellersController extends Controller
             car_ad.`contactnumber` AS contact ,car_ad.`adsubtitle` AS subtitle , car_user.`name`AS sellerName ,
             car_ad.`isadminapproved_id` AS Approved_id , car_ad.`isdeleteyn_id` AS Delete_id 
             FROM car_ad
-        INNER JOIN car_lkptColour ON car_lkptColour.`id` = car_ad.`car_colourid`
-        INNER JOIN car_variant ON car_ad.`car_variantid` = car_variant.`id`
-        INNER JOIN car_derivative ON car_ad.`car_derivativeid` = car_derivative.`id`
-        INNER JOIN car_lkptfuel_type ON car_ad.`car_fueltypeid` = car_lkptfuel_type.`id`
-        INNER JOIN car_lkpttransmission ON car_ad.`car_transmissionid` = car_lkpttransmission.`id`
-        INNER JOIN car_user ON car_ad.`customer_id` = car_user.`id`
-        INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
+            INNER JOIN car_lkptColour ON car_lkptColour.`id` = car_ad.`car_colourid`
+            INNER JOIN car_variant ON car_ad.`car_variantid` = car_variant.`id`
+            INNER JOIN car_derivative ON car_ad.`car_derivativeid` = car_derivative.`id`
+            INNER JOIN car_lkptfuel_type ON car_ad.`car_fueltypeid` = car_lkptfuel_type.`id`
+            INNER JOIN car_lkpttransmission ON car_ad.`car_transmissionid` = car_lkpttransmission.`id`
+            INNER JOIN car_user ON car_ad.`customer_id` = car_user.`id`
+            INNER JOIN car_images ON car_images.`carad_id` = car_ad.`id` AND car_images.`ordinal` = 0
             WHERE car_ad.`customer_id` = "'.$seller.'"'));
             
              foreach($sellerads as $seller)
-                {
+             {
                 $selleradsid = $seller->id;
-                }
+             }
 
           if(isset($selleradsid))
-          {  
+            {  
               $adimg = DB::select(DB::raw('select * from car_images where carad_id = "'.$selleradsid.'"'));
               
               return view('sellers/SellerDetails',compact('sellerads','adimg','seller_info'));
-          }
-        else
-        {
-                    return view('sellers/SellerDetails',compact('seller_info'));
-        }
+            }
+          else
+            {
+                return view('sellers/SellerDetails',compact('seller_info'));
+            }
 
-        // 
+        
     
          //    return $ads;
         //  echo "<pre>"; print_r($ads);               

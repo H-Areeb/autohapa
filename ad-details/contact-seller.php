@@ -1,8 +1,10 @@
 <?php 
 
-
+include_once("../includes/config.php");
+include_once("../includes/Auth.php");
+// include_once("../includes/checkSession.php");
 include_once('../includes/header.php');
-include "../includes/config.php";
+
 if(isset($_REQUEST['ad-id'])){
 	
 		$carad_id= $_REQUEST['ad-id'];

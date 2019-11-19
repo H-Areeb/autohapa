@@ -1,14 +1,17 @@
-<?php 
-
-
+<?php
+include_once("../includes/config.php");
+//include_once("../includes/Auth.php");
 include_once('../includes/header.php');
-include "../includes/config.php";
+
+
+
+
 if(isset($_REQUEST['ad-id'])){
 	
 		$carad_id= $_REQUEST['ad-id'];
-			$type_id= $_REQUEST['type_id'];
+		@$type_id= $_REQUEST['type_id'];
 		$title= $_REQUEST['title'];
-		$main_img = $_REQUEST['main_img'];
+		@$main_img = $_REQUEST['main_img'];
 		//$images= json_decode($_POST['images']);
 		$price= $_REQUEST['price'];
 		
