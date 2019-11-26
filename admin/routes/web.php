@@ -89,6 +89,14 @@ Route::get('imgReject/{carad_id}/{img_id}','imageController@rejectImg')->name('i
             Route::post('VehicleDerivative/edit', 'VehicleDetails\derivativeController@edit')->name('VehicleDerivative.edit');
             Route::post('VehicleDerivative/update', 'VehicleDetails\derivativeController@update')->name('VehicleDerivative.update');
             Route::post('VehicleDerivative/store', 'VehicleDetails\derivativeController@store')->name('VehicleDerivative.store');     
+        
+        //------ Vehicle Trims---------------------------------//
+            Route::resource('VehicleTrim','VehicleDetails\trimController');
+            Route::get('VehicleTrim/show', 'VehicleDetails\trimController@show')->name('VehicleTrim.show');
+            Route::post('VehicleTrim/destroy', 'VehicleDetails\trimController@destroy')->name('VehicleTrim.destroy');
+            Route::post('VehicleTrim/edit', 'VehicleDetails\trimController@edit')->name('VehicleTrim.edit');
+            Route::post('VehicleTrim/update', 'VehicleDetails\trimController@update')->name('VehicleTrim.update');
+            Route::post('VehicleTrim/store', 'VehicleDetails\trimController@store')->name('VehicleTrim.store'); 
 
         //------ Vehicle BodyType---------------------------------//
             Route::resource('VehicleBodytype','VehicleDetails\BodytypeController');

@@ -29,5 +29,6 @@ class VerifyCsrfToken extends Middleware
         'VehicleModel/edit',
         'VehicleVariant/edit',
         'VehicleDerivative/edit',
+        'VehicleTrim/edit'
     ];
 }
