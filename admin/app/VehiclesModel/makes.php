@@ -9,6 +9,6 @@ class makes extends Model
     protected $table = 'car_make';
 
     protected $fillable = [
-        'name', 'type_id', 'isactiveynid'
+        'name', 'type_id', 'isactiveynid','ordinal'
        ];
 }

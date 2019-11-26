@@ -63,7 +63,7 @@ if(isset($_POST['action'])){
 		 }
 	
 	
-if($type_id == 1)
+if($type_id == 1 || $type_id == 3 || $type_id == 4)
 {	
         // ------------------ Query for Car -----------------------------------
 		

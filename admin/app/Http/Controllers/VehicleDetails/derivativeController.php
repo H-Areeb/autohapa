@@ -4,13 +4,13 @@ namespace App\Http\Controllers\VehicleDetails;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\VehiclesModel\derivative;
 use Illuminate\Support\Facades\DB;
-use App\VehiclesModel\models;
 use Validator;
 use Auth;
 use DataTables;
 
-class modelController extends Controller
+class derivativeController extends Controller
 {
     public function __construct()
     {
@@ -23,27 +23,36 @@ class modelController extends Controller
      */
     public function index(Request $request)
     {
-        $types = DB::select(DB::raw('select * from type where is_visible = 1'));
-        $makes = DB::select(DB::raw('select * from car_make where isactiveynid = 1'));
+        $types = DB::select(DB::raw('select id,name from type where is_visible = 1'));
+        $makes = DB::select(DB::raw('select id,name from car_make where isactiveynid = 1 '));
+        $models = DB::select(DB::raw('select id,name from car_model where isactiveynid = 1 '));
+        $variants = DB::select(DB::raw('select id,name from car_variant where isactiveynid = 1 '));
+        
         if ($request->ajax()) {
 
             
-            $Models = DB::select(DB::raw('select car_model.id AS id , car_model.name AS Model , car_make.name AS Make ,
-             type.name AS type , car_model.isactiveynid AS statusid
-             from car_model 
-             INNER JOIN type ON type.id = car_model.type_id 
-             INNER JOIN car_make ON car_make.id = car_model.car_makeid 
-             where type.is_visible = 1 order by car_model.id DESC'));
+            $Derivative = DB::select(DB::raw('select car_derivative.id AS id , car_derivative.name AS Derivative ,
+            car_variant.name AS Variant ,
+             car_model.name AS Model, car_make.name AS Make ,
+             type.name AS type , car_derivative.isactiveynid AS statusid
+             from car_derivative 
+             INNER JOIN car_variant ON car_variant.id = car_derivative.car_variantid 
+             INNER JOIN type ON type.id = car_derivative.type_id 
+             INNER JOIN car_model ON car_model.id = car_derivative.car_modelid 
+             INNER JOIN car_make ON car_make.id = car_derivative.car_makeid 
+
+
+             where type.is_visible = 1 order by car_derivative.id DESC'));
             
             
-             return Datatables::of($Models)
-                    ->with(compact('types','makes'))
+             return Datatables::of($Derivative)
+                    ->with(compact('types','makes','models','variants'))
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
-                           $btn = '<button   data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit"><i class="fa fa-edit"></i> Edit</button>';
+                           $btn = '<button data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm edit"><i class="fa fa-edit"></i> Edit</button>';
    
-                           $btn = $btn.' <button   data-id="'.$row->id.'" data-original-title="Delete" onclick="featuredelete(this)" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i> Delete</button>';
+                           $btn = $btn.'<button data-id="'.$row->id.'" data-original-title="Delete" onclick="featuredelete(this)" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i> Delete</button>';
     
                         return $btn;
                     })
@@ -61,13 +70,14 @@ class modelController extends Controller
                             
                             return $label;
                                             })
-                    ->rawColumns(['types','statusid','action'])
+                    ->rawColumns(['type','statusid','action'])
                     ->make(true);
         }
       
-       return view('vehicle_details/model',compact('types','makes'));
+       return view('vehicle_details/derivative',compact('types','makes','models','variants'));
     }
-
+    
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -87,7 +97,7 @@ class modelController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'model_name' => 'required',
+            'derivative_name' => 'required',
             'select_make' => 'required',
             'select_type2' => 'required',
             'ordinal' => 'required',
@@ -102,16 +112,18 @@ class modelController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
         $form_data = array(
-            'name' => $request->model_name,
+            'name' => $request->derivative_name,
             'type_id' => $request->select_type2,
             'car_makeid' => $request->select_make,
+            'car_modelid' => $request->select_model,
+            'car_variantid' => $request->select_variant,
             'ordinal' => $request->ordinal,
             'isactiveynid' => $request->status
         );
         
-        models::create($form_data);
+        derivative::create($form_data);
 
-        return response()->json(['success'=>"Vehicle 's Model Add successfully!."]);
+        return response()->json(['success'=>"Vehicle 's Derivative Add successfully!."]);
     }
 
     /**
@@ -122,25 +134,41 @@ class modelController extends Controller
      */
     public function show(Request $request)
     {
+        
         if($request->type_id2 != null)
         {
-            
             $typeid = $request->type_id2;
             $makes = DB::select(DB::raw('select id,name from car_make where isactiveynid = 1 AND type_id ="'.$typeid.'"'));
             return response()->json(['makes'=>$makes]);
         }
+        if($request->make_id != null)
+        {
+           $makeid = $request->make_id;
+        $models = DB::select(DB::raw('select id,name from car_model where isactiveynid = 1  AND car_makeid ="'.$makeid.'" '));
+        return response()->json(['models'=>$models]);
+        }
+        if($request->model_id != null)
+        {
+           $modelid = $request->model_id;
+        $variants = DB::select(DB::raw('select id,name from car_variant where isactiveynid = 1  AND car_modelid ="'.$modelid.'" '));
+        return response()->json(['models'=>$variants]);
+        }
+
 
         $typeid = $request->type_id;
 
-        $Models = DB::select(DB::raw('select car_model.id AS id , car_model.name AS Model , car_make.name AS Make ,
-             type.name AS type , car_model.isactiveynid AS statusid
-             from car_model 
-             INNER JOIN type ON type.id = car_model.type_id 
-             INNER JOIN car_make ON car_make.id = car_model.car_makeid 
-             where type.is_visible = 1 AND  car_model.type_id = "'.$typeid.'" order by car_model.id DESC'));
+        $Derivative = DB::select(DB::raw('select car_derivative.id AS id , car_derivative.name AS Derivative ,
+        car_variant.name AS Variant ,car_model.name AS Model, car_make.name AS Make ,
+        type.name AS type , car_derivative.isactiveynid AS statusid
+        from car_derivative 
+        INNER JOIN type ON type.id = car_derivative.type_id 
+        INNER JOIN car_variant ON car_variant.id = car_derivative.car_variantid 
+        INNER JOIN car_model ON car_model.id = car_derivative.car_modelid 
+        INNER JOIN car_make ON car_make.id = car_derivative.car_makeid  
+             where type.is_visible = 1 AND  car_derivative.type_id = "'.$typeid.'" order by car_derivative.id DESC'));
         
         
-         return Datatables::of($Models)
+         return Datatables::of($Derivative)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
@@ -180,8 +208,7 @@ class modelController extends Controller
        
         if(request()->ajax())
         {
-           
-            $data = models::where('id','=',$id)->first();
+            $data = derivative::where('id','=',$id)->first();
 
             return response()->json(['data' => $data]);
         }
@@ -198,9 +225,9 @@ class modelController extends Controller
     {
 
         $rules = array(
-            'model_name' => 'required',
-            'select_type2' => 'required',
+            'derivative_name' => 'required',
             'select_make' => 'required',
+            'select_type2' => 'required',
             'ordinal' => 'required',
             'status' => 'required'
         );
@@ -213,16 +240,18 @@ class modelController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
         $form_data = array(
-            'name' => $request->model_name,
+            'name' => $request->derivative_name,
             'type_id' => $request->select_type2,
             'car_makeid' => $request->select_make,
+            'car_modelid' => $request->select_model,
+            'car_variantid' => $request->select_variant,
             'ordinal' => $request->ordinal,
             'isactiveynid' => $request->status
         );
         
-        models::whereId($request->hidden_id)->update($form_data);
+        derivative::whereId($request->hidden_id)->update($form_data);
 
-        return response()->json(['success'=>"Vehicle 's Model update successfully!."]);
+        return response()->json(['success'=>"Vehicle 's Derivative update successfully!."]);
        
     }
 
@@ -234,16 +263,17 @@ class modelController extends Controller
      */
     public function destroy(Request $request) 
     {
-        $model_id = $request->model_id;
+        $derivative_id = $request->derivative_id;
          
-        $modelDelete =   models::where('id',$model_id)->first();
+        $derivativeDelete =   derivative::where('id',$derivative_id)->first();
             
-         if($modelDelete != null)
+         if($derivativeDelete != null)
             {
-                $modelDelete->delete();
-                return  response()->json(['success'=>"Vehicle's Model deleted successfully!."]);
+                $derivativeDelete->delete();
+                return  response()->json(['success'=>"Vehicle's Derivative delete "]);
             }
 
-        return  response()->json(['errors'=>'Model ID is wrong!']);
+        return  response()->json(['errors'=>'Derivative ID is wrong!']);
+
     }
 }

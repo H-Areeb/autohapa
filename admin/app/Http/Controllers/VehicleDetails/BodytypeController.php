@@ -43,24 +43,25 @@ class BodytypeController extends Controller
     
                         return $btn;
                     })
+                    ->editColumn('type', function($row){return '<h5><span class="label label-default">'.$row->type.'</span></h5>';})
                     ->editColumn('statusid', function($row){ 
                         
                             if($row->statusid == 1)
                             {
-                                $label ='<span class="label label-info">Active</span>';
+                                $label ='<h5><span class="label label-info">Active</span></h5>';
                             }
                             else
                             { 
-                                $label ='<span class="label label-warning">disabled</span>';
+                                $label ='<h5><span class="label label-warning">Disabled</span></h5>';
                             }
                             
                             return $label;
                                             })
-                    ->rawColumns(['statusid','action'])
+                    ->rawColumns(['type','statusid','action'])
                     ->make(true);
         }
       
-       return view('vehicle_details/bodytype',compact('type'));
+       return view('vehicle_details/bodytype',compact('types'));
     }
 
     /**
@@ -84,6 +85,7 @@ class BodytypeController extends Controller
         $rules = array(
             'bodyType' => 'required',
             'select_type2' => 'required',
+            'ordinal'=>'required',
             'status' => 'required'
         );
 
@@ -97,6 +99,7 @@ class BodytypeController extends Controller
         $form_data = array(
             'name' => $request->bodyType,
             'type_id' => $request->select_type2,
+            'ordinal'=>  $request->ordinal,
             'isactiveynid' => $request->status
         );
         
@@ -133,20 +136,21 @@ class BodytypeController extends Controller
     
                         return $btn;
                     })
+                    ->editColumn('type', function($row){return '<h5><span class="label label-default">'.$row->type.'</span></h5>';})
                     ->editColumn('statusid', function($row){ 
                         
                             if($row->statusid == 1)
                             {
-                                $label ='<span class="label label-info">Active</span>';
+                                $label ='<h5><span class="label label-info">Active</span></h5>';
                             }
                             else
                             { 
-                                $label ='<span class="label label-warning">disabled</span>';
+                                $label ='<h5><span class="label label-warning">Disabled</span></h5>';
                             }
                             
                             return $label;
                                             })
-                    ->rawColumns(['statusid','action'])
+                    ->rawColumns(['type','statusid','action'])
                     ->make(true);
     }
 
@@ -162,18 +166,9 @@ class BodytypeController extends Controller
        
         if(request()->ajax())
         {
-            //$data = vehicleFeatures::findOrFail($id);
-            
-            $data = DB::select(DB::raw('select car_lkptbody_type.id AS id , car_lkptbody_type.name AS bodyType , 
-            car_lkptbody_type.type_id AS type_id, car_lkptbody_type.isactiveynid AS statusid
-             from car_lkptbody_type INNER JOIN type ON type.id = car_lkptbody_type.type_id where type.is_visible = 1
-             AND  car_lkptbody_type.id = "'.$id.'" order by car_lkptbody_type.id desc '));
+           
+            $data = bodytype::where('id','=',$id)->first();
 
-         if(count($data) > 0){
-             $data = $data[0];
-         }else{
-             $data = NULL;
-         }
             return response()->json(['data' => $data]);
         }
     }
@@ -191,6 +186,7 @@ class BodytypeController extends Controller
         $rules = array(
             'bodyType' => 'required',
             'select_type2' => 'required',
+            'ordinal'=>'required',
             'status' => 'required'
         );
 
@@ -204,6 +200,7 @@ class BodytypeController extends Controller
         $form_data = array(
             'name' => $request->bodyType,
             'type_id' => $request->select_type2,
+            'ordinal'=>$request->ordinal,
             'isactiveynid' => $request->status
         );
         

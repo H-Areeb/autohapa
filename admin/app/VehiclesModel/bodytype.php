@@ -9,6 +9,6 @@ class bodytype extends Model
     protected $table = 'car_lkptbody_type';
 
     protected $fillable = [
-        'name', 'type_id', 'isactiveynid'
+        'name', 'type_id', 'isactiveynid','ordinal'
        ];
 }

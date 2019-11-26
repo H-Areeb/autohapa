@@ -43,24 +43,25 @@ class FueltypeController extends Controller
     
                         return $btn;
                     })
+                    ->editColumn('type', function($row){return '<h5><span class="label label-default">'.$row->type.'</span></h5>';})
                     ->editColumn('statusid', function($row){ 
                         
                             if($row->statusid == 1)
                             {
-                                $label ='<span class="label label-info">Active</span>';
+                                $label ='<h5><span class="label label-info">Active</span></h5>';
                             }
                             else
                             { 
-                                $label ='<span class="label label-warning">disabled</span>';
+                                $label ='<h5><span class="label label-warning">Disabled</span></h5>';
                             }
                             
                             return $label;
                                             })
-                    ->rawColumns(['statusid','action'])
+                    ->rawColumns(['type','statusid','action'])
                     ->make(true);
         }
       
-       return view('vehicle_details/fueltype',compact('type'));
+       return view('vehicle_details/fueltype',compact('types'));
     }
 
     /**
@@ -133,20 +134,21 @@ class FueltypeController extends Controller
     
                         return $btn;
                     })
+                    ->editColumn('type', function($row){return '<h5><span class="label label-default">'.$row->type.'</span></h5>';})
                     ->editColumn('statusid', function($row){ 
                         
                             if($row->statusid == 1)
                             {
-                                $label ='<span class="label label-info">Active</span>';
+                                $label ='<h5><span class="label label-info">Active</span></h5>';
                             }
                             else
                             { 
-                                $label ='<span class="label label-warning">disabled</span>';
+                                $label ='<h5><span class="label label-warning">Disabled</span></h5>';
                             }
                             
                             return $label;
                                             })
-                    ->rawColumns(['statusid','action'])
+                    ->rawColumns(['type','statusid','action'])
                     ->make(true);
     }
 
@@ -158,24 +160,17 @@ class FueltypeController extends Controller
      */
     public function edit(Request $request)
     {
-        $id = $request->id;
+        
+             $id = $request->id;
        
-        if(request()->ajax())
-        {
-            //$data = vehicleFeatures::findOrFail($id);
-            
-            $data = DB::select(DB::raw('select car_lkptfuel_type.id AS id , car_lkptfuel_type.name AS fuelType , 
-            car_lkptfuel_type.type_id AS type_id, car_lkptfuel_type.isactiveynid AS statusid
-             from car_lkptfuel_type INNER JOIN type ON type.id = car_lkptfuel_type.type_id where type.is_visible = 1
-             AND  car_lkptfuel_type.id = "'.$id.'" order by car_lkptfuel_type.id desc '));
-
-         if(count($data) > 0){
-             $data = $data[0];
-         }else{
-             $data = NULL;
-         }
-            return response()->json(['data' => $data]);
-        }
+             if(request()->ajax())
+             {
+                
+                 $data = fueltype::where('id','=',$id)->first();
+     
+                 return response()->json(['data' => $data]);
+             }
+         
     }
 
     /**
@@ -191,6 +186,7 @@ class FueltypeController extends Controller
         $rules = array(
             'fuelType' => 'required',
             'select_type2' => 'required',
+            'ordinal'=> 'required',
             'status' => 'required'
         );
 
@@ -204,7 +200,8 @@ class FueltypeController extends Controller
         $form_data = array(
             'name' => $request->fuelType,
             'type_id' => $request->select_type2,
-            'isactiveynid' => $request->status
+            'isactiveynid' => $request->status,
+            'ordinal'=>$request->ordinal
         );
         
         fueltype::whereId($request->hidden_id)->update($form_data);

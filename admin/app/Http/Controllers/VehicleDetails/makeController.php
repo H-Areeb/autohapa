@@ -43,24 +43,25 @@ class makeController extends Controller
     
                         return $btn;
                     })
+                    ->editColumn('type', function($row){return '<h5><span class="label label-default">'.$row->type.'</span></h5>';})
                     ->editColumn('statusid', function($row){ 
                         
                             if($row->statusid == 1)
                             {
-                                $label ='<span class="label label-info">Active</span>';
+                                $label ='<h5><span class="label label-info">Active</span></h5>';
                             }
                             else
                             { 
-                                $label ='<span class="label label-warning">disabled</span>';
+                                $label ='<h5><span class="label label-warning">Disabled</span></h5>';
                             }
                             
                             return $label;
                                             })
-                    ->rawColumns(['statusid','action'])
+                    ->rawColumns(['type','statusid','action'])
                     ->make(true);
         }
       
-       return view('vehicle_details/makes',compact('type'));
+       return view('vehicle_details/makes',compact('types'));
     }
 
     /**
@@ -84,6 +85,7 @@ class makeController extends Controller
         $rules = array(
             'make_name' => 'required',
             'select_type2' => 'required',
+            'ordinal' => 'required',
             'status' => 'required'
         );
 
@@ -97,6 +99,7 @@ class makeController extends Controller
         $form_data = array(
             'name' => $request->make_name,
             'type_id' => $request->select_type2,
+            'ordinal'=> $request->ordinal,
             'isactiveynid' => $request->status
         );
         
@@ -133,20 +136,21 @@ class makeController extends Controller
     
                         return $btn;
                     })
+                    ->editColumn('type', function($row){return '<h5><span class="label label-default">'.$row->type.'</span></h5>';})
                     ->editColumn('statusid', function($row){ 
                         
                             if($row->statusid == 1)
                             {
-                                $label ='<span class="label label-info">Active</span>';
+                                $label ='<h5><span class="label label-info">Active</span></h5>';
                             }
                             else
                             { 
-                                $label ='<span class="label label-warning">disabled</span>';
+                                $label ='<h5><span class="label label-warning">Disabled</span></h5>';
                             }
                             
                             return $label;
                                             })
-                    ->rawColumns(['statusid','action'])
+                    ->rawColumns(['type','statusid','action'])
                     ->make(true);
     }
 
@@ -162,19 +166,17 @@ class makeController extends Controller
        
         if(request()->ajax())
         {
-            //$data = vehicleFeatures::findOrFail($id);
+            $id = $request->id;
+       
+            if(request()->ajax())
+            {
+               
+                $data = makes::where('id','=',$id)->first();
+    
+                return response()->json(['data' => $data]);
+            }
             
-            $data = DB::select(DB::raw('select car_make.id AS id , car_make.name AS Make , 
-            car_make.type_id AS type_id, car_make.isactiveynid AS statusid
-             from car_make INNER JOIN type ON type.id = car_make.type_id where type.is_visible = 1
-             AND  car_make.id = "'.$id.'" order by car_make.id desc '));
-
-         if(count($data) > 0){
-             $data = $data[0];
-         }else{
-             $data = NULL;
-         }
-            return response()->json(['data' => $data]);
+            
         }
     }
 
@@ -191,6 +193,7 @@ class makeController extends Controller
         $rules = array(
             'make_name' => 'required',
             'select_type2' => 'required',
+            'ordinal'=> 'required',
             'status' => 'required'
         );
 
@@ -204,6 +207,7 @@ class makeController extends Controller
         $form_data = array(
             'name' => $request->make_name,
             'type_id' => $request->select_type2,
+            'ordinal'=> $request->ordinal,
             'isactiveynid' => $request->status
         );
         

@@ -41,7 +41,7 @@
             <div  class="col-md-4"></div>
               <div align="center" class="col-md-4">
                 <form id="typeSearchForm" method="GET">
-                    <select class="form-control" id="select_type" name="select_type">
+                    <select class="form-control selectpicker" id="select_type" name="select_type" data-live-search="true">
                         <option value="1">select</option>
                     
                     </select>
@@ -113,17 +113,16 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4" >* Ordinal : </label>
+                        <div class="col-md-8">
+                        <input type="number" name="ordinal" id="ordinal" class="form-control" />
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-4 control-label ">* status:</label>
                         <div class="col-sm-8">
-                                <!-- <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="status" value="1" id="active" > active
-                                    </label>
-                                    <label class="btn btn-info">
-                                        <input type="radio" name="status" value="2" id="disabled" > disabled
-                                    </label>
-                                </div> -->
+                               
                                 <div class="switch-field">
                                     <input type="radio" id="active" name="status" value="1" checked/>
                                     <label for="active">Active</label>
@@ -133,8 +132,6 @@
                         </div>
                      </div>
 
-
-                    <br />
                     <div class="form-group" align="center">
                         <input type="hidden" name="action" id="action" />
                         <input type="hidden" name="hidden_id" id="hidden_id" />
@@ -403,10 +400,10 @@
                     dataType:"json",
                     success:function(html){
                     
-                        $('#transmission').val(html.data.transmission);
+                        $('#transmission').val(html.data.name);
                         $('#select_type2').val(html.data.type_id);
-                        //$('input[name=status]').val(html.data.statusid);
-                        if(html.data.statusid == 1){
+                        $('#ordinal').val(html.data.ordinal);
+                        if(html.data.isactiveynid == 1){
                             $("#active").prop("checked", true);
                         }else{
                             $("#disabled").prop("checked", true);

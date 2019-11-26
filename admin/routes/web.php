@@ -74,6 +74,22 @@ Route::get('imgReject/{carad_id}/{img_id}','imageController@rejectImg')->name('i
             Route::post('VehicleModel/update', 'VehicleDetails\modelController@update')->name('VehicleModel.update');
             Route::post('VehicleModel/store', 'VehicleDetails\modelController@store')->name('VehicleModel.store');       
 
+        //------ Vehicle Variant---------------------------------//
+            Route::resource('VehicleVariant','VehicleDetails\variantController');
+            Route::get('VehicleVariant/show', 'VehicleDetails\variantController@show')->name('VehicleVariant.show');
+            Route::post('VehicleVariant/destroy', 'VehicleDetails\variantController@destroy')->name('VehicleVariant.destroy');
+            Route::post('VehicleVariant/edit', 'VehicleDetails\variantController@edit')->name('VehicleVariant.edit');
+            Route::post('VehicleVariant/update', 'VehicleDetails\variantController@update')->name('VehicleVariant.update');
+            Route::post('VehicleVariant/store', 'VehicleDetails\variantController@store')->name('VehicleVariant.store'); 
+
+        //------ Vehicle Derivative---------------------------------//
+            Route::resource('VehicleDerivative','VehicleDetails\derivativeController');
+            Route::get('VehicleDerivative/show', 'VehicleDetails\derivativeController@show')->name('VehicleDerivative.show');
+            Route::post('VehicleDerivative/destroy', 'VehicleDetails\derivativeController@destroy')->name('VehicleDerivative.destroy');
+            Route::post('VehicleDerivative/edit', 'VehicleDetails\derivativeController@edit')->name('VehicleDerivative.edit');
+            Route::post('VehicleDerivative/update', 'VehicleDetails\derivativeController@update')->name('VehicleDerivative.update');
+            Route::post('VehicleDerivative/store', 'VehicleDetails\derivativeController@store')->name('VehicleDerivative.store');     
+
         //------ Vehicle BodyType---------------------------------//
             Route::resource('VehicleBodytype','VehicleDetails\BodytypeController');
             Route::get('VehicleBodytype/show', 'VehicleDetails\BodytypeController@show')->name('VehicleBodytype.show');
@@ -82,7 +98,7 @@ Route::get('imgReject/{carad_id}/{img_id}','imageController@rejectImg')->name('i
             Route::post('VehicleBodytype/update', 'VehicleDetails\BodytypeController@update')->name('VehicleBodytype.update');
             Route::post('VehicleBodytype/store', 'VehicleDetails\BodytypeController@store')->name('VehicleBodytype.store');    
          
-        //------ Vehicle BodyType---------------------------------//
+        //------ Vehicle Fueltype---------------------------------//
             Route::resource('VehicleFueltype','VehicleDetails\FueltypeController');
             Route::get('VehicleFueltype/show', 'VehicleDetails\FueltypeController@show')->name('VehicleFueltype.show');
             Route::post('VehicleFueltype/destroy', 'VehicleDetails\FueltypeController@destroy')->name('VehicleFueltype.destroy');
@@ -90,7 +106,7 @@ Route::get('imgReject/{carad_id}/{img_id}','imageController@rejectImg')->name('i
             Route::post('VehicleFueltype/update', 'VehicleDetails\FueltypeController@update')->name('VehicleFueltype.update');
             Route::post('VehicleFueltype/store', 'VehicleDetails\FueltypeController@store')->name('VehicleFueltype.store');     
 
-        //------ Vehicle BodyType---------------------------------//
+        //------ Vehicle Transmission---------------------------------//
             Route::resource('VehicleTransmission','VehicleDetails\TransmissionController');
             Route::get('VehicleTransmission/show', 'VehicleDetails\TransmissionController@show')->name('VehicleTransmission.show');
             Route::post('VehicleTransmission/destroy', 'VehicleDetails\TransmissionController@destroy')->name('VehicleTransmission.destroy');

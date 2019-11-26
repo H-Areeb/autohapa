@@ -17,7 +17,7 @@ if(isset($_REQUEST['Postcode']) || isset($_REQUEST['searchMake']) || isset($_REQ
 		
 		
 		echo'<input type="hidden" id="check_id" value="1">';
-		
+		@$type_id = $_REQUEST['type_id'];
 	}
 
 

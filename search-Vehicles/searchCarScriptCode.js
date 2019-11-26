@@ -216,7 +216,7 @@ function filter_data() {
                     div_data += '  <div class="row"><div class="col-lg-4"><a href="../ad-details/?ad-id=' + obj.id + '&title=' + obj.title + '&price=' + obj.price + '&main_img=' + obj.image + '" ><img src="../assets/' + obj.image + '" alt="" class="img-fluid" /></a></div>';
 
                     div_data += '<div class="col-lg-8"><div class="row"><div class="col-lg-9" style="border-right:1px solid #ccc">';
-                    div_data += ' <h4 class="title text-left"><a href="../ad-details/?ad-id=' + obj.id + '&title=' + obj.title + '&price=' + obj.price + '&main_img=' + obj.image + '" >' + obj.title.substr(0, 20) + '...</a></h4>';
+                    div_data += ' <h4 class="title text-left"><a href="../ad-details/?ad-id=' + obj.id + '&title=' + obj.title + '&price=' + obj.price + '&main_img=' + obj.image + '" >' + obj.title + '</a></h4>';
                     div_data += ' <p class="blockquote mt-2 tagss" >' + obj.milage + ' miles | ' + obj.color + ' | ' + obj.variant + ' |' + obj.Transmission + ' | ' + obj.FuelType + '</p>';
                     div_data += ' <p style="font-size:12px;">' + obj.Detail + '</p><p style="font-size:12px;">Four wheel-drive, Grey...</p></div>';
 
@@ -363,7 +363,7 @@ function for_makes(getmake) {
                     div_data += '  <div class="row"><div class="col-lg-4"><a href="../ad-details/?ad-id=' + obj.id + '&title=' + obj.title + '&price=' + obj.price + '&main_img=' + obj.image + '" ><img src="../assets/' + obj.image + '" alt="" class="img-fluid" /></a></div>';
 
                     div_data += '<div class="col-lg-8"><div class="row"><div class="col-lg-9" style="border-right:1px solid #ccc">';
-                    div_data += ' <h4 class="title text-left"><a href="../ad-details/?ad-id=' + obj.id + '&title=' + obj.title + '&price=' + obj.price + '&main_img=' + obj.image + '" >' + obj.title.substr(0, 20) + '...</a></h4>';
+                    div_data += ' <h4 class="title text-left"><a href="../ad-details/?ad-id=' + obj.id + '&title=' + obj.title + '&price=' + obj.price + '&main_img=' + obj.image + '" >' + obj.title+ '</a></h4>';
                     div_data += ' <p class="blockquote mt-2 tagss" >' + obj.milage + ' miles | ' + obj.color + ' | ' + obj.variant + ' |' + obj.Transmission + ' | ' + obj.FuelType + '</p>';
                     div_data += ' <p style="font-size:12px;">' + obj.Detail + '</p><p style="font-size:12px;">Four wheel-drive, Grey...</p></div>';
 
@@ -420,7 +420,7 @@ function for_models(getmodel) {
                     div_data += '  <div class="row"><div class="col-lg-4"><a href="../ad-details/?ad-id=' + obj.id + '&title=' + obj.title + '&price=' + obj.price + '&main_img=' + obj.image + '" ><img src="../assets/' + obj.image + '" alt="" class="img-fluid" /></a></div>';
 
                     div_data += '<div class="col-lg-8"><div class="row"><div class="col-lg-9" style="border-right:1px solid #ccc">';
-                    div_data += ' <h4 class="title text-left"><a href="../ad-details/?ad-id=' + obj.id + '&title=' + obj.title + '&price=' + obj.price + '&main_img=' + obj.image + '" >' + obj.title.substr(0, 20) + '...</a></h4>';
+                    div_data += ' <h4 class="title text-left"><a href="../ad-details/?ad-id=' + obj.id + '&title=' + obj.title + '&price=' + obj.price + '&main_img=' + obj.image + '" >' + obj.title+ '</a></h4>';
                     div_data += ' <p class="blockquote mt-2 tagss" >' + obj.milage + ' miles | ' + obj.color + ' | ' + obj.variant + ' |' + obj.Transmission + ' | ' + obj.FuelType + '</p>';
                     div_data += ' <p style="font-size:12px;">' + obj.Detail + '</p><p style="font-size:12px;">Four wheel-drive, Grey...</p></div>';
 

@@ -9,6 +9,6 @@ class fueltype extends Model
     protected $table = 'car_lkptfuel_type';
 
     protected $fillable = [
-        'name', 'type_id', 'isactiveynid'
+        'name', 'type_id', 'isactiveynid','ordinal'
        ];
 }

@@ -1,11 +1,10 @@
 <?php
-include_once("includes/config.php");
-include_once("includes/Auth.php");
+include_once('includes/config.php');
+include_once('includes/Auth.php');
 include_once('includes/header.php');
 
-
 ?>
-<input type="hidden" id="type_ids" name="type_id" value="1">
+<input type="hidden" id="type_ids" name="type_id" value="<?= $vtype_id ;?>">
 
 <div class="home-slider-wrapper">
       <div class="home-slider-outer">
@@ -32,11 +31,10 @@ include_once('includes/header.php');
                                                       </div>
 
                                                       <div class="col-lg-5 pl-2">
-                                                            <form id="search-form" method="POST" action="searchCar/">
+                                                            <form id="search-form" method="POST" action="<?= $site_url;?>autohapa/search-Vehicles/">
 
                                                                   <input type="hidden" id="carad_id" value="">
-                                                                  <input type="hidden" id="type_id" name="type_id"
-                                                                        value="1">
+                                                                  <input type="hidden" id="type_id" name="type_id"  value="<?= $vtype_id ;?>">
                                                                   <h3>New & Used Cars</h3>
                                                                   <div class="form-row">
 
@@ -127,82 +125,7 @@ include_once('includes/header.php');
                   </div>
             </div>
       </div>
-      <!--
-		<div class="slider-content">
-
-			<div class="container">
-				<div class="slider-content-outer">
-					<div class="row align-items-center slider-content-inner m-0">
-
-						<div class="col-md-7">
-							<div class="text-block">
-								<h1>Go All In AutoHapa</h1>
-								<p>Auto dealers, vehicle owners, for sale by owner, all kind of auto including trucks, cars, moto pikes, trailers, boats, vans and so on.</p>
-								<a href="" class="btn btn-blue">Find Out More <i class="fa fa-long-arrow-right"></i></a>
-							</div>
-						</div>
-
-						<div class="col-md-5">
-							<form action="" id="search-form">
-								<h3>New & Used Cars</h3>
-								<div class="form-row">
-
-									<div class="form-group col-md-6">
-										<input type="text" class="form-control" id="" placeholder="Enter Postcode*">
-									</div>
-									<div class="form-group col-md-6">
-										<select name="" id="" class="form-control">
-											<option value="">Distance(National)*</option>
-										</select>
-									</div>
-
-									<div class="form-group col-md-6">
-										<select name="" id="" class="form-control">
-											<option value="">Make(Any)*</option>
-										</select>
-									</div>
-									<div class="form-group col-md-6">
-										<select name="" id="" class="form-control">
-											<option value="">Model(Any)*</option>
-										</select>
-									</div>
-
-									<div class="form-group col-md-6">
-										<input type="text" class="form-control" id="" placeholder="Total Price*">
-									</div>
-									<div class="form-group col-md-6">
-										<input type="text" class="form-control" id="" placeholder="Monthly Price*">
-									</div>
-
-									<div class="form-group col-md-6">
-										<select name="" id="" class="form-control">
-											<option value="">Min Price*</option>
-										</select>
-									</div>
-									<div class="form-group col-md-6">
-										<select name="" id="" class="form-control">
-											<option value="">Max Price*</option>
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<input type="submit" class="btn btn-green" value="Search 500,000 Cars"> 
-								</div>
-								<div class="form-row">
-									<div class="col-md-6">
-										<button type="reset" class="btn btn-default">Reset Search</button>
-									</div>
-									<div class="col-md-6">
-										<button type="button" class="btn btn-default">More Options</button>
-									</div>
-								</div>
-							</form> <!-- /.search-form --
-						</div>
-
-					</div> <!-- /.slider-content-inner --
-				</div> <!-- /.slider-content-outer --
-			</div>
-		</div> <!-- /.slider-content -->
+     
 
 </div> <!-- /.home-slider-wrapper -->
 
@@ -212,7 +135,7 @@ include_once('includes/header.php');
                   <div class="col">
                         <header class="section-header bg-color-blue">
                               <h2>Featured Almost New Cars</h2>
-                              <a href="/autohapa/searchCar" class="view-all-link">View All</a>
+                              <a href="<?= $site_url;?>autohapa/search-Vehicles/?type_id=<?= urlencode($vtype_id );?>" class="view-all-link">View All</a>
                         </header>
                   </div>
             </div>
@@ -272,7 +195,7 @@ include_once('includes/header.php');
                   <div class="col">
                         <header class="section-header bg-color-green">
                               <h2>Latest Brand New Car Deals</h2>
-                              <a href="/autohapa/searchCar" class="view-all-link">View All</a>
+                              <a href="<?= $site_url;?>autohapa/search-Vehicles/?type_id=<?= urlencode($vtype_id );?>" class="view-all-link">View All</a>
                         </header>
                   </div>
             </div>
@@ -332,7 +255,7 @@ include_once('includes/header.php');
                   <div class="col">
                         <header class="section-header bg-color-blue">
                               <h2>Featured Used Cars</h2>
-                              <a href="/autohapa/searchCar" class="view-all-link">View All</a>
+                              <a href="<?= $site_url;?>autohapa/search-Vehicles/?type_id=<?= urlencode($vtype_id );?>" class="view-all-link">View All</a>
                         </header>
                   </div>
             </div>
@@ -394,19 +317,16 @@ include_once('includes/header.php');
                               <div>
                                     <h2><span style="color:#59b747;">Sell</span> Your <span
                                                 style="color:#59b747;">Car</span> Easily</h2>
-                                    <p style="font-size:1.375rem;">Every 60 seconds someone chooses to sell on Auto
-                                          Trader</p>
+                                    <p style="font-size:1.375rem;">Every 60 seconds someone chooses to sell on Auto Hapa</p>
                                     <form action="" id="sell-form">
                                           <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                       <label for="inputReg">Registration*</label>
-                                                      <input type="text" class="form-control" id="inputReg"
-                                                            placeholder="e.g. AT68SEL">
+                                                      <input type="text" class="form-control" id="inputReg" placeholder="e.g. AT68SEL">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                       <label for="inputMiles">Mileage*</label>
-                                                      <input type="text" class="form-control" id="inputMiles"
-                                                            placeholder="e.g. 1000">
+                                                      <input type="text" class="form-control" id="inputMiles" placeholder="e.g. 1000">
                                                 </div>
                                           </div>
                                           <input type="submit" class="btn btn-green" value="Sell Your Car">
@@ -465,7 +385,7 @@ include_once('includes/header.php');
             <div class="row">
                   <div class="col">
                         <header class="section-header bg-color-green">
-                              <h2>The latest from Auto Trader</h2>
+                              <h2>The latest from Auto Hapa</h2>
                         </header>
                   </div>
             </div>
@@ -476,7 +396,7 @@ include_once('includes/header.php');
                               <div class="content-outer">
                                     <div class="content d-flex flex-wrap align-items-end justify-content-between">
                                           <div>
-                                                <h4>Auto Trader Latest</h4>
+                                                <h4>Auto Hapa Latest</h4>
                                                 <h3>Coming Soon 2019 Ferrari 360</h3>
                                           </div>
                                           <a href="#" class="btn">Read</a>

@@ -41,7 +41,7 @@
             <div  class="col-md-4"></div>
               <div align="center" class="col-md-4">
                 <form id="typeSearchForm" method="GET">
-                    <select class="form-control" id="select_type" name="select_type">
+                    <select class="form-control selectpicker" id="select_type" name="select_type" data-live-search="true">
                         <option value="1">select</option>
                     
                     </select>
@@ -107,19 +107,26 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-4">* Select Make : </label>
-                        <div class="col-md-8">
-                            <select class="form-control" id="select_make" name="select_make">
-                                <option value=" ">select</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label class="control-label col-md-4">* Select type : </label>
                         <div class="col-md-8">
                             <select class="form-control" id="select_type2" name="select_type2">
                                 <option value=" ">select</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">* Select Make : </label>
+                        <div class="col-md-8">
+                            <select class="form-control selectpicker" id="select_make" name="select_make" data-live-search="true">
+                                <option value=" ">select</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label col-md-4" >* Ordinal : </label>
+                        <div class="col-md-8">
+                        <input type="number" name="ordinal" id="ordinal" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -190,7 +197,7 @@
                             dataType: "json",
                             success:function(result)
                             {
-                                console.log(result.makes);
+                        
                                 
                                     $.each(result.types, function(i, obj1){
                                         
@@ -207,6 +214,9 @@
                                             
                                     });
                                 
+
+                                    $('.selectpicker').selectpicker('refresh');
+
                                     $('#features-table').DataTable({
                                         processing: true,
                                         serverSide: true,
@@ -232,6 +242,25 @@
 
 
     // ------------------- SELECT TYPE GETTING DATA working START -----------------------------//
+
+                $('#select_type2').on('change', function(){
+                        var type_id2 = $(this).val();
+                        $('#select_make').html('');
+                    $.ajax({
+                            type:'GET',
+                            url:"{{ route('VehicleModel.show')}}",
+                            data:{type_id2:type_id2},
+                            success: function(result)
+                            {
+                                    $.each(result.makes, function(i, obj)
+                                    {
+                                        var options = '<option value="'+obj.id+'">'+obj.name+'</option>';   
+                                        $('#select_make').append(options);
+                                    });
+                            },
+
+                        });
+                 });   
 
                 $('#select_type').on('change', function () {
                     var type_id = $(this).val();
@@ -413,9 +442,10 @@
                     dataType:"json",
                     success:function(html){
                         $('#model_name').val(html.data.name);
-                        $('#select_make').val(html.data.car_makeid);
                         $('#select_type2').val(html.data.type_id);
-                        
+                        $('#select_make').val(html.data.car_makeid);
+                        $('#ordinal').val(html.data.ordinal);
+                        $('.selectpicker').selectpicker('refresh');
                         if(html.data.isactiveynid == 1){
                             $("#active").prop("checked", true);
                         }else{

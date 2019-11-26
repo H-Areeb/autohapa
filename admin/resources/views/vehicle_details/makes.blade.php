@@ -41,7 +41,7 @@
             <div  class="col-md-4"></div>
               <div align="center" class="col-md-4">
                 <form id="typeSearchForm" method="GET">
-                    <select class="form-control" id="select_type" name="select_type">
+                    <select class="form-control selectpicker" id="select_type" name="select_type" data-live-search="true">
                         <option value="1">select</option>
                     
                     </select>
@@ -111,6 +111,12 @@
                             <select class="form-control" id="select_type2" name="select_type2">
                                 <option value=" ">select</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4" >* Ordinal : </label>
+                        <div class="col-md-8">
+                        <input type="number" name="ordinal" id="ordinal" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -183,13 +189,13 @@
         // ------------------- ONLOAD AJAX CALL FOR GETTING DATA INTO DATATABLES -----------------------------//
 
          $(document).ready(function(){
-
+            $('.selectpicker').selectpicker('refresh');
                     $.ajax({
                             url : '{{ route('VehicleMakes.index') }}',
                             dataType: "json",
                             success:function(result)
                             {
-                                console.log(result.types);
+                  
                                 
                                     $.each(result.types, function(i, objs){
                                         
@@ -403,10 +409,11 @@
                     dataType:"json",
                     success:function(html){
                     
-                        $('#make_name').val(html.data.Make);
+                        $('#make_name').val(html.data.name);
                         $('#select_type2').val(html.data.type_id);
-                        //$('input[name=status]').val(html.data.statusid);
-                        if(html.data.statusid == 1){
+                        $('#ordinal').val(html.data.ordinal);
+                        
+                        if(html.data.isactiveynid == 1){
                             $("#active").prop("checked", true);
                         }else{
                             $("#disabled").prop("checked", true);

@@ -65,7 +65,7 @@
 
 //$MaxPrice= $_REQUEST['MaxPrice'];	
 	
-if($type_id == 1)
+if($type_id == 1 || $type_id == 3 || $type_id == 4)
 {	
     
     
@@ -264,7 +264,7 @@ else
 		
 		
 		
-		if($type_id == 1){
+		if($type_id == 1 || $type_id == 3 || $type_id == 4){
                         				
                             $CarSearchQuery = mysqli_query($conni,
                             'SELECT car_ad.`id` AS id , car_ad.`adtitle` AS title , car_ad.`adverttext` AS Detail ,   car_lkptColour.`name` AS color , car_variant.`name`  AS variant ,
@@ -356,7 +356,7 @@ else
 	function vehicle_models($conni,$getmodel_id,$type_id){
 		
         	
-    if($type_id == 1)    	
+    if($type_id == 1 || $type_id == 3 || $type_id == 4)   	
     {    	
         			
             $CarSearchQuery = mysqli_query($conni,

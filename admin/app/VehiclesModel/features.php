@@ -9,6 +9,6 @@ class features extends Model
     protected $table = 'car_feature';
 
     protected $fillable = [
-        'name', 'type_id', 'controltypeid'
+        'name', 'type_id', 'controltypeid','isactiveynid','ordinal'
        ];
 }

@@ -33,7 +33,11 @@
 
   <link rel="stylesheet" href="{{ asset('admin_assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
-  
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
+
+
   @yield('external_css')  
 
 
@@ -120,6 +124,9 @@
 <script src="{{ asset('admin_assets/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin_assets/dist/js/demo.js')}}"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
 
 <!-- DataTables -->
 <script src="{{ asset('admin_assets/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
@@ -129,6 +136,11 @@
 <!-- page script -->
 <script>
   $(function () {
+    // $.fn.selectpicker.Constructor.BootstrapVersion = '3.7';
+    $('.selectpicker').selectpicker({
+        
+        size: false
+    });
     //$('#adsTable').DataTable()
     $('#adsTable').DataTable({
       'paging'      : true,

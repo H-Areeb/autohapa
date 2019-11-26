@@ -30,7 +30,7 @@ class featureController extends Controller
 
             
             $Features = DB::select(DB::raw('select car_feature.id AS id , car_feature.name AS Feature , 
-            type.name AS type, car_feature.controltypeid AS controlid
+            type.name AS type,car_feature.isactiveynid AS statusid , car_feature.controltypeid AS controlid
              from car_feature INNER JOIN type ON type.id = car_feature.type_id where type.is_visible = 1 order by car_feature.id desc '));
             
             
@@ -45,28 +45,43 @@ class featureController extends Controller
     
                         return $btn;
                     })
-                    ->editColumn('controlid', function($row){ 
+                    ->editColumn('type', function($row){return '<h5><span class="label label-default">'.$row->type.'</span></h5>';})
+                    ->editColumn('statusid', function($row){ 
                         
-                            if($row->controlid == 1)
+                            if($row->statusid == 1)
                             {
-                                $label ='<span class="label label-info">checkbox</span>';
-                            }
-                            elseif($row->controlid == 2)
-                            {
-                                $label ='<span class="label label-warning">radio button</span>';
+                                $label ='<h5><span class="label label-info">Active</span></h5>';
                             }
                             else
                             { 
-                                $label ='<span class="label label-success">Select box</span>';
+                                $label ='<h5><span class="label label-warning">Disabled</span></h5>';
                             }
                             
                             return $label;
                                             })
-                    ->rawColumns(['controlid','action'])
-                    ->make(true);
+                ->editColumn('controlid', function($row){ 
+                    
+                        if($row->controlid == 1)
+                        {
+                            $label ='<span class="label label-info">checkbox</span>';
+                        }
+                        elseif($row->controlid == 2)
+                        {
+                            $label ='<span class="label label-warning">radio button</span>';
+                        }
+                        else
+                        { 
+                            $label ='<span class="label label-success">Select box</span>';
+                        }
+                        
+                        return $label;
+                                        })
+                ->rawColumns(['type','statusid','controlid','action'])
+                ->make(true);
+                 
         }
       
-       return view('vehicle_details/features',compact('type'));
+       return view('vehicle_details/features',compact('types'));
     }
 
     /**
@@ -90,7 +105,9 @@ class featureController extends Controller
         $rules = array(
             'feature_name' => 'required',
             'select_type2' => 'required',
-            'control_type' => 'required'
+            'control_type' => 'required',
+            'ordinal'=>'required',
+            'isactiveynid' => 'required'
         );
 
 
@@ -103,7 +120,9 @@ class featureController extends Controller
         $form_data = array(
             'name' => $request->feature_name,
             'type_id' => $request->select_type2,
-            'controltypeid' => $request->control_type
+            'controltypeid' => $request->control_type,
+            'ordinal'=>$request->ordinal,
+            'isactiveynid' => $request->status
         );
         
         features::create($form_data);
@@ -123,7 +142,7 @@ class featureController extends Controller
         $typeid = $request->type_id;
 
         $Features = DB::select(DB::raw('select car_feature.id AS id , car_feature.name AS Feature , 
-        type.name AS type, car_feature.controltypeid AS controlid
+        type.name AS type, car_feature.isactiveynid AS statusid, car_feature.controltypeid AS controlid
          from car_feature INNER JOIN type ON type.id = car_feature.type_id where 
          type.is_visible = 1 AND  car_feature.type_id = "'.$typeid.'" order by car_feature.id desc '));
         
@@ -138,6 +157,20 @@ class featureController extends Controller
 
                     return $btn;
                 })
+                ->editColumn('type', function($row){return '<h5><span class="label label-default">'.$row->type.'</span></h5>';})
+                    ->editColumn('statusid', function($row){ 
+                        
+                            if($row->statusid == 1)
+                            {
+                                $label ='<h5><span class="label label-info">Active</span></h5>';
+                            }
+                            else
+                            { 
+                                $label ='<h5><span class="label label-warning">Disabled</span></h5>';
+                            }
+                            
+                            return $label;
+                                            })
                 ->editColumn('controlid', function($row){ 
                     
                         if($row->controlid == 1)
@@ -155,7 +188,7 @@ class featureController extends Controller
                         
                         return $label;
                                         })
-                ->rawColumns(['controlid','action'])
+                ->rawColumns(['type','statusid','controlid','action'])
                 ->make(true);
     }
 
@@ -171,17 +204,9 @@ class featureController extends Controller
        
         if(request()->ajax())
         {
-            //$data = vehicleFeatures::findOrFail($id);
-            $data = DB::select(DB::raw('select car_feature.id AS id , car_feature.name AS Feature , 
-            car_feature.type_id AS type_id ,
-            type.name AS type, car_feature.controltypeid AS controlid
-            from car_feature INNER JOIN type ON type.id = car_feature.type_id where 
-            type.is_visible = 1 AND  car_feature.id = "'.$id.'" limit 1 '));
-         if(count($data) > 0){
-             $data = $data[0];
-         }else{
-             $data = NULL;
-         }
+           
+            $data = features::where('id','=',$id)->first();
+
             return response()->json(['data' => $data]);
         }
     }
@@ -199,7 +224,9 @@ class featureController extends Controller
         $rules = array(
             'feature_name' => 'required',
             'select_type2' => 'required',
-            'control_type' => 'required'
+            'control_type' => 'required',
+            'ordinal'=>'required',
+            'status' => 'required'
         );
 
 
@@ -212,7 +239,10 @@ class featureController extends Controller
         $form_data = array(
             'name' => $request->feature_name,
             'type_id' => $request->select_type2,
-            'controltypeid' => $request->control_type
+            'controltypeid' => $request->control_type,
+            'isactiveynid' => $request->status,
+            'ordinal'=>$request->ordinal,
+            'ordinal'=>$request->ordinal
         );
         
         features::whereId($request->hidden_id)->update($form_data);

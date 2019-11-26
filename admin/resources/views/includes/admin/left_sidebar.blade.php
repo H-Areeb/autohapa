@@ -71,16 +71,16 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    
-                    <li><a href="{{ route('VehicleFeatures.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle features</a></li>
-                    <li><a href="{{ route('VehicleMakes.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle makes</a></li>
-                    <li><a href="{{ route('VehicleModel.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle model</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i>Vehicle variant</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i>Vehicle derivative</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i>Vehicle trim</a></li>
-                    <li><a href="{{ route('VehicleBodytype.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle bodyType</a></li>
-                    <li><a href="{{ route('VehicleFueltype.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle fuelType</a></li>
-                    <li><a href="{{ route('VehicleTransmission.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle transmission</a></li>
+                
+                    <li><a href="{{ route('VehicleFeatures.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Features</a></li>
+                    <li><a href="{{ route('VehicleMakes.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Makes</a></li>
+                    <li><a href="{{ route('VehicleModel.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Model</a></li>
+                    <li><a href="{{ route('VehicleVariant.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Variant</a></li>
+                    <li><a href="{{ route('VehicleDerivative.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Derivative</a></li>
+                    <li><a href="{{ route('VehicleDerivative.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Trim</a></li>
+                    <li><a href="{{ route('VehicleBodytype.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Bodytype</a></li>
+                    <li><a href="{{ route('VehicleFueltype.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Fueltype</a></li>
+                    <li><a href="{{ route('VehicleTransmission.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Transmission</a></li>
                            
                          <!-- Multilevel side menu -->
 

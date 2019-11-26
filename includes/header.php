@@ -4,7 +4,10 @@
 $http_referer = @$_SERVER['HTTP_REFERER'];
 
 //echo'active '.@$_REQUEST['customer_id'];
-
+$page = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+// $page = 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
+  echo $page;
+  
 
 
 
@@ -83,7 +86,7 @@ else if (isset($_SESSION['Hcustomer_id'])) {
    //               $type_name = $row['name'];
    
    //           }
-   $vtype_id = 1;
+//    $vtype_id = 1;
    ?>
    <li><a href="<?= $site_url; ?>autohapa/">Cars</a>
    </li>
@@ -101,7 +104,29 @@ else if (isset($_SESSION['Hcustomer_id'])) {
    <li><a href="<?= $site_url; ?>plant">Plant</a></li>
    <li class="link-separator">|</li>
    <li><a href="#">Safety Advice</a></li>
-   <li><a href="<?= $site_url; ?>autohapa/selling/?vtype=<?= $vtype_id; ?>" class="btn btn-blue">SELL MY CAR</a></li>
+<?php 
+        if($page == $site_url.'autohapa/')
+        {
+            $vtype_id = 1;
+            echo'<li><a href='.$site_url.'autohapa/selling/?vtype='.$vtype_id.'" class="btn btn-blue">SELL MY CAR</a></li>';
+        }
+        else if($page == $site_url.'bikes/')
+        {
+            $vtype_id = 2; 
+            echo'<li><a href='.$site_url.'autohapa/selling/?vtype='.$vtype_id.'" class="btn btn-blue">SELL MY BIKE</a></li>';
+        }
+        else if($page == $site_url.'vans/')
+        {
+            $vtype_id = 3; 
+            echo'<li><a href='.$site_url.'autohapa/selling/?vtype='.$vtype_id.'" class="btn btn-blue">SELL MY VAN</a></li>';
+        }
+        else if($page == $site_url.'motorhomes/')
+        {
+            $vtype_id = 4; 
+            echo'<li><a href='.$site_url.'autohapa/selling/?vtype='.$vtype_id.'" class="btn btn-blue">SELL MOTORHOME</a></li>';
+        }
+ ?>
+   
    </ul>
    </div>
    </nav>

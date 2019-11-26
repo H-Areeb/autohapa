@@ -1,10 +1,9 @@
 <?php
-header("Cache-Control: no-cache, must-revalidate");
-	header('Access-Control-Allow-Origin: *');
-	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
-	include "../../includes/config.php";
-  include_once('../../includes/header.php');
+include_once("../../includes/config.php");
+include_once("../../includes/Auth.php");
+
+include_once('../../includes/header.php');
 
 echo'<hr>';
 

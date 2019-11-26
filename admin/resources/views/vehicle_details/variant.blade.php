@@ -7,12 +7,12 @@
 
 <section class="content-header">
       <h1>
-        Vehicle's FuelType 
-        <small>Vehicle's FuelType  List</small>
+        Vehicle Variants 
+        <small>Vehicle Models List</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Vehicle's FuelType </li>
+        <li class="active">Vehicle Variants</li>
       </ol>
     </section>
 
@@ -41,7 +41,7 @@
             <div  class="col-md-4"></div>
               <div align="center" class="col-md-4">
                 <form id="typeSearchForm" method="GET">
-                    <select class="form-control" id="select_type" name="select_type">
+                    <select class="form-control selectpicker" id="select_type" name="select_type" data-live-search="true">
                         <option value="1">select</option>
                     
                     </select>
@@ -61,6 +61,8 @@
                 <tr>
                   <th>Sr no</th>
                   <th>Name</th>
+                  <th>Makes</th>
+                  <th>Models</th>
                   <th>Type</th>
                   <th>Status</th>
                   <th>Actions</th>
@@ -100,15 +102,31 @@
                     <form method="post" id="sample_form" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label class="control-label col-md-4" >* FuelType  : </label>
+                        <label class="control-label col-md-4" >* Variant Name : </label>
                         <div class="col-md-8">
-                        <input type="text" name="fuelType" id="fuelType" class="form-control" />
+                        <input type="text" name="variant_name" id="variant_name" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-4">* Select type : </label>
                         <div class="col-md-8">
                             <select class="form-control" id="select_type2" name="select_type2">
+                                <option value=" ">select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4">* Select Make : </label>
+                        <div class="col-md-8">
+                            <select class="form-control selectpicker" id="select_make" name="select_make" data-live-search="true">
+                                <option value=" ">select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4"> Select Model : </label>
+                        <div class="col-md-8">
+                            <select class="form-control selectpicker" id="select_model" name="select_model" data-live-search="true">
                                 <option value=" ">select</option>
                             </select>
                         </div>
@@ -122,17 +140,15 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-4 control-label ">* status:</label>
                         <div class="col-sm-8">
-                            <div class="switch-field">
-                                <input type="radio" id="active" name="status" value="1" checked/>
-                                <label for="active">Active</label>
-                                <input type="radio" id="disabled" name="status" value="2" />
-                                <label for="disabled">Disabled</label>
-                            </div>
+                                <div class="switch-field">
+                                    <input type="radio" id="active" name="status" value="1" checked/>
+                                    <label for="active">Active</label>
+                                    <input type="radio" id="disabled" name="status" value="2" />
+                                    <label for="disabled">Disabled</label>
+                                </div>
                         </div>
                      </div>
 
-
-                    <br />
                     <div class="form-group" align="center">
                         <input type="hidden" name="action" id="action" />
                         <input type="hidden" name="hidden_id" id="hidden_id" />
@@ -183,29 +199,39 @@
          $(document).ready(function(){
 
                     $.ajax({
-                            url : '{{ route('VehicleFueltype.index') }}',
+                            url : '{{ route('VehicleVariant.index') }}',
                             dataType: "json",
                             success:function(result)
                             {
-                                console.log(result.types);
+                                //console.log(result.makes);
                                 
-                                    $.each(result.types, function(i, objs){
-                                        
-                                        var options = '<option value="'+objs.id+'">'+objs.name+'</option>';   
-                                        
-                                            $('#select_type').append(options);
-                                            $('#select_type2').append(options);
+                                    $.each(result.types, function(i, obj1){
+                                        var options = '<option value="'+obj1.id+'">'+obj1.name+'</option>';   
+                                        $('#select_type').append(options);
+                                        $('#select_type2').append(options);
                                     });
+
+                                    $.each(result.makes, function(i, obj){
+                                         var options = '<option value="'+obj.id+'">'+obj.name+'</option>';   
+                                         $('#select_make').append(options);
+                                     });
+                                    $.each(result.models, function(i, obj){
+                                         var options = '<option value="'+obj.id+'">'+obj.name+'</option>';   
+                                         $('#select_model').append(options);
+                                    });
+                                    
                                 
                                     $('#features-table').DataTable({
                                         processing: true,
                                         serverSide: true,
                                         columns:[
-                                                    { data: 'id', name: 'id', orderable: false },
-                                                    { data: 'fuelType', name: 'fuelType' },
-                                                    { data: 'type', name: 'type' },
-                                                    { data: 'statusid', name: 'statusid' },
-                                                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                                            { data: 'id', name: 'id', orderable: false },
+                                            { data: 'Variant', name:'Variant' },
+                                            { data: 'Model', name:'Model' },
+                                            { data: 'Make', name: 'Make' },
+                                            { data: 'type', name: 'type' },
+                                            { data: 'statusid', name: 'statusid' },
+                                            {data: 'action', name: 'action', orderable: false, searchable: false},
                                                 ],
                                                 
                                         });
@@ -222,6 +248,49 @@
 
     // ------------------- SELECT TYPE GETTING DATA working START -----------------------------//
 
+            $('#select_make').on('change', function(){
+                var make_id = $(this).val();
+                $('#select_model').html('');
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('VehicleVariant.show')}}",
+                    data: {make_id:make_id},
+                    success:function(result)
+                    {
+                        $.each(result.models, function(i, obj){
+                                        
+                            var options = '<option value="'+obj.id+'">'+obj.name+'</option>';   
+                            $('#select_model').append(options);
+                                                              
+                        });
+                    },
+
+                });
+            });
+
+
+            $('#select_type2').on('change', function(){
+                var type_id2 = $(this).val();
+                $('#select_make').html('');
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('VehicleVariant.show')}}",
+                    data: {type_id2:type_id2},
+                    success:function(result)
+                    {
+                        $.each(result.makes, function(i, obj){
+                                            
+                            var options = '<option value="'+obj.id+'">'+obj.name+'</option>';   
+                            $('#select_make').append(options);
+                                                                    
+                        });
+                    },
+
+                });
+                    
+            });
+            
+
                 $('#select_type').on('change', function () {
                     var type_id = $(this).val();
                     //alert(type_id);
@@ -235,12 +304,14 @@
                             serverSide: true,
                     ajax:{
                             type: "GET",
-                            url: "{{ route('VehicleFueltype.show')}}",
+                            url: "{{ route('VehicleVariant.show')}}",
                             data: {type_id:type_id},
                             },
                     columns:[
                                 { data: 'id', name: 'id', orderable: false },
-                                { data: 'fuelType', name: 'fuelType' },
+                                { data: 'Variant', name:'Variant' },
+                                { data: 'Model', name:'Model' },
+                                { data: 'Make', name: 'Make' },
                                 { data: 'type', name: 'type' },
                                 { data: 'statusid', name: 'statusid' },
                                 {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -288,7 +359,7 @@
                     $('#action_button').val("Loading...");
 
                 $.ajax({
-                    url:"{{ route('VehicleFueltype.store') }}",
+                    url:"{{ route('VehicleVariant.store') }}",
                     method:"POST",
                     data: new FormData(this),
                     contentType: false,
@@ -339,7 +410,7 @@
                         
 
                     $.ajax({
-                        url:"{{ route('VehicleFueltype.update') }}",
+                        url:"{{ route('VehicleVariant.update') }}",
                         method:"POST",
                         data:new FormData(this),
                         contentType: false,
@@ -396,19 +467,23 @@
         $('#form_result').html('');
             $.ajax({
                     type: "POST",
-                    url : '{{ route('VehicleFueltype.edit') }}',
+                    url : '{{ route('VehicleVariant.edit') }}',
                     data: {id:id},
                     dataType:"json",
                     success:function(html){
-                    
-                        $('#fuelType').val(html.data.name);
+                        $('#variant_name').val(html.data.name);
                         $('#select_type2').val(html.data.type_id);
+                        $('#select_make').val(html.data.car_makeid);
+                        $('#select_model').val(html.data.car_modelid);
                         $('#ordinal').val(html.data.ordinal);
+                        
+                        $('.selectpicker').selectpicker('refresh');
                         if(html.data.isactiveynid == 1){
                             $("#active").prop("checked", true);
                         }else{
                             $("#disabled").prop("checked", true);
                         }
+
                         $('#hidden_id').val(html.data.id);
                         $('.modal-title').text("Edit  Record");
                         $('#action_button').val("Edit");
@@ -429,11 +504,11 @@
 
 
 
-    var fuelType_id; 
+    var variant_id; 
 
  function featuredelete(thiselem)
  {
-    fuelType_id = $(thiselem).data("id");
+    variant_id = $(thiselem).data("id");
       $('.modal-title').text("Confirmation!");
       $('#delete_result').html('');
       $('#ok_button').text('Delete');
@@ -444,8 +519,8 @@
         
             $.ajax({
             type: "POST",
-            url : '{{ route('VehicleFueltype.destroy') }}',
-            data: {fuelType_id:fuelType_id},
+            url : '{{ route('VehicleVariant.destroy') }}',
+            data: {variant_id:variant_id},
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -470,7 +545,7 @@
                     $('#confirmModal').modal('hide');
                     $('#success').css('display', 'block');
                     $('#success').html(
-                        'Vehicle fuelType Deleted <strong>SuccessFully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
+                        'Vehicle Model Deleted <strong>SuccessFully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
                     );
                     $('#features-table').DataTable().ajax.reload();
                     $('#ok_button').text('Delete');

@@ -37,7 +37,7 @@
             <div  class="col-md-4"></div>
               <div align="center" class="col-md-4">
                 <form id="typeSearchForm" method="GET">
-                    <select class="form-control" id="select_type" name="select_type">
+                    <select class="form-control selectpicker" id="select_type" name="select_type" data-live-search="true">
                         <option value="1">select</option>
                     
                     </select>
@@ -57,8 +57,9 @@
                 <tr>
                   <th>Sr no</th>
                   <th>Name</th>
-                  <th>Type</th>
                   <th>ControlType</th>
+                  <th>Type</th>
+                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -120,8 +121,24 @@
                             </select>
                         </div>
                     </div>
-                    <br />
-                    <div class="form-group" align="center">
+                    <div class="form-group">
+                        <label class="control-label col-md-4" >* Ordinal : </label>
+                        <div class="col-md-8">
+                        <input type="number" name="ordinal" id="ordinal" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 control-label ">* status:</label>
+                        <div class="col-sm-8">
+                            <div class="switch-field">
+                                <input type="radio" id="active" name="status" value="1" checked/>
+                                <label for="active">Active</label>
+                                <input type="radio" id="disabled" name="status" value="2" />
+                                <label for="disabled">Disabled</label>
+                            </div>
+                        </div>
+                     </div>
+                   <div class="form-group" align="center">
                         <input type="hidden" name="action" id="action" />
                         <input type="hidden" name="hidden_id" id="hidden_id" />
                         <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" />
@@ -175,7 +192,7 @@
                             dataType: "json",
                             success:function(result)
                             {
-                                console.log(result.types);
+                                
                                 
                                     $.each(result.types, function(i, objs){
                                         
@@ -189,10 +206,11 @@
                                         processing: true,
                                         serverSide: true,
                                         columns:[
-                                                    { data: 'id', name: 'id', orderable: false },
+                                                    { data: 'id', name: 'id' , orderable: false },
                                                     { data: 'Feature', name: 'Feature' },
-                                                    { data: 'type', name: 'type' },
                                                     { data: 'controlid', name: 'controlid' },
+                                                    { data: 'type', name: 'type' },
+                                                    { data: 'statusid', name: 'statusid' },
                                                     {data: 'action', name: 'action', orderable: false, searchable: false},
                                                 ],
                                                 
@@ -229,8 +247,9 @@
                     columns:[
                                 { data: 'id', name: 'id' , orderable: false },
                                 { data: 'Feature', name: 'Feature' },
-                                { data: 'type', name: 'type' },
                                 { data: 'controlid', name: 'controlid' },
+                                { data: 'type', name: 'type' },
+                                { data: 'statusid', name: 'statusid' },
                                 {data: 'action', name: 'action', orderable: false, searchable: false},
                             ],
                                                         
@@ -389,9 +408,15 @@
                     dataType:"json",
                     success:function(html){
                     
-                        $('#feature_name').val(html.data.Feature);
+                        $('#feature_name').val(html.data.name);
                         $('#select_type2').val(html.data.type_id);
-                        $('#control_type').val(html.data.controlid);
+                        $('#control_type').val(html.data.controltypeid);
+                        $('#ordinal').val(html.data.ordinal);
+                        if(html.data.isactiveynid == 1){
+                            $("#active").prop("checked", true);
+                        }else{
+                            $("#disabled").prop("checked", true);
+                        }
                         $('#hidden_id').val(html.data.id);
                         $('.modal-title').text("Edit  Record");
                         $('#action_button').val("Edit");

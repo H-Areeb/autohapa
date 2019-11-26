@@ -5,12 +5,12 @@ namespace App\Http\Controllers\VehicleDetails;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\VehiclesModel\models;
+use App\VehiclesModel\variants;
 use Validator;
 use Auth;
 use DataTables;
 
-class modelController extends Controller
+class variantController extends Controller
 {
     public function __construct()
     {
@@ -23,21 +23,26 @@ class modelController extends Controller
      */
     public function index(Request $request)
     {
-        $types = DB::select(DB::raw('select * from type where is_visible = 1'));
-        $makes = DB::select(DB::raw('select * from car_make where isactiveynid = 1'));
+        $types = DB::select(DB::raw('select id,name from type where is_visible = 1'));
+        $makes = DB::select(DB::raw('select id,name from car_make where isactiveynid = 1 '));
+        $models = DB::select(DB::raw('select id,name from car_model where isactiveynid = 1 '));
+        
         if ($request->ajax()) {
 
             
-            $Models = DB::select(DB::raw('select car_model.id AS id , car_model.name AS Model , car_make.name AS Make ,
-             type.name AS type , car_model.isactiveynid AS statusid
-             from car_model 
-             INNER JOIN type ON type.id = car_model.type_id 
-             INNER JOIN car_make ON car_make.id = car_model.car_makeid 
-             where type.is_visible = 1 order by car_model.id DESC'));
+            $Variants = DB::select(DB::raw('select car_variant.id AS id , car_variant.name AS Variant ,
+             car_model.name AS Model, car_make.name AS Make ,
+             type.name AS type , car_variant.isactiveynid AS statusid
+             from car_variant 
+             INNER JOIN type ON type.id = car_variant.type_id 
+             INNER JOIN car_model ON car_model.id = car_variant.car_modelid 
+             INNER JOIN car_make ON car_make.id = car_variant.car_makeid 
+
+             where type.is_visible = 1 order by car_variant.id DESC'));
             
             
-             return Datatables::of($Models)
-                    ->with(compact('types','makes'))
+             return Datatables::of($Variants)
+                    ->with(compact('types','makes','models'))
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
@@ -61,13 +66,14 @@ class modelController extends Controller
                             
                             return $label;
                                             })
-                    ->rawColumns(['types','statusid','action'])
+                    ->rawColumns(['type','statusid','action'])
                     ->make(true);
         }
       
-       return view('vehicle_details/model',compact('types','makes'));
+       return view('vehicle_details/variant',compact('types','makes','models'));
     }
-
+    
+ 
     /**
      * Show the form for creating a new resource.
      *
@@ -87,7 +93,7 @@ class modelController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'model_name' => 'required',
+            'variant_name' => 'required',
             'select_make' => 'required',
             'select_type2' => 'required',
             'ordinal' => 'required',
@@ -102,16 +108,17 @@ class modelController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
         $form_data = array(
-            'name' => $request->model_name,
+            'name' => $request->variant_name,
             'type_id' => $request->select_type2,
             'car_makeid' => $request->select_make,
+            'car_modelid' => $request->select_model,
             'ordinal' => $request->ordinal,
             'isactiveynid' => $request->status
         );
         
-        models::create($form_data);
+        variants::create($form_data);
 
-        return response()->json(['success'=>"Vehicle 's Model Add successfully!."]);
+        return response()->json(['success'=>"Vehicle 's variant Add successfully!."]);
     }
 
     /**
@@ -122,6 +129,7 @@ class modelController extends Controller
      */
     public function show(Request $request)
     {
+        
         if($request->type_id2 != null)
         {
             
@@ -129,18 +137,29 @@ class modelController extends Controller
             $makes = DB::select(DB::raw('select id,name from car_make where isactiveynid = 1 AND type_id ="'.$typeid.'"'));
             return response()->json(['makes'=>$makes]);
         }
+        if($request->make_id != null)
+        {
+           $makeid = $request->make_id;
+        $models = DB::select(DB::raw('select id,name from car_model where isactiveynid = 1  AND car_makeid ="'.$makeid.'" '));
+        return response()->json(['models'=>$models]);
+        }
+
 
         $typeid = $request->type_id;
 
-        $Models = DB::select(DB::raw('select car_model.id AS id , car_model.name AS Model , car_make.name AS Make ,
-             type.name AS type , car_model.isactiveynid AS statusid
-             from car_model 
-             INNER JOIN type ON type.id = car_model.type_id 
-             INNER JOIN car_make ON car_make.id = car_model.car_makeid 
-             where type.is_visible = 1 AND  car_model.type_id = "'.$typeid.'" order by car_model.id DESC'));
+        
+
+        $Variants = DB::select(DB::raw('select car_variant.id AS id , car_variant.name AS Variant ,
+        car_model.name AS Model, car_make.name AS Make ,
+        type.name AS type , car_variant.isactiveynid AS statusid
+        from car_variant 
+        INNER JOIN type ON type.id = car_variant.type_id 
+        INNER JOIN car_model ON car_model.id = car_variant.car_modelid 
+        INNER JOIN car_make ON car_make.id = car_variant.car_makeid  
+             where type.is_visible = 1 AND  car_variant.type_id = "'.$typeid.'" order by car_variant.id DESC'));
         
         
-         return Datatables::of($Models)
+         return Datatables::of($Variants)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
    
@@ -180,8 +199,7 @@ class modelController extends Controller
        
         if(request()->ajax())
         {
-           
-            $data = models::where('id','=',$id)->first();
+            $data = variants::where('id','=',$id)->first();
 
             return response()->json(['data' => $data]);
         }
@@ -198,9 +216,9 @@ class modelController extends Controller
     {
 
         $rules = array(
-            'model_name' => 'required',
-            'select_type2' => 'required',
+            'variant_name' => 'required',
             'select_make' => 'required',
+            'select_type2' => 'required',
             'ordinal' => 'required',
             'status' => 'required'
         );
@@ -213,16 +231,17 @@ class modelController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
         $form_data = array(
-            'name' => $request->model_name,
+            'name' => $request->variant_name,
             'type_id' => $request->select_type2,
             'car_makeid' => $request->select_make,
+            'car_modelid' => $request->select_model,
             'ordinal' => $request->ordinal,
             'isactiveynid' => $request->status
         );
         
-        models::whereId($request->hidden_id)->update($form_data);
+        variants::whereId($request->hidden_id)->update($form_data);
 
-        return response()->json(['success'=>"Vehicle 's Model update successfully!."]);
+        return response()->json(['success'=>"Vehicle 's variant update successfully!."]);
        
     }
 
@@ -234,16 +253,17 @@ class modelController extends Controller
      */
     public function destroy(Request $request) 
     {
-        $model_id = $request->model_id;
+        $variant_id = $request->variant_id;
          
-        $modelDelete =   models::where('id',$model_id)->first();
+        $variantDelete =   variants::where('id',$variant_id)->first();
             
-         if($modelDelete != null)
+         if($variantDelete != null)
             {
-                $modelDelete->delete();
-                return  response()->json(['success'=>"Vehicle's Model deleted successfully!."]);
+                $variantDelete->delete();
+                return  response()->json(['success'=>"Vehicle's variant deleted successfully!."]);
             }
 
-        return  response()->json(['errors'=>'Model ID is wrong!']);
+        return  response()->json(['errors'=>'variant ID is wrong!']);
+
     }
 }
