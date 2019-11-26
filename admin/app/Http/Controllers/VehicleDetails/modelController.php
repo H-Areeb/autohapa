@@ -61,7 +61,7 @@ class modelController extends Controller
                             
                             return $label;
                                             })
-                    ->rawColumns(['types','statusid','action'])
+                    ->rawColumns(['type','statusid','action'])
                     ->make(true);
         }
       
