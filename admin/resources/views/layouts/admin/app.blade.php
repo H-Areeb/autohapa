@@ -137,10 +137,7 @@
 <script>
   $(function () {
     // $.fn.selectpicker.Constructor.BootstrapVersion = '3.7';
-    $('.selectpicker').selectpicker({
-        
-        size: false
-    });
+    $('.selectpicker').selectpicker();
     //$('#adsTable').DataTable()
     $('#adsTable').DataTable({
       'paging'      : true,

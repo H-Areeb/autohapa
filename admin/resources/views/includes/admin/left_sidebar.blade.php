@@ -77,7 +77,7 @@
                     <li><a href="{{ route('VehicleModel.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Model</a></li>
                     <li><a href="{{ route('VehicleVariant.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Variant</a></li>
                     <li><a href="{{ route('VehicleDerivative.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Derivative</a></li>
-                    <li><a href="{{ route('VehicleDerivative.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Trim</a></li>
+                    <li><a href="{{ route('VehicleTrim.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Trim</a></li>
                     <li><a href="{{ route('VehicleBodytype.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Bodytype</a></li>
                     <li><a href="{{ route('VehicleFueltype.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Fueltype</a></li>
                     <li><a href="{{ route('VehicleTransmission.index')}}"><i class="fa fa-circle-o text-red"></i>Vehicle Transmission</a></li>
