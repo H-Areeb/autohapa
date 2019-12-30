@@ -707,20 +707,6 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $('#confirmPassword').change(function() {
 
         var newPassword = $('#newPassword').val();

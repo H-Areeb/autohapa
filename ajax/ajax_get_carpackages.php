@@ -1,6 +1,4 @@
-<?php header("Cache-Control: no-cache, must-revalidate");
-	header('Access-Control-Allow-Origin: *');
-	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+<?php 
 
 	include "../includes/config.php";
 	

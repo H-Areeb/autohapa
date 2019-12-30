@@ -423,13 +423,15 @@ function RegisterNow(){
 				result = JSON.parse(result);
 				 
 					
-			if(result.status == 'success'){
+			if(result.status == 'success')
+            {
 					
 					
 				//document.getElementById('customer_id').value =result.id;
 				 document.getElementById('user_id2').value =result.id;
 						
-                	if(document.getElementById('hdregnum').value == ''){
+                	if(document.getElementById('hdregnum').value == '')
+                    {
                 	    
                 	     //$('#success').css('display','block');  
 						//	 $('#success').html('Account Created  <strong>Successfully</strong>! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
