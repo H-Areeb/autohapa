@@ -44,7 +44,7 @@ if (isset($_POST["reset-password"])) {
 <script src="<?= $site_url; ?>autohapa/assets/js/passwordcheck.js"></script>
 
 <style>
-<style>#section-register .col-form-label {
+#section-register .col-form-label {
       color: #161717a3;
       font-weight: 700;
       font-size: 0.9rem;
@@ -207,21 +207,6 @@ function passwordChange() {
 
       var errorCount = 0;
 
-
-
-      // if($('#currentPassword').val() == '')
-      // {
-      //     $('#currentPasswordError').html("Please Enter A Current Password & password length should be 8 character.");
-      //     $('#currentPasswordError').css({ 'display': 'block' });
-      //     return;
-      // }
-      // else 
-      // {
-      //     //$('#currentPasswordError').remove();
-      //     $('#currentPasswordError').css({ 'display': 'none' });
-      //     errorCount = errorCount + 1;
-      // }
-
       if ($('#newPassword').val() == '' && $('#newPassword').val().length < 8) {
             // $('#currentPasswordError').remove();
             $('#newPasswordError').html("Please Enter A New Password & password length should be 8 character.");
@@ -241,9 +226,6 @@ function passwordChange() {
 
       if ($('#confirmPassword').val() == '' && $('#confirmPassword').val() != $('#newPassword').val()) {
 
-            //$('#currentPasswordError').remove();
-            //$('#newPasswordError').remove();
-            // $('#confirmPasswordError').html("Confirm Password should not Empty! ");
             $('#confirmPasswordError').html("Your Password isn't Matched ");
             $('#confirmPasswordError').css({
                   'display': 'block'
