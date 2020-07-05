@@ -316,7 +316,7 @@
                             $('#sample_form')[0].reset();
                            
                         }
-                        console.log('test');
+                        
                         $('#form_result').html(msg);
                         $('#action_button').val("Add");  
                         $('#features-table').DataTable().ajax.reload();
