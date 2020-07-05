@@ -19,7 +19,7 @@ function sendMail($to,$subject,$body){
     $mail->SMTPDebug = 0; 
     $mail->Port = 587 ; //465 or 587
 
-     $mail->SMTPSecure = 'TLS';  
+    $mail->SMTPSecure = 'TLS';  
     $mail->SMTPAuth = false; 
     $mail->IsHTML(true);
 
