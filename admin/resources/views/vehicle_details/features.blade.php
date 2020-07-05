@@ -1,70 +1,73 @@
 @extends('layouts.admin.app')
 @section('content')
-    <!-- Content Header (Page header) -->
+<!-- Content Header (Page header) -->
 <section class="content-header">
-      <h1>
-        Car Features 
+    <h1>
+        Car Features
         <small>Car Features List</small>
-      </h1>
-      <ol class="breadcrumb">
+    </h1>
+    <ol class="breadcrumb">
         <li><a href="{{ route('home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">All sellers</li>
-      </ol>
-    </section>
+    </ol>
+</section>
 
 
-            <div class="row">
-                      <div class="col-xs-4"></div>
-                <div class="col-xs-4">
-                 
-                        <div class="alert alert-success alert-dismissible" role="alert" id="success" style="display:none">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      
-                        </div>
-                  
-                </div>
-                        <div class="col-xs-4"></div>
-            </div>
+<div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
+        <div class="alert alert-success alert-dismissible" role="alert" id="success" style="display:none">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+
+        </div>
+
+    </div>
+    <div class="col-xs-4"></div>
+</div>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
         <div class="col-xs-12">
-          
 
-          <div class="box">
-            <div class="box-header">
-            <div  class="col-md-4"></div>
-              <div align="center" class="col-md-4">
-                <form id="typeSearchForm" method="GET">
-                    <select class="form-control selectpicker" id="select_type" name="select_type" data-live-search="true">
-                        <option value="1">select</option>
-                    
-                    </select>
-                </form>
-              </div>
-              <div align="right" class="col-md-4">
-                <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Create Record</button>
-              </div>
-               
-              
-            </div> 
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="features-table" class="table table-bordered table-striped">
-              
-                <thead>
-                <tr>
-                  <th>Sr no</th>
-                  <th>Name</th>
-                  <th>ControlType</th>
-                  <th>Type</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-                </thead>
-                
-                <!-- <tfoot>
+
+            <div class="box">
+                <div class="box-header">
+                    <div class="col-md-4"></div>
+                    <div align="center" class="col-md-4">
+                        <form id="typeSearchForm" method="GET">
+                            <select class="form-control selectpicker" id="select_type" name="select_type"
+                                data-live-search="true">
+                                <option value="1">select</option>
+
+                            </select>
+                        </form>
+                    </div>
+                    <div align="right" class="col-md-4">
+                        <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm"><i
+                                class="fa fa-plus"></i> Create Record</button>
+                    </div>
+
+
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <table id="features-table" class="table table-bordered table-striped">
+
+                        <thead>
+                            <tr>
+                                <th>Sr no</th>
+                                <th>Name</th>
+                                <th>ControlType</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <!-- <tfoot>
                 <tr>
                   <th>Rendering engine</th>
                   <th>Browser</th>
@@ -73,40 +76,40 @@
                   <th>CSS grade</th>
                 </tr>
                 </tfoot> -->
-              </table>
+                    </table>
+                </div>
+                <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+            <!-- /.box -->
         </div>
         <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
 
-    <div id="formModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Add New Record</h4>
-                </div>
-                <div class="modal-body">
-                    <span id="form_result"></span>
-                    <form method="post" id="sample_form" class="form-horizontal" enctype="multipart/form-data">
+<div id="formModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add New Record</h4>
+            </div>
+            <div class="modal-body">
+                <span id="form_result"></span>
+                <form method="post" id="sample_form" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label class="control-label col-md-4" >Feature Name : </label>
+                        <label class="control-label col-md-4">Feature Name : </label>
                         <div class="col-md-8">
-                        <input type="text" name="feature_name" id="feature_name" class="form-control" />
+                            <input type="text" name="feature_name" id="feature_name" class="form-control" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-4">Select type : </label>
                         <div class="col-md-8">
                             <select class="form-control" id="select_type2" name="select_type2">
-                            <option value=" ">select</option>
+                                <option value=" ">select</option>
                             </select>
                         </div>
                     </div>
@@ -121,59 +124,55 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-4" >* Ordinal : </label>
-                        <div class="col-md-8">
-                        <input type="number" name="ordinal" id="ordinal" class="form-control" />
-                        </div>
-                    </div>
+
                     <div class="form-group row">
                         <label for="" class="col-sm-4 control-label ">* status:</label>
                         <div class="col-sm-8">
                             <div class="switch-field">
-                                <input type="radio" id="active" name="status" value="1" checked/>
+                                <input type="radio" id="active" name="status" value="1" checked />
                                 <label for="active">Active</label>
                                 <input type="radio" id="disabled" name="status" value="2" />
                                 <label for="disabled">Disabled</label>
                             </div>
                         </div>
-                     </div>
-                   <div class="form-group" align="center">
+                    </div>
+                    <div class="form-group" align="center">
                         <input type="hidden" name="action" id="action" />
                         <input type="hidden" name="hidden_id" id="hidden_id" />
-                        <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" />
+                        <input type="submit" name="action_button" id="action_button" class="btn btn-warning"
+                            value="Add" />
                     </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <div id="confirmModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h2 class="modal-title">Confirmation!</h2>
-                </div>
-                <span id="form_result"></span>
-                <div class="modal-body">
+<div id="confirmModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title">Confirmation!</h2>
+            </div>
+            <span id="form_result"></span>
+            <div class="modal-body">
 
-                    <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
-                </div>
-                <div class="modal-footer">
+                <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
+            </div>
+            <div class="modal-footer">
                 <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
+</div>
 
 
 
-    
-    <script>    
-          jQuery("#success").delay(1000).fadeOut("slow");
+
+<script>
+    jQuery("#success").delay(1000).fadeOut("slow");
         
     //       $.ajaxSetup({
     //       headers: {
@@ -202,6 +201,7 @@
                                             $('#select_type2').append(options);
                                     });
                                 
+                                $('.selectpicker').selectpicker('refresh');
                                     $('#features-table').DataTable({
                                         processing: true,
                                         serverSide: true,
@@ -321,7 +321,7 @@
                             $('#sample_form')[0].reset();
                            
                         }
-                        console.log('test');
+                      
                         $('#form_result').html(msg);
                         $('#action_button').val("Add");  
                         $('#features-table').DataTable().ajax.reload();
@@ -411,7 +411,10 @@
                         $('#feature_name').val(html.data.name);
                         $('#select_type2').val(html.data.type_id);
                         $('#control_type').val(html.data.controltypeid);
-                        $('#ordinal').val(html.data.ordinal);
+                       
+                        
+                        $('.selectpicker').selectpicker('refresh');
+                        
                         if(html.data.isactiveynid == 1){
                             $("#active").prop("checked", true);
                         }else{
@@ -495,6 +498,6 @@
 
 </script>
 
-   
+
 
 @endsection
